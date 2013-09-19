@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project basedir="." default="compile" name="MagazineParser">
+    
+    <property name="ECLIPSE_HOME" value="../../Downloads/Java/eclipse"/>
+    <property name="ECLIPSE_WORKSPACE" value=".."/>
+
+    <property name="SOURCE_FOLDER" value="${basedir}/src/"/>    
+    <property name="OUTPUT_FOLDER" value="${basedir}/bin/"/>
+
+    <path id="MagazineParser.classpath">
+        <path refid="MagazineParser.libraryclasspath" />
+    </path>
+
+    <!-- The classpath with only the dependencies used by the project (a dependency with the parser is required) -->
+    <path id="MagazineParser.libraryclasspath">
+        <pathelement location="${ECLIPSE_WORKSPACE}/MagazineParser/bin"/>
+    </path>
+
+    <!-- Change the value of the property SOURCE_FOLDERS to match the configuration of your project. -->
+    <target name="compile">
+    </target>
+</project>

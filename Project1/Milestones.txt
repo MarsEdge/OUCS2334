@@ -1,0 +1,40 @@
+1. Use program arguments to specify a file name.
+	completed 9/12
+	
+	passed from main() to new Parser.args, used in Parser.parseFile()
+	
+2. Use simple File I/O to read a file.
+	completed 9/12
+	
+	in Parser.parseFile()
+	
+3. Create an abstract data type (ADT) to store information on a single magazine.
+	completed 9/12
+	
+	is Magazine class
+	
+4. Create an ADT that abstracts the use of an array of magazines (i.e., a list of magazines).
+	completed 9/16
+	
+	is Parser.magazines
+	
+5. Implement a program that allows the user to search the list of magazines.
+	completed 9/16
+	
+	is Parser.search() , called from FrontEnd.main()
+
+*****************************************
+* Added features (Extra Credit)
+*****************************************
+
+* Parser.search() can find publishers using substrings and is case insensitive
+
+* search for empty string to find all magazines in CSV file
+
+* Parser.makeMagazine() accepts CSV files with fewer / more ","s in them
+
+* Magazine checks validity of entered properties (not null, length > 0)
+
+* Parser.makeMagazine() can handle empty CSV fields
+
+* press "cancel" on publisher dialog to exit program
