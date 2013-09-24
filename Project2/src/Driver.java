@@ -1,5 +1,3 @@
-
-
 public class Driver {
 	
 	public static void main (String[] args){
@@ -7,10 +5,8 @@ public class Driver {
 	}
 
 	
-	public String getInput(){
+	public String getInput() {
 		
-		return null;
+		return "Driver.getInput() is not implemented";
 	}
-	
-	
 }
