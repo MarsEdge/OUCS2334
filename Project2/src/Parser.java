@@ -18,19 +18,20 @@ public class Parser {
 	 * 
 	 * @param file_loc location of file to parse
 	 */
-	public Parser(String[] program_args) {
-		if(isValidSearchName(program_args))
+	public Parser(String file_loc) {
+		if(isValidSearchName(file_loc))
 			setFileLoc(file_loc);
 	}
 	
 	/**
 	 * decides whether or not the entered search name is valid
 	 *
+	 * @param file_loc location of file to parse
 	 * @return true if valid, false if not
 	 */
-	public boolean isValidSearchName(String[] program_args) {
+	public boolean isValidSearchName(String file_loc) {
 		//ensure an program argument exists
-		if(program_args != null && program_args.length > 0 && program_args[0].length() > 0)
+		if(file_loc.length() > 0)
 			return true;
 		else {
 			return false;
