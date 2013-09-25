@@ -3,7 +3,7 @@
   associations="true" dependencies="true" nesting-relationships="true">  
   <class id="1" language="java" name="Driver" project="Project2" file="/Project2/src/Driver.java" binary="false" 
     corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="127" y="43"/>    
+    <position height="-1" width="-1" x="60" y="-75"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" accessors="true" 
       visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -12,7 +12,7 @@
   </class>  
   <class id="2" language="java" name="Publication" project="Project2" file="/Project2/src/Publication.java" 
     binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="443" y="168"/>    
+    <position height="-1" width="-1" x="171" y="302"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" accessors="true" 
       visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -21,7 +21,7 @@
   </class>  
   <class id="3" language="java" name="Parser" project="Project2" file="/Project2/src/Parser.java" binary="false" 
     corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="887" y="295"/>    
+    <position height="-1" width="-1" x="497" y="-19"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" accessors="true" 
       visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -30,7 +30,7 @@
   </class>  
   <class id="4" language="java" name="JournalArticle" project="Project2" file="/Project2/src/JournalArticle.java" 
     binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="745" y="578"/>    
+    <position height="-1" width="-1" x="836" y="291"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" accessors="true" 
       visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
