@@ -37,14 +37,42 @@ public class Parser {
 		}
 	}
 	
+	/**
+	 * parses CSV file
+	 * 
+	 * @return true on success, false on error 
+	 * @throws IOException
+	 */
 	public boolean parseFile() throws IOException {
 		return false;
 	}
 	
+	/**
+	 * writes resultant file to disk
+	 * 
+	 * @return true on success, false on error 
+	 * @throws IOException
+	 */
 	public boolean writeFile() throws IOException {
 		return false;
 	}
 	
+	/**
+	 * creates a new publication object
+	 * 
+	 * @param line line of CVS file to turn into a publication
+	 * @return publication it created
+	 */
+	public Publication makePublication(String line) {
+		return new Publication();
+	}
+	
+	/**
+	 * searches CVS file for matching items
+	 * 
+	 * @param search_term term for which to search
+	 * @return string containing all results from search
+	 */
 	public String search(String search_term) {
 		return "Parser.search() is unimlemented\n";
 	}

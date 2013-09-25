@@ -59,7 +59,12 @@ public class JournalArticle extends Publication {
 	}
 	
 	public boolean setVolume(int volume) {
-		this.volume = volume;
+		if(isValid(volume)) {
+			this.volume = volume;
+			return true;
+		}
+		this.volume = -1;
+		return false;
 	}
 	
 	public int getIssue() {
@@ -67,6 +72,11 @@ public class JournalArticle extends Publication {
 	}
 	
 	public boolean setIssue(int issue) {
-		this.issue = issue;
+		if(isValid(issue)) {
+			this.issue = issue;
+			return true;
+		}
+		this.issue = -1;
+		return false;
 	}
 }
