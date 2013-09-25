@@ -3,7 +3,7 @@ import java.util.Calendar;
 import java.util.Comparator;
 
 
-public class Publication implements Comparable<Publication>, Comparator<Publication> {
+public class Publication implements Comparable<Publication> {
 	
 	/**
 	 * author(s)
@@ -121,12 +121,6 @@ public class Publication implements Comparable<Publication>, Comparator<Publicat
 		if(prop.size() > 0 && prop.get(0) != null)
 			return true;
 		return false;
-	}
-	
-	@Override
-	public int compare(Publication o1, Publication o2) {
-		// TODO Auto-generated method stub
-		return 0;
 	}
 	
 	@Override
