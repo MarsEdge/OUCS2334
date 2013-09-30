@@ -109,7 +109,7 @@ public class Publication implements Comparable<Publication> {
 	 * @param prop list to check
 	 * @return true of valid, false if not
 	 */
-	public static boolean isValidList(ArrayList<?> prop) {
+	public static boolean isValid(ArrayList<?> prop) {
 		if(prop.size() > 0 && prop.get(0) != null)
 			return true;
 		return false;
@@ -122,7 +122,7 @@ public class Publication implements Comparable<Publication> {
 	}
 	
 	public ArrayList<Name> getAuthors() {
-		if(isValidList(authors))
+		if(isValid(authors))
 			return authors;
 		return null;
 	}
