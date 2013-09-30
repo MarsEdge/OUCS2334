@@ -40,13 +40,6 @@ public class Publication implements Comparable<Publication> {
 	private String link;
 	
 	/**
-	 * default constructor 
-	 */
-	public Publication(){
-		
-	}
-	
-	/**
 	 * Publication constructor without link
 	 * 
 	 * @param authors list of authors

@@ -5,10 +5,6 @@ public class JournalArticle extends Publication {
 	private int volume;
 	private int issue;
 	
-	public JournalArticle( ){
-		//init class vars
-	}
-	
 	/**
 	 * JournalArticle constructor without link
 	 * 
