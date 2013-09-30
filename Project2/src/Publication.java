@@ -7,7 +7,7 @@ public class Publication implements Comparable<Publication> {
 	/**
 	 * author(s)
 	 */
-	private ArrayList<String> Authors;
+	private ArrayList<Name> authors;
 	
 	/**
 	 * title of this paper
@@ -49,14 +49,14 @@ public class Publication implements Comparable<Publication> {
 	/**
 	 * Publication constructor without link
 	 * 
-	 * @param Authors list of authors
+	 * @param authors list of authors
 	 * @param titlePaper paper title
 	 * @param titleSerial serial title
 	 * @param pageStart starting page
 	 * @param pageEnd ending page
 	 * @param date date of publication
 	 */
-	public Publication(ArrayList<String> Authors, String titlePaper, String titleSerial, 
+	public Publication(ArrayList<String> authors, String titlePaper, String titleSerial, 
 			int pageStart, int pageEnd, Calendar date){
 		
 	}
@@ -64,7 +64,7 @@ public class Publication implements Comparable<Publication> {
 	/**
 	 * Publication constructor with link
 	 * 
-	 * @param Authors list of authors
+	 * @param authors list of authors
 	 * @param titlePaper paper title
 	 * @param titleSerial serial title
 	 * @param pageStart starting page
@@ -72,7 +72,7 @@ public class Publication implements Comparable<Publication> {
 	 * @param date date of publication
 	 * @param link hyperlink to publication
 	 */
-	public Publication(ArrayList<String> Authors, String titlePaper, String titleSerial, 
+	public Publication(ArrayList<String> authors, String titlePaper, String titleSerial, 
 			int pageStart, int pageEnd, Calendar date, String link){
 		
 	}
@@ -128,25 +128,24 @@ public class Publication implements Comparable<Publication> {
 		return 0;
 	}
 	
-	public ArrayList<String> getAuthors() {
-		if(isValidList(Authors))
-			return Authors;
+	public ArrayList<Name> getAuthors() {
+		if(isValidList(authors))
+			return authors;
 		return null;
 	}
 	
-	public boolean addAuthor(String author) {
-		if(isValid(author))
-			return Authors.add(author);
-		
-		return false;
+	public boolean addAuthor(Name author) {
+		return authors.add(author);
 	}
 	
-	public boolean removeAuthor(String author) {
-		return false;
+	public boolean removeAuthor(Name author) {
+		return authors.remove(author);
 	}
 	
 	public String getTitleSerial() {
-		return titleSerial;
+		if(isValid(titleSerial))
+			return titleSerial;
+		return "Invalid Serial Title";
 	}
 	
 	public boolean setTitleSerial(String titleSerial) {
