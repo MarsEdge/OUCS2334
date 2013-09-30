@@ -1,3 +1,5 @@
+import java.io.BufferedReader;
+import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 
@@ -19,6 +21,8 @@ public class Parser {
 	 * @param file_loc location of file to parse
 	 */
 	public Parser(String file_loc) {
+		publications = new ArrayList<Publication>();
+		
 		if(isValidSearchName(file_loc))
 			setFileLoc(file_loc);
 	}
@@ -41,10 +45,29 @@ public class Parser {
 	/**
 	 * parses CSV file
 	 * 
-	 * @return true on success, false on error 
+	 * @return true on success, false on error
 	 * @throws IOException
 	 */
 	public boolean parseFile() throws IOException {
+		if(isValidSearchName(getFileLoc())) {
+			FileReader DBReader = new FileReader(getFileLoc());
+			
+			BufferedReader DBReaderBuffered = new BufferedReader(DBReader);
+			
+			String next_line="";
+			
+			while(DBReaderBuffered.ready())
+			{
+				next_line=DBReaderBuffered.readLine();
+				if(next_line.length() > 0)
+					publications.add(makePublication(next_line));
+			}
+			
+			DBReaderBuffered.close();
+			
+			return true;
+		}
+		
 		return false;
 	}
 	
@@ -64,7 +87,7 @@ public class Parser {
 	 * @param line line of CVS file to turn into a publication
 	 * @return publication it created
 	 */
-	public Publication makePublication(String line) {
+	public Publication makePublication(String block) {
 		return new Publication();
 	}
 	
@@ -79,10 +102,18 @@ public class Parser {
 	}
 	
 	public String getFileLoc() {
-		return "Parser.getFileLoc() is unimlemented\n";
+		if(isValidSearchName(file_loc)) {
+			return file_loc;
+		}
+		return "Invalid File Location";
 	}
 	
 	public boolean setFileLoc(String file_loc) {
+		if(isValidSearchName(file_loc)) {
+			this.file_loc = file_loc;
+			return true;
+		}
+		
 		return false;
 	}
 }
