@@ -25,7 +25,7 @@ public class Publication implements Comparable<Publication> {
 	private int pageStart;
 	
 	/**
-	 * ending age
+	 * ending page
 	 */
 	private int pageEnd;
 	
