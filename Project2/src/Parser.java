@@ -88,7 +88,7 @@ public class Parser {
 	 * @return publication it created
 	 */
 	public Publication makePublication(String block) {
-		return new Publication();
+		return new Publication(null, block, block, 0, 0, null);
 	}
 	
 	/**
