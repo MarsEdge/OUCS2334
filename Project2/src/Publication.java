@@ -29,10 +29,9 @@ public class Publication implements Comparable<Publication> {
 	 */
 	private int pageEnd;
 	
-	/**
-	 * date of publication
-	 */
-	private Calendar date;
+	private String month;
+	
+	private int year;
 	
 	/**
 	 * hyperlink to publication (optional)
@@ -50,7 +49,7 @@ public class Publication implements Comparable<Publication> {
 	 * @param date date of publication
 	 */
 	public Publication(ArrayList<String> authors, String titlePaper, String titleSerial, 
-			int pageStart, int pageEnd, Calendar date){
+			int pageStart, int pageEnd, String month, int year){
 		
 		for(String author : authors) {
 			addAuthor(author);
@@ -64,7 +63,7 @@ public class Publication implements Comparable<Publication> {
 		
 		setPageEnd(pageEnd);
 		
-		setDate(date);
+		setDate(month, year);
 	}
 	
 	/**
@@ -79,7 +78,7 @@ public class Publication implements Comparable<Publication> {
 	 * @param link hyperlink to publication
 	 */
 	public Publication(ArrayList<String> authors, String titlePaper, String titleSerial, 
-			int pageStart, int pageEnd, Calendar date, String link){		
+			int pageStart, int pageEnd, String month, int year, String link){
 		
 		for(String author : authors) {
 			addAuthor(author);
@@ -93,7 +92,7 @@ public class Publication implements Comparable<Publication> {
 		
 		setPageEnd(pageEnd);
 		
-		setDate(date);
+		setDate(month, year);
 		
 		setLink(link);
 	}
@@ -201,13 +200,14 @@ public class Publication implements Comparable<Publication> {
 		return false;
 	}
 	
-	public Calendar getDate() {
-		return date;
+	public String getDate() {
+		return month + " " + year;
 	}
 	
-	public boolean setDate(Calendar date) {
-		this.date = date;
-		return false;
+	public boolean setDate(String month, int year) {
+		this.month = month;
+		this.year = year;
+		return true;
 	}
 	
 	public String getLink() {

@@ -21,7 +21,7 @@ public class Parser {
 	 * @param file_loc location of file to parse
 	 */
 	public Parser(String file_loc) {
-		publications = new ArrayList<Publication>();
+		publications= new ArrayList<Publication>();
 		
 		if(isValidSearchName(file_loc))
 			setFileLoc(file_loc);
@@ -56,11 +56,95 @@ public class Parser {
 			
 			String next_line="";
 			
+			int partNum = 1;
+			
+			String type = "";
+			
+			ArrayList<String> authors = new ArrayList<String>();
+			
+			String titlePaper = "";
+			
+			String titleSerial = "";
+			
+			int pageStart = 0;
+			
+			int pageEnd = 0;
+			
+			String Month = "";
+			
+			int year = 0;
+			
+			int volume = 0;
+			
+			int issue = 0;
+			
+			String link = "";
+			
 			while(DBReaderBuffered.ready())
 			{
 				next_line=DBReaderBuffered.readLine();
+				
+				System.out.println(next_line);
 				if(next_line.length() > 0)
-					publications.add(makePublication(next_line));
+				{
+					if(partNum == 1)
+					{
+						type = next_line;
+						
+						System.out.println(type);
+					}
+					if(partNum == 2)
+					{
+						authors = parseAuthors(next_line);
+					}
+					if(partNum == 3)
+					{
+						titlePaper = next_line;
+					}
+					if(partNum == 4)
+					{
+						titleSerial = next_line;
+					}
+					if(partNum == 5)
+					{
+						if(type.toLowerCase() == "conference paper") {
+							pageStart = Integer.parseInt(next_line.split("\\-")[0]);
+						
+							pageEnd = Integer.parseInt(next_line.split("\\-")[1]);
+						} else if(type.toLowerCase() == "journal article") {
+							volume = Integer.parseInt(next_line.split("\\(")[0]);
+							
+							issue = Integer.parseInt(next_line.split("\\(")[1].split("\\)")[0]);
+							
+							pageStart = Integer.parseInt(next_line.split("\\)")[1].split("\\-")[0]);
+							
+							pageEnd = Integer.parseInt(next_line.split("\\)")[1].split("\\-")[1]);
+						}
+					}
+					
+					if(partNum == 6)
+					{
+						Month = next_line.split("\\ ")[0];
+						
+						year = Integer.parseInt(next_line.split("\\ ")[1]);
+					}
+					if(partNum == 7)
+					{
+						partNum=0;
+						if(!isType(next_line))
+						{
+							link = next_line;
+						}
+						
+						if(type.toLowerCase().equals("conference paper"))	
+							publications.add(new Publication(authors,titlePaper, titleSerial, pageStart, pageEnd, Month, year, link));
+						System.out.println(type.toLowerCase());
+						if(type.toLowerCase().equals("journal article"))
+							publications.add(new JournalArticle(authors,titlePaper, titleSerial, pageStart, pageEnd, Month, year, link, volume, issue));
+					}
+					partNum++;
+					
+				}
 			}
 			
 			DBReaderBuffered.close();
@@ -71,6 +155,24 @@ public class Parser {
 		return false;
 	}
 	
+	public boolean isType(String in) {
+		return in.toLowerCase().equals("conference paper") || 
+				in.toLowerCase().equals("journal article");
+	}
+	
+	public ArrayList<String> parseAuthors(String authorsStr) {
+		String[] parts = authorsStr.split("\\; ");
+		
+		ArrayList<String> out = new ArrayList<String>();
+		
+		for(String author : parts)
+		{
+			out.add(author);
+		}
+		
+		return out;
+	}
+	
 	/**
 	 * writes resultant file to disk
 	 * 
@@ -79,16 +181,6 @@ public class Parser {
 	 */
 	public boolean writeFile() throws IOException {
 		return false;
-	}
-	
-	/**
-	 * creates a new publication object
-	 * 
-	 * @param line line of CVS file to turn into a publication
-	 * @return publication it created
-	 */
-	public Publication makePublication(String block) {
-		return new Publication(null, block, block, 0, 0, null);
 	}
 	
 	/**
@@ -115,5 +207,13 @@ public class Parser {
 		}
 		
 		return false;
+	}
+
+	public ArrayList<Publication> getPublications() {
+		return publications;
+	}
+
+	public void setPublications(ArrayList<Publication> publications) {
+		this.publications = publications;
 	}
 }

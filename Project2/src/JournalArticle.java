@@ -18,9 +18,9 @@ public class JournalArticle extends Publication {
 	 * @param issue journal issue
 	 */
 	public JournalArticle(ArrayList<String> Authors, String titlePaper, String titleSerial, 
-			int pageStart, int pageEnd, Calendar date, int volume, int issue) {
+			int pageStart, int pageEnd, String month, int year, int volume, int issue) {
 		
-		super(Authors, titlePaper, titleSerial, pageStart, pageEnd, date);
+		super(Authors, titlePaper, titleSerial, pageStart, pageEnd, month, year);
 		
 		setVolume(volume);
 		
@@ -41,9 +41,9 @@ public class JournalArticle extends Publication {
 	 * @param issue journal issue
 	 */
 	public JournalArticle(ArrayList<String> Authors, String titlePaper, String titleSerial, 
-			int pageStart, int pageEnd, Calendar date, String link, int volume, int issue) {
+			int pageStart, int pageEnd, String month, int year, String link, int volume, int issue) {
 		
-		super(Authors, titlePaper, titleSerial, pageStart, pageEnd, date, link);
+		super(Authors, titlePaper, titleSerial, pageStart, pageEnd, month, year, link);
 		
 		setVolume(volume);
 		
