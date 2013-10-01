@@ -7,7 +7,7 @@ public class Publication implements Comparable<Publication> {
 	/**
 	 * author(s)
 	 */
-	private ArrayList<Name> authors;
+	private ArrayList<String> authors;
 	
 	/**
 	 * title of this paper
@@ -52,6 +52,19 @@ public class Publication implements Comparable<Publication> {
 	public Publication(ArrayList<String> authors, String titlePaper, String titleSerial, 
 			int pageStart, int pageEnd, Calendar date){
 		
+		for(String author : authors) {
+			addAuthor(author);
+		}
+		
+		setTitlePaper(titlePaper);
+		
+		setTitleSerial(titleSerial);
+		
+		setPageStart(pageStart);
+		
+		setPageEnd(pageEnd);
+		
+		setDate(date);
 	}
 	
 	/**
@@ -66,8 +79,23 @@ public class Publication implements Comparable<Publication> {
 	 * @param link hyperlink to publication
 	 */
 	public Publication(ArrayList<String> authors, String titlePaper, String titleSerial, 
-			int pageStart, int pageEnd, Calendar date, String link){
+			int pageStart, int pageEnd, Calendar date, String link){		
 		
+		for(String author : authors) {
+			addAuthor(author);
+		}
+		
+		setTitlePaper(titlePaper);
+		
+		setTitleSerial(titleSerial);
+		
+		setPageStart(pageStart);
+		
+		setPageEnd(pageEnd);
+		
+		setDate(date);
+		
+		setLink(link);
 	}
 	
 	/**
@@ -121,17 +149,17 @@ public class Publication implements Comparable<Publication> {
 		return 0;
 	}
 	
-	public ArrayList<Name> getAuthors() {
+	public ArrayList<String> getAuthors() {
 		if(isValid(authors))
 			return authors;
 		return null;
 	}
 	
-	public boolean addAuthor(Name author) {
+	public boolean addAuthor(String author) {
 		return authors.add(author);
 	}
 	
-	public boolean removeAuthor(Name author) {
+	public boolean removeAuthor(String author) {
 		return authors.remove(author);
 	}
 	
