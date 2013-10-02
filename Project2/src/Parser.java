@@ -135,7 +135,6 @@ public class Parser {
 						
 						if(type.toLowerCase().equals("conference paper"))	
 							publications.add(new Publication(authors,titlePaper, titleSerial, pageStart, pageEnd, Month, year, link));
-						System.out.println(type.toLowerCase());
 						if(type.toLowerCase().equals("journal article"))
 							publications.add(new JournalArticle(authors,titlePaper, titleSerial, pageStart, pageEnd, Month, year, link, volume, issue));
 					}
@@ -167,9 +166,7 @@ public class Parser {
 			{
 				out.add(author);
 			}
-			
 		}
-		
 		return out;
 	}
 	
@@ -189,8 +186,24 @@ public class Parser {
 	 * @param search_term term for which to search
 	 * @return string containing all results from search
 	 */
-	public String search(String search_term) {
-		return "Parser.search() is unimlemented\n";
+	public String searchAuthor(String search_term) {
+		String results = "";
+		//for each from http://stackoverflow.com/questions/85190/how-does-the-java-for-each-loop-work with many modifications
+				for(Publication item : publications) {
+		//substring checking from 
+		//http://stackoverflow.com/questions/2275004/in-java-how-to-check-if-a-string-contains-a-substring-ignoring-the-case
+					
+					for(String author : item.getAuthors())
+					{
+						if(author.toLowerCase().contains(search_term.toLowerCase())) {
+							results+=item.toString() + "\n";
+						}
+					}
+				}
+				if(results == "")
+					return "No Results Found";
+				
+				return results;
 	}
 	
 	public String getFileLoc() {
