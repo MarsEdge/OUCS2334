@@ -1,6 +1,8 @@
 import java.io.BufferedReader;
+import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.IOException;
+import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 
 public class Parser {
@@ -178,13 +180,16 @@ public class Parser {
 	}
 	
 	/**
-	 * writes resultant file to disk
+	 * writes resultant database to disk
 	 * 
 	 * @return true on success, false on error 
 	 * @throws IOException
 	 */
-	public boolean writeFile() throws IOException {
-		return false;
+	public static void writePublications(String filename, ArrayList<Publication> pubs) throws IOException {
+		FileOutputStream fileOutputStream = new FileOutputStream(filename);
+		ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream);
+		objectOutputStream.writeObject(pubs);
+		objectOutputStream.close();
 	}
 	
 	/**
@@ -199,12 +204,8 @@ public class Parser {
 				for(Publication item : publications) {
 		//substring checking from 
 		//http://stackoverflow.com/questions/2275004/in-java-how-to-check-if-a-string-contains-a-substring-ignoring-the-case
-					
-					for(String author : item.getAuthors())
-					{
-						if(author.toLowerCase().contains(search_term.toLowerCase())) {
-							results+=item.toString() + "\n";
-						}
+					if(item.getAuthorsString().toLowerCase().contains(search_term.toLowerCase())) {
+						results+=item.toString() + "\n";
 					}
 				}
 				if(results == "")
