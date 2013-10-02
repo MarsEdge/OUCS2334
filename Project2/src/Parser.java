@@ -84,14 +84,11 @@ public class Parser {
 			{
 				next_line=DBReaderBuffered.readLine();
 				
-				System.out.println(next_line);
 				if(next_line.length() > 0)
 				{
 					if(partNum == 1)
 					{
 						type = next_line;
-						
-						System.out.println(type);
 					}
 					if(partNum == 2)
 					{
@@ -143,7 +140,6 @@ public class Parser {
 							publications.add(new JournalArticle(authors,titlePaper, titleSerial, pageStart, pageEnd, Month, year, link, volume, issue));
 					}
 					partNum++;
-					
 				}
 			}
 			
@@ -167,7 +163,11 @@ public class Parser {
 		
 		for(String author : parts)
 		{
-			out.add(author);
+			if(author != null)
+			{
+				out.add(author);
+			}
+			
 		}
 		
 		return out;

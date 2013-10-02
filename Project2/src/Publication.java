@@ -80,8 +80,11 @@ public class Publication implements Comparable<Publication> {
 	public Publication(ArrayList<String> authors, String titlePaper, String titleSerial, 
 			int pageStart, int pageEnd, String month, int year, String link){
 		
+		authors = new ArrayList<String>();
+		
 		for(String author : authors) {
-			addAuthor(author);
+			if(author != null)
+				addAuthor(author);
 		}
 		
 		setTitlePaper(titlePaper);
