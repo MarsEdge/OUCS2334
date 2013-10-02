@@ -104,18 +104,18 @@ public class Parser {
 					}
 					if(partNum == 5)
 					{
-						if(type.toLowerCase() == "conference paper") {
+						if(type.toLowerCase().equals("conference paper")) {
 							pageStart = Integer.parseInt(next_line.split("\\-")[0]);
 						
 							pageEnd = Integer.parseInt(next_line.split("\\-")[1]);
-						} else if(type.toLowerCase() == "journal article") {
+						} else if(type.toLowerCase().equals("journal article")) {
 							volume = Integer.parseInt(next_line.split("\\(")[0]);
 							
 							issue = Integer.parseInt(next_line.split("\\(")[1].split("\\)")[0]);
 							
-							pageStart = Integer.parseInt(next_line.split("\\)")[1].split("\\-")[0]);
+							pageStart = Integer.parseInt(next_line.split("\\:")[1].split("\\-")[0]);
 							
-							pageEnd = Integer.parseInt(next_line.split("\\)")[1].split("\\-")[1]);
+							pageEnd = Integer.parseInt(next_line.split("\\:")[1].split("\\-")[1]);
 						}
 					}
 					
