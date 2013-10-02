@@ -1,4 +1,4 @@
-import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -16,7 +16,7 @@ import javax.swing.JOptionPane;
  */
 public class Driver {
 	
-	public static void main (String[] args) throws FileNotFoundException{
+	public static void main (String[] args) throws IOException{
 		
 		JOptionPane.showMessageDialog(null, "Welcome to the Publication Searcher. Please click OK to continue in the console.");
 		
