@@ -4,7 +4,6 @@ import java.util.Scanner;
 import javax.swing.JOptionPane;
 
 
-
 /**
  * Project #2
  * CS 2334, Section 010
