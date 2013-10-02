@@ -19,12 +19,14 @@ public class Parser {
 	 * default constructor
 	 * 
 	 * @param file_loc location of file to parse
+	 * @throws IOException 
 	 */
-	public Parser(String file_loc) {
+	public Parser(String file_loc) throws IOException {
 		publications= new ArrayList<Publication>();
 		
 		if(isValidSearchName(file_loc))
 			setFileLoc(file_loc);
+		parseFile();
 	}
 	
 	/**
