@@ -185,6 +185,18 @@ public class Publication implements Comparable<Publication> {
 		return new ArrayList<String>();
 	}
 	
+	public String getAuthorsString() {
+		String out = "";
+		
+		for(String author : getAuthors())
+		{
+			out += author + "; ";
+		}
+		
+		return out;
+	}
+	
+	
 	public boolean addAuthor(String author) {
 		return authors.add(author);
 	}

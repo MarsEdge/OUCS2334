@@ -1,3 +1,4 @@
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -15,7 +16,7 @@ import javax.swing.JOptionPane;
  */
 public class Driver {
 	
-	public static void main (String[] args) {
+	public static void main (String[] args) throws FileNotFoundException{
 		
 		JOptionPane.showMessageDialog(null, "Welcome to the Publication Searcher. Please click OK to continue in the console.");
 		
@@ -77,23 +78,23 @@ public class Driver {
 		//Search through magazines. Check that all magazines are stored into one large arraylist
 		if(num==1){
 			for(Publication pub : pubList){
-				if(pub.getAuthors() != null && pub.getAuthors().contains(search)){results = pub.toString();resultsBool = true;}
+				if(pub.getAuthorsString() != null && pub.getAuthorsString().contains(search)){results += pub.toString() + "\n" ;resultsBool = true;}
 				else {resultsBool = false;}
 		}}
 		else if(num==2){
 			for(Publication pub : pubList){
-				if(pub.getTitlePaper() != null && pub.getTitlePaper().contains(search)){results = pub.toString();resultsBool = true;}
+				if(pub.getTitlePaper() != null && pub.getTitlePaper().contains(search)){results += pub.toString() + "\n";resultsBool = true;}
 				else {resultsBool = false;}
 		}}
 		else if(num==3){
 			for(Publication pub : pubList){
-				if(pub.getTitleSerial() != null && pub.getTitleSerial().contains(search)){results = pub.toString();resultsBool = true;}
+				if(pub.getTitleSerial() != null && pub.getTitleSerial().contains(search)){results += pub.toString() + "\n";resultsBool = true;}
 				else {resultsBool = false;}
 		}}
 		
 		//JOptionPane that displays search results
 		if(resultsBool==true) JOptionPane.showMessageDialog(null, results);
-		else if(resultsBool==false) JOptionPane.showMessageDialog(null, "There were no magazines with that matched your search.");
+		else if(resultsBool==false) JOptionPane.showMessageDialog(null, "There were no publications with that matched your search.");
 		
 		//Yes and No JOptionPane used to continue searching or quit program
 		if (JOptionPane.showConfirmDialog(null, "Do you wish to search again?", "WARNING", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
