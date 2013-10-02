@@ -155,26 +155,26 @@ public class Publication implements Comparable<Publication> {
 	public String toString() {
 		String out="";
 		
-		out += "Publication";
+		out += "\nPublication";
 		
-		out += ", Authors = ";
+		out += "\n\tAuthors = ";
 		
 		for(String author : getAuthors())
 		{
 			out += author + "; ";
 		}
 		
-		out += "Paper Title = " + getTitlePaper();
+		out += "\n\tPaper Title = " + getTitlePaper();
 		
-		out += ", Serial Title = " + getTitleSerial();
+		out += "\n\tSerial Title = " + getTitleSerial();
 		
-		out += ", Starting Page = " + getPageStart();
+		out += "\n\tStarting Page = " + getPageStart();
 		
-		out += ", Ending Page = " + getPageEnd();
+		out += "\n\tEnding Page = " + getPageEnd();
 		
-		out += ", Time of Publication = " + getDate();
+		out += "\n\tTime of Publication = " + getDate();
 		
-		out += ", Hyperlink = " + getLink();
+		out += "\n\tHyperlink = " + getLink();
 		
 		return out;
 	}

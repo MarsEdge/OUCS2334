@@ -52,26 +52,30 @@ public class JournalArticle extends Publication {
 	public String toString() {
 		String out="";
 		
-		out += "Journal Article";
+		out += "\nJournal Article";
 		
-		out += ", Authors = ";
+		out += "\n\tAuthors = ";
 		
 		for(String author : getAuthors())
 		{
 			out += author + "; ";
 		}
 		
-		out += "Paper Title = " + getTitlePaper();
+		out += "\n\tPaper Title = " + getTitlePaper();
 		
-		out += ", Serial Title = " + getTitleSerial();
+		out += "\n\tSerial Title = " + getTitleSerial();
 		
-		out += ", Starting Page = " + getPageStart();
+		out += "\n\tStarting Page = " + getPageStart();
 		
-		out += ", Ending Page = " + getPageEnd();
+		out += "\n\tEnding Page = " + getPageEnd();
 		
-		out += ", Time of Publication = " + getDate();
+		out += "\n\tTime of Publication = " + getDate();
 		
-		out += ", Hyperlink = " + getLink();
+		out += "\n\tHyperlink = " + getLink();
+		
+		out += "\n\tVolume = " + getVolume();
+		
+		out += "\n\tIssue = " + getIssue();
 		
 		return out;
 	}
