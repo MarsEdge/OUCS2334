@@ -12,7 +12,6 @@ import javax.swing.JOptionPane;
  * <P>
  * This class will allow you to read a file of publication information, search through the data, and write data onto a file.
  * </P>
- * @author John Frashier & Martin Rand
  *@version 1.0
  */
 public class Driver {
