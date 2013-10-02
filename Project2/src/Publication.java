@@ -148,8 +148,7 @@ public class Publication implements Comparable<Publication> {
 	
 	@Override
 	public int compareTo(Publication o) {
-		// TODO Auto-generated method stub
-		return 0;
+		return this.getTitlePaper().compareTo(o.getTitlePaper());
 	}
 	
 	public String toString() {
