@@ -84,7 +84,7 @@ public class Parser {
 			{
 				next_line=DBReaderBuffered.readLine();
 				
-				if(next_line.length() > 0)
+				if(next_line != null && next_line.length() > 0)
 				{
 					if(partNum == 1)
 					{
@@ -141,6 +141,11 @@ public class Parser {
 					partNum++;
 				}
 			}
+			
+			if(type.toLowerCase().equals("conference paper"))	
+				publications.add(new Publication(authors,titlePaper, titleSerial, pageStart, pageEnd, Month, year, link));
+			if(type.toLowerCase().equals("journal article"))
+				publications.add(new JournalArticle(authors,titlePaper, titleSerial, pageStart, pageEnd, Month, year, link, volume, issue));
 			
 			DBReaderBuffered.close();
 			
