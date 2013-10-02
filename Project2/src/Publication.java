@@ -1,5 +1,4 @@
 import java.util.ArrayList;
-import java.util.Calendar;
 
 
 public class Publication implements Comparable<Publication> {
@@ -51,6 +50,8 @@ public class Publication implements Comparable<Publication> {
 	public Publication(ArrayList<String> authors, String titlePaper, String titleSerial, 
 			int pageStart, int pageEnd, String month, int year){
 		
+		this.authors = new ArrayList<String>();
+		
 		for(String author : authors) {
 			addAuthor(author);
 		}
@@ -80,7 +81,7 @@ public class Publication implements Comparable<Publication> {
 	public Publication(ArrayList<String> authors, String titlePaper, String titleSerial, 
 			int pageStart, int pageEnd, String month, int year, String link){
 		
-		authors = new ArrayList<String>();
+		this.authors = new ArrayList<String>();
 		
 		for(String author : authors) {
 			if(author != null)
@@ -139,8 +140,8 @@ public class Publication implements Comparable<Publication> {
 	 * @param prop list to check
 	 * @return true of valid, false if not
 	 */
-	public static boolean isValid(ArrayList<?> prop) {
-		if(prop.size() > 0 && prop.get(0) != null)
+	public static boolean isValid(ArrayList<String> prop) {
+		if(prop != null && !prop.isEmpty() && prop.get(0) != null)
 			return true;
 		return false;
 	}
@@ -151,10 +152,37 @@ public class Publication implements Comparable<Publication> {
 		return 0;
 	}
 	
+	public String toString() {
+		String out="";
+		
+		out += "Publication";
+		
+		out += ", Authors = ";
+		
+		for(String author : getAuthors())
+		{
+			out += author + "; ";
+		}
+		
+		out += "Paper Title = " + getTitlePaper();
+		
+		out += ", Serial Title = " + getTitleSerial();
+		
+		out += ", Starting Page = " + getPageStart();
+		
+		out += ", Ending Page = " + getPageEnd();
+		
+		out += ", Time of Publication = " + getDate();
+		
+		out += ", Hyperlink = " + getLink();
+		
+		return out;
+	}
+	
 	public ArrayList<String> getAuthors() {
 		if(isValid(authors))
 			return authors;
-		return null;
+		return new ArrayList<String>();
 	}
 	
 	public boolean addAuthor(String author) {
@@ -204,7 +232,7 @@ public class Publication implements Comparable<Publication> {
 	}
 	
 	public String getDate() {
-		return month + " " + year;
+		return month + year;
 	}
 	
 	public boolean setDate(String month, int year) {
