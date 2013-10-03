@@ -13,7 +13,7 @@ import java.util.List;
 public class Searcher {
 
 	
-	static int count = 0;
+	int count = 0;
 	/**
 	 * This performs a binary search for a key in an list.
 	 * 
@@ -26,11 +26,11 @@ public class Searcher {
 	 *      Returns -1 if the key is not found in the list and an
 	 *      index between [0, ..., list.size()] if the key is found.
 	 */
-	public static <T extends Comparable<T>> int binarySearch(List<T> list, T key) {
+	public <T extends Comparable<T>> int binarySearch(List<T> list, T key) {
 		int left  = 0;
 		int right = list.size() - 1;
 		
-		count = 0;
+		count = 1;
 		
 		// While there are elements in the range [left,.., right].
 		while( right - left + 1 > 0) {

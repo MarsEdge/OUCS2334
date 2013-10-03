@@ -68,9 +68,11 @@ public class Driver {
 				}
 				else if(num==2)
 				{
-					int index = Searcher.binarySearch(pubList, new Publication(search));
+					Searcher searcher = new Searcher();
 					
-					System.out.println(index);
+					int index = searcher.binarySearch(pubList, new Publication(search));
+					
+					System.out.println(searcher.count);
 					
 					if(index != -1)	
 					{
