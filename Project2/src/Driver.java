@@ -81,7 +81,7 @@ public class Driver {
 					int index = searcher.binarySearch(pubList, new Publication(search));
 					
 					if(index != -1)	
-					{
+					{	
 						results = pubList.get(index).toString() + "\n" ;
 						resultsBool = true;
 					}
@@ -98,7 +98,22 @@ public class Driver {
 				}
 				
 				//JOptionPane that displays search results
-				if(resultsBool==true) JOptionPane.showMessageDialog(null, results);
+				if(resultsBool==true){
+					JOptionPane.showMessageDialog(null, results);
+					
+					//Yes and No JOptionPane used to continue searching or quit program
+					if (JOptionPane.showConfirmDialog(null, "Would you like to save the results?", "WARNING", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
+					    //Yes option
+						//Write to file
+						writePublications("Results.txt", results);
+						JOptionPane.showMessageDialog(null, "The results were written to the file Results.txt");
+					} else 
+					{
+						//No option
+						JOptionPane.showMessageDialog(null, "The results were not saved.");
+					}
+					
+				}
 				else if(resultsBool==false) JOptionPane.showMessageDialog(null, "There were no publications with that matched your search.");
 				
 				//Yes and No JOptionPane used to continue searching or quit program
