@@ -59,17 +59,26 @@ public class Driver {
 				{
 					for(Publication pub : pubList)
 					{
-						if(pub.getAuthorsString() != null && pub.getAuthorsString().contains(search)){results += pub.toString() + "\n" ;resultsBool = true;}
+						if(pub.getAuthorsString() != null && pub.getAuthorsString().contains(search))
+						{
+							results += pub.toString() + "\n" ;resultsBool = true;
+						}
 						else {resultsBool = false;}
 					}
 				}
 				else if(num==2)
 				{
-					for(Publication pub : pubList)
+					int index = Searcher.binarySearch(pubList, new Publication(search));
+					
+					System.out.println(index);
+					
+					if(index != -1)	
 					{
-						if(pub.getTitlePaper() != null && pub.getTitlePaper().contains(search)){results += pub.toString() + "\n";resultsBool = true;}
-						else {resultsBool = false;}
+						results = pubList.get(index).toString() + "\n" ;
+						resultsBool = true;
 					}
+					else
+						resultsBool = false;
 				}
 				else if(num==3)
 				{

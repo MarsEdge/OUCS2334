@@ -44,7 +44,7 @@ public class Searcher {
 				left = middleIndex + 1;
 			}
 			else if (comparisonValue > 0) {
-				right = middleIndex - 1;				
+				right = middleIndex - 1;
 			}
 			else {
 				return middleIndex;

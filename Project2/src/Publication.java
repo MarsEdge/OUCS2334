@@ -101,6 +101,12 @@ public class Publication implements Comparable<Publication> {
 		setLink(link);
 	}
 	
+	public Publication(String titlePaper) {
+		this.authors = new ArrayList<String>();
+		
+		setTitlePaper(titlePaper);
+	}
+
 	/**
 	 * checks if str can be cast into an int
 	 * from http://stackoverflow.com/questions/1102891/how-to-check-a-string-is-a-numeric-type-in-java
