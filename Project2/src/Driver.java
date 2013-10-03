@@ -148,10 +148,10 @@ public class Driver {
 	 * @return true on success, false on error 
 	 * @throws IOException
 	 */
-	public static void writePublications(String filename, ArrayList<Publication> pubs) throws IOException {
+	public static void writePublications(String filename, String results) throws IOException {
 		FileOutputStream fileOutputStream = new FileOutputStream(filename);
 		ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream);
-		objectOutputStream.writeObject(pubs);
+		objectOutputStream.writeObject(results);
 		objectOutputStream.close();
 	}
 }
