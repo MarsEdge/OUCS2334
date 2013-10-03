@@ -1,0 +1,36 @@
+*Use keyboard input to get information from the user.
+	done
+	
+	scattered throughout Driver.main()
+*Use text file I/O to read and write text files
+	done
+	
+	enter full path to file in first dialog, click yet to writing question after a successful search
+* Create classes to store data on various types of scholarly publications, including
+	journals, conference proceedings, and the papers published in each. Note that you
+	should create any additional classes (abstract and/or concrete) and/or interfaces you
+	deem necessary to arrive at a good design
+		done
+		
+		is Publication / JournalArticle classes
+* Implement both the Comparable and Comparator interfaces to compare one scholarly paper to another.
+	partially implemented
+	
+	Publicaition.conpateTo is finished, but not sorting
+
+*Use a List to store, retrieve, and display data related to scholarly papers as described below.
+	done
+	
+	is Driver.pubList
+
+* Use the sort() and binarySearch() methods from the Collections class to sort and search for data related to the description below.
+	partially done
+	
+	binarySearch is implemented when searching by paper title, but papers are not sorted first
+
+
+Martin Rand did:
+	Publication, JournalArticle, Parser Classes
+
+John Frashier did:
+	Driver, Searcher classes
