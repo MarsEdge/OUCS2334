@@ -16,7 +16,7 @@
 * Implement both the Comparable and Comparator interfaces to compare one scholarly paper to another.
 	partially implemented
 	
-	Publicaition.conpateTo is finished, but not sorting
+	Publicaition.conpateTo is finished, but sorting is untested and may not work
 
 *Use a List to store, retrieve, and display data related to scholarly papers as described below.
 	done
@@ -26,7 +26,7 @@
 * Use the sort() and binarySearch() methods from the Collections class to sort and search for data related to the description below.
 	partially done
 	
-	binarySearch is implemented when searching by paper title, but papers are not sorted first
+	binarySearch is implemented when searching by paper title, but papers might not be sorted first
 
 
 Martin Rand did:
