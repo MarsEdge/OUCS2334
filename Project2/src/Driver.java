@@ -72,8 +72,6 @@ public class Driver {
 					
 					int index = searcher.binarySearch(pubList, new Publication(search));
 					
-					System.out.println(searcher.count);
-					
 					if(index != -1)	
 					{
 						results = pubList.get(index).toString() + "\n" ;
