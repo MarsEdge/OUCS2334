@@ -1,7 +1,7 @@
 import java.util.List;
 
 /**
- * Lab #4 CS 2334, Section 0?? September 26, 2013
+ * from Lab #4 CS 2334, Section 0?? September 26, 2013
  * <P>
  * This class implements a binary search method so you can modify it
  * to count the number of comparisons for Project 2.
