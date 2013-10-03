@@ -1,5 +1,9 @@
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Comparator;
+import java.util.List;
+import java.util.ListIterator;
 import java.util.Scanner;
 
 import javax.swing.JOptionPane;
@@ -15,6 +19,8 @@ import javax.swing.JOptionPane;
  *@version 1.0
  */
 public class Driver {
+	
+	int count=0;
 	
 	public static void main (String[] args) throws IOException{
 		
@@ -119,6 +125,18 @@ public class Driver {
 				in.close();
 				System.exit(-1);
 			}
+		}
+	}
+	
+	public <T extends Comparable<? super T>> void sort(List<T> list, Comparator<? super T> c) {
+		Object[] a = list.toArray();
+		Arrays.sort(a, (Comparator)c);
+		count=0;
+		ListIterator<T> i = list.listIterator();
+		for (int j=0; j<a.length; j++) {
+			i.next();
+			i.set((T)a[j]);
+			count++;
 		}
 	}
 }
