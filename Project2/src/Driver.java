@@ -1,4 +1,6 @@
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Comparator;
@@ -138,5 +140,18 @@ public class Driver {
 			i.set((T)a[j]);
 			count++;
 		}
+	}
+	
+	/**
+	 * writes resultant database to disk
+	 * 
+	 * @return true on success, false on error 
+	 * @throws IOException
+	 */
+	public static void writePublications(String filename, ArrayList<Publication> pubs) throws IOException {
+		FileOutputStream fileOutputStream = new FileOutputStream(filename);
+		ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream);
+		objectOutputStream.writeObject(pubs);
+		objectOutputStream.close();
 	}
 }

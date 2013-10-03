@@ -179,41 +179,6 @@ public class Parser {
 		return out;
 	}
 	
-	/**
-	 * writes resultant database to disk
-	 * 
-	 * @return true on success, false on error 
-	 * @throws IOException
-	 */
-	public static void writePublications(String filename, ArrayList<Publication> pubs) throws IOException {
-		FileOutputStream fileOutputStream = new FileOutputStream(filename);
-		ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream);
-		objectOutputStream.writeObject(pubs);
-		objectOutputStream.close();
-	}
-	
-	/**
-	 * searches CVS file for matching items
-	 * 
-	 * @param search_term term for which to search
-	 * @return string containing all results from search
-	 */
-	public String searchAuthor(String search_term) {
-		String results = "";
-		//for each from http://stackoverflow.com/questions/85190/how-does-the-java-for-each-loop-work with many modifications
-				for(Publication item : publications) {
-		//substring checking from 
-		//http://stackoverflow.com/questions/2275004/in-java-how-to-check-if-a-string-contains-a-substring-ignoring-the-case
-					if(item.getAuthorsString().toLowerCase().contains(search_term.toLowerCase())) {
-						results+=item.toString() + "\n";
-					}
-				}
-				if(results == "")
-					return "No Results Found";
-				
-				return results;
-	}
-	
 	public String getFileLoc() {
 		if(isValidSearchName(file_loc)) {
 			return file_loc;
