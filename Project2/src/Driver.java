@@ -18,8 +18,6 @@ public class Driver {
 	
 	public static void main (String[] args) throws IOException{
 		
-		JOptionPane.showMessageDialog(null, "Welcome to the Publication Searcher. Please click OK to continue in the console.");
-		
 		//Scanner for user input data
 		Scanner in = new Scanner(System.in);
 		
@@ -27,43 +25,27 @@ public class Driver {
 		for(int i=0; i==0;){
 		
 		//Ask for and read in the file
-		System.out.println("Please enter the name of the file");
+		JOptionPane.showMessageDialog(null, "Welcome to the Publication Searcher. Please click OK to continue in the console. \n\nPlease enter the name of the file. \n\n");
 		String filename = in.nextLine();
 		Parser p = new Parser(filename);		
 		
 		//For loop for repeating search
 		for(int j=0; j==0;){
 		
-		/*
-		 * Not needed, but may want to use.
-		//Would you like to search journal articles, conference papers, or both?
-		System.out.println("Would you like to search journal articles, conference papers, or both?");
-		System.out.println("1. Journal Articles");
-		System.out.println("2. Conference Papers");
-		System.out.println("3. Both");	
-		
-		//Save input as the choice
-		String choice = in.nextLine();
-		int num1 = Integer.valueOf(choice);
-		*/
-			
 		//Text-based user interface for searching the magazines
-		System.out.println("Choose a criteria to serach by entering the coressponding digit:");
-		System.out.println("1. Name of Author");
-		System.out.println("2. Name of Paper/Article");
-		System.out.println("3. Name of the Journal/Collection of Paper");
-		System.out.println("4. Exit the Program");
-			
+		JOptionPane.showMessageDialog(null, "Choose a criteria to serach by entering the coressponding digit: \n\n1. Name of Author \n2. Name of Paper/Article \n3. Name of the Journal/Collection of Paper \n4. Exit the Program \n\n");
+
 		//Save input as the choice
 		String choice = in.nextLine();
 		int num = Integer.valueOf(choice);
 
 		//Manages choice using if statements
-		if(num==1){System.out.println("You are searching by Name of Author. Please enter a name to search for.");}
-		else if(num==2){System.out.println("You are searching by Name of Article/Paper. Please enter a name to search for.");}
-		else if(num==3){System.out.println("You are searching by Name of Journal/Collection of Papers. Please enter a name to search for.");}
+		
+		if(num==1){JOptionPane.showMessageDialog(null, "You are searching by Name of Author. Please enter a name to search for.");}
+		else if(num==2){JOptionPane.showMessageDialog(null, "You are searching by Name of Article/Paper. Please enter a name to search for.");}
+		else if(num==3){JOptionPane.showMessageDialog(null, "You are searching by Name of Journal/Collection of Papers. Please enter a name to search for.");}
 		else if(num==4){i=1; System.exit(-1);}
-		else System.out.println("Please enter a valid option number.");
+		else JOptionPane.showMessageDialog(null, "Please enter a valid option number.");
 		
 		//Search for data here using specified criteria type
 		String search = in.nextLine();
@@ -111,7 +93,7 @@ public class Driver {
 	
 		
 		//Yes and No JOptionPane used to search using a different file or quit program
-		if (JOptionPane.showConfirmDialog(null, "Do you wish to search again?", "WARNING", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
+		if (JOptionPane.showConfirmDialog(null, "Do you wish to search a different file?", "WARNING", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
 		    //Yes option
 			i=0;
 		} else {
@@ -124,21 +106,5 @@ public class Driver {
 		}
 	}
 
-	/**
-	 * Retrieves user input for file location & search term
-	 * 
-	 * @return input   user input
-	 */
-	public String getInput() {
-		
-		Scanner in = new Scanner(System.in);
-		String input = in.nextLine();
-		in.close();
-		
-		/**
-		 * TODO: not used
-		 */
-		
-		return input;
-	}
+
 }
