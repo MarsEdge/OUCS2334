@@ -1,8 +1,6 @@
 import java.io.BufferedReader;
-import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.IOException;
-import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 
 public class Parser {
@@ -47,7 +45,7 @@ public class Parser {
 	}
 	
 	/**
-	 * parses CSV file
+	 * parses input file
 	 * 
 	 * @return true on success, false on error
 	 * @throws IOException
@@ -159,11 +157,21 @@ public class Parser {
 		return false;
 	}
 	
+	/**
+	 * checks if the inputed String is the type of a paper 
+	 * @param in String to check
+	 * @return true is yes, false if no
+	 */
 	public boolean isType(String in) {
 		return in.toLowerCase().equals("conference paper") || 
 				in.toLowerCase().equals("journal article");
 	}
 	
+	/**
+	 * parses the authors line into an ArrayList
+	 * @param authorsStr line with all authors
+	 * @return ArrayList of authors
+	 */
 	public ArrayList<String> parseAuthors(String authorsStr) {
 		String[] parts = authorsStr.split("\\; ");
 		
