@@ -90,8 +90,14 @@ public class Driver {
 				{
 					for(Publication pub : pubList)
 					{
-						if(pub.getTitleSerial() != null && pub.getTitleSerial().contains(search)){results += pub.toString() + "\n";resultsBool = true;}
-						else {resultsBool = false;}
+						if(pub.getTitleSerial() != null && pub.getTitleSerial().contains(search))
+						{
+							results += pub.toString() + "\n";resultsBool = true;
+						}
+						else 
+						{
+							resultsBool = false;
+						}
 					}
 				}
 				
