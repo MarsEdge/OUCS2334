@@ -4,6 +4,7 @@ import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Comparator;
+import java.util.HashMap;
 import java.util.List;
 import java.util.ListIterator;
 import java.util.Scanner;
@@ -24,7 +25,9 @@ public class Driver {
 	
 	int count=0;
 	
-	public static void main (String[] args) throws IOException{
+	HashMap<String, Publication> pubList;
+	
+	public void main (String[] args) throws IOException{
 		
 		//Scanner for user input data
 		Scanner in = new Scanner(System.in);
@@ -59,7 +62,7 @@ public class Driver {
 				Boolean resultsBool = false;
 				
 				//ArrayList of Publications made from Parser
-				ArrayList<Publication> pubList = new ArrayList<Publication>();
+				pubList = new HashMap<String, Publication>();
 				pubList = p.getPublications();
 				
 				//Search through magazines. Check that all magazines are stored into one large arraylist
@@ -76,17 +79,7 @@ public class Driver {
 				}
 				else if(num==2)
 				{
-					Searcher searcher = new Searcher();
-					
-					int index = searcher.binarySearch(pubList, new Publication(search));
-					
-					if(index != -1)	
-					{	
-						results = pubList.get(index).toString() + "\n" ;
-						resultsBool = true;
-					}
-					else
-						resultsBool = false;
+					results = pubList.get(search).toString() + "\n" ;resultsBool = true;
 				}
 				else if(num==3)
 				{

@@ -2,13 +2,14 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class Parser {
 	
 	/**
 	 * list of all publications
 	 */
-	private ArrayList<Publication> publications;
+	private HashMap<String, Publication> publications;
 	
 	/**
 	 * location of file to parse
@@ -22,7 +23,7 @@ public class Parser {
 	 * @throws IOException 
 	 */
 	public Parser(String file_loc) throws IOException {
-		publications= new ArrayList<Publication>();
+		publications= new HashMap<String, Publication>();
 		
 		if(isValidSearchName(file_loc))
 			setFileLoc(file_loc);
@@ -88,6 +89,7 @@ public class Parser {
 				
 				if(next_line != null && next_line.length() > 0)
 				{
+					//TODO use modulus instead of partNum
 					if(partNum == 1)
 					{
 						type = next_line;
@@ -135,19 +137,19 @@ public class Parser {
 							link = next_line;
 						}
 						
-						if(type.toLowerCase().equals("conference paper"))	
-							publications.add(new Publication(authors,titlePaper, titleSerial, pageStart, pageEnd, Month, year, link));
+						if(type.toLowerCase().equals("conference paper"))
+							publications.put(titlePaper, new Publication(authors,titlePaper, titleSerial, pageStart, pageEnd, Month, year, link));
 						if(type.toLowerCase().equals("journal article"))
-							publications.add(new JournalArticle(authors,titlePaper, titleSerial, pageStart, pageEnd, Month, year, link, volume, issue));
+							publications.put(titlePaper, new JournalArticle(authors,titlePaper, titleSerial, pageStart, pageEnd, Month, year, link, volume, issue));
 					}
 					partNum++;
 				}
 			}
 			
 			if(type.toLowerCase().equals("conference paper"))	
-				publications.add(new Publication(authors,titlePaper, titleSerial, pageStart, pageEnd, Month, year, link));
+				publications.put(titlePaper, new Publication(authors,titlePaper, titleSerial, pageStart, pageEnd, Month, year, link));
 			if(type.toLowerCase().equals("journal article"))
-				publications.add(new JournalArticle(authors,titlePaper, titleSerial, pageStart, pageEnd, Month, year, link, volume, issue));
+				publications.put(titlePaper, new JournalArticle(authors,titlePaper, titleSerial, pageStart, pageEnd, Month, year, link, volume, issue));
 			
 			DBReaderBuffered.close();
 			
@@ -202,12 +204,12 @@ public class Parser {
 		
 		return false;
 	}
-
-	public ArrayList<Publication> getPublications() {
+	
+	public HashMap<String, Publication> getPublications() {
 		return publications;
 	}
-
-	public void setPublications(ArrayList<Publication> publications) {
+	
+	public void setPublications(HashMap<String, Publication> publications) {
 		this.publications = publications;
 	}
 }
