@@ -67,7 +67,7 @@ public class Driver {
 				pubList = new HashMap<String, Publication>();
 				pubList = p.getPublications();
 				
-				//Search through magazines. Check that all magazines are stored into one large arraylist
+				//Search through publications
 				if(num==1)
 				{
 					Author foundAuthor = authorList.get(search);
