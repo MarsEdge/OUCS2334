@@ -11,7 +11,7 @@ public class Author {
 	 * publications published by this author
 	 */
 	private ArrayList<String> publishedPapers = new ArrayList<String>();
-
+	
 	public String getName() {
 		return name;
 	}
