@@ -27,6 +27,8 @@ public class Driver {
 	
 	HashMap<String, Publication> pubList;
 	
+	HashMap<String, Author> authorList;
+	
 	public void main (String[] args) throws IOException{
 		
 		//Scanner for user input data
@@ -68,18 +70,21 @@ public class Driver {
 				//Search through magazines. Check that all magazines are stored into one large arraylist
 				if(num==1)
 				{
-					for(Publication pub : pubList)
+					Author foundAuthor = authorList.get(search);
+					
+					ArrayList<String> foundAuthorPapers = foundAuthor.getPublishedPapers();
+					
+					for(String paper : foundAuthorPapers)
 					{
-						if(pub.getAuthorsString() != null && pub.getAuthorsString().contains(search))
-						{
-							results += pub.toString() + "\n" ;resultsBool = true;
-						}
-						else {resultsBool = false;}
+						results += pubList.get(paper).toString() + "\n" ;
 					}
+					
+					resultsBool = true;
 				}
 				else if(num==2)
 				{
-					results = pubList.get(search).toString() + "\n" ;resultsBool = true;
+					results = pubList.get(search).toString() + "\n" ;
+					resultsBool = true;
 				}
 				else if(num==3)
 				{
