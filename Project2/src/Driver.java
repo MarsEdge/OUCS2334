@@ -120,7 +120,8 @@ public class Driver {
 				if (JOptionPane.showConfirmDialog(null, "Do you wish to search again?", "WARNING", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
 				    //Yes option
 					j=0;
-				} else 
+				}
+				else 
 				{
 					//No option
 					j=1;
