@@ -33,6 +33,9 @@ public class Publication implements Comparable<Publication> {
 	 */
 	private String month;
 	
+	/**
+	 * year the publication was published
+	 */
 	private String year;
 	
 	/**
@@ -48,7 +51,8 @@ public class Publication implements Comparable<Publication> {
 	 * @param titleSerial serial title
 	 * @param pageStart starting page
 	 * @param pageEnd ending page
-	 * @param date date of publication
+	 * @param month month of publication
+	 * @param year year of publication
 	 */
 	public Publication(ArrayList<String> authors, String titlePaper, String titleSerial, 
 			String pageStart, String pageEnd, String month, String year){
@@ -78,7 +82,8 @@ public class Publication implements Comparable<Publication> {
 	 * @param titleSerial serial title
 	 * @param pageStart starting page
 	 * @param pageEnd ending page
-	 * @param date date of publication
+	 * @param month month of publication
+	 * @param year year of publication
 	 * @param link hyperlink to publication
 	 */
 	public Publication(ArrayList<String> authors, String titlePaper, String titleSerial, 
@@ -102,12 +107,6 @@ public class Publication implements Comparable<Publication> {
 		setDate(month, year);
 		
 		setLink(link);
-	}
-	
-	public Publication(String titlePaper) {
-		this.authors = new ArrayList<String>();
-		
-		setTitlePaper(titlePaper);
 	}
 
 	/**
