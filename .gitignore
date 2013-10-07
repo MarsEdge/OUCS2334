@@ -1,4 +1,5 @@
 *.class
 /*/bin
-
 /Labs/Lab 4/Lab4-Eclipse/bin
+*~
+/*/Results.txt
