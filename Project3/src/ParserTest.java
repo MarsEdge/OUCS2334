@@ -30,7 +30,7 @@ public class ParserTest {
 		
 		parser.parseFile();
 		
-		Assert.assertEquals(parser.getPublications().get("Dean Hougen") != null, true);
+		Assert.assertEquals(parser.getAuthors().get("Dean Hougen") != null, true);
 	}
 
 }
