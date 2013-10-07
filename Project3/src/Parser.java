@@ -7,9 +7,14 @@ import java.util.HashMap;
 public class Parser {
 	
 	/**
-	 * list of all publications
+	 * list of all publications by title
 	 */
 	private HashMap<String, Publication> publications;
+	
+	/**
+	 * list of what publications which authors published
+	 */
+	private HashMap<String, Author> authors;
 	
 	/**
 	 * location of file to parse
@@ -24,6 +29,8 @@ public class Parser {
 	 */
 	public Parser(String file_loc) throws IOException {
 		publications= new HashMap<String, Publication>();
+		
+		authors = new HashMap<String, Author>();
 		
 		if(isValidSearchName(file_loc))
 			setFileLoc(file_loc);
@@ -211,5 +218,13 @@ public class Parser {
 	
 	public void setPublications(HashMap<String, Publication> publications) {
 		this.publications = publications;
+	}
+
+	public HashMap<String, Author> getAuthors() {
+		return this.authors;
+	}
+
+	public void setAuthors(HashMap<String, Author> authors) {
+		this.authors = authors;
 	}
 }
