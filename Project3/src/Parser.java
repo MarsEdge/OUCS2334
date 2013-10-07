@@ -94,8 +94,6 @@ public class Parser {
 			{
 				next_line=DBReaderBuffered.readLine();
 				
-				System.out.println(next_line);
-				
 				if(next_line != null && next_line.length() > 0)
 				{
 					//TODO use modulus instead of partNum
