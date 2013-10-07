@@ -1,6 +1,6 @@
 import java.util.ArrayList;
 
-public class Author {
+public class Author implements Comparable<Author>{
 	
 	/**
 	 * first name of the author
@@ -22,17 +22,12 @@ public class Author {
 	}
 	
 	public String toString() {
-		return getNameFirst() + " " + getNameLast();
+		return getName();
 	}
 	
-	public void setName(String nameWhole) {
-		if(nameWhole.contains(" ") == true)
-		{
-			setNameLast(nameWhole.split("\\ ")[0]);
-			setNameFirst(nameWhole.split("\\ ")[1]);
-		}
-		else
-			setNameFirst(nameWhole);
+	@Override
+	public int compareTo(Author arg0) {
+		return this.getName().compareTo(arg0.getName());
 	}
 	
 	public ArrayList<String> getPublishedPapers()
@@ -45,7 +40,21 @@ public class Author {
 		publishedPapers.add(paper);
 		return true;
 	}
+	
+	public String getName() {
+		return getNameFirst() + " " + getNameLast();
+	}
 
+	public void setName(String nameWhole) {
+		if(nameWhole.contains(" ") == true)
+		{
+			setNameLast(nameWhole.split("\\ ")[0]);
+			setNameFirst(nameWhole.split("\\ ")[1]);
+		}
+		else
+			setNameFirst(nameWhole);
+	}
+	
 	public String getNameFirst() {
 		return nameFirst;
 	}
