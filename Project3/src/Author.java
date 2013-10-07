@@ -17,13 +17,17 @@ public class Author {
 	 */
 	private ArrayList<String> publishedPapers = new ArrayList<String>();
 	
+	public Author(String nameWhole) {
+		setName(nameWhole);
+	}
+	
 	public String toString() {
 		return getNameFirst() + " " + getNameLast();
 	}
 	
 	public void setName(String nameWhole) {
-		setNameLast(nameWhole.split("\\, ")[0]);
-		setNameFirst(nameWhole.split("\\, ")[1]);
+		setNameLast(nameWhole.split("\\, ")[1]);
+		setNameFirst(nameWhole.split("\\, ")[0]);
 	}
 	
 	public ArrayList<String> getPublishedPapers()
