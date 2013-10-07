@@ -9,7 +9,7 @@ import javax.swing.JOptionPane;
 
 
 /**
- * Project #2
+ * Project #3
  * CS 2334, Section 010
  * Oct 1, 2013
  * <P>
