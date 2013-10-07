@@ -169,6 +169,8 @@ public class Parser {
 			
 			DBReaderBuffered.close();
 			
+			parseAuthors();
+			
 			return true;
 		}
 		
@@ -177,17 +179,23 @@ public class Parser {
 	
 	/**
 	 * parses publications to assign the papers to the author that wrote them
-	 * 
-	 * @return true on success, false on failure
 	 */
-	public boolean parseAuthors() {
+	public void parseAuthors() {
 		
-		for(Publication publication : )
+		//Iterator from http://stackoverflow.com/questions/1066589/java-iterate-through-hashmap
+		for(Publication pub : publications.values())
 		{
-			
+			for(String author : pub.getAuthors())
+			{
+				if(this.authors.get(author) != null)
+				{
+					if(this.authors.get(author).getPublishedPapers().contains(pub.getTitlePaper()) == false)
+					{
+						this.authors.get(author).addPublishedPaper(pub.getTitlePaper());
+					}
+				}
+			}
 		}
-		
-		return true;
 	}
 	
 	/**
@@ -214,7 +222,7 @@ public class Parser {
 		{
 			if(author != null)
 			{
-				out.add(author);
+				out.add(author.split("\\, ")[1] + " " + author.split("\\, ")[0]);
 			}
 		}
 		return out;
