@@ -26,8 +26,8 @@ public class Author {
 	}
 	
 	public void setName(String nameWhole) {
-		setNameLast(nameWhole.split("\\, ")[1]);
-		setNameFirst(nameWhole.split("\\, ")[0]);
+		setNameLast(nameWhole.split("\\ ")[0]);
+		setNameFirst(nameWhole.split("\\ ")[1]);
 	}
 	
 	public ArrayList<String> getPublishedPapers()

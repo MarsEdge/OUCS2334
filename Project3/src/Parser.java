@@ -109,8 +109,7 @@ public class Parser {
 						{
 							if(this.authors.get(author) == null)
 							{
-								this.authors.put(author.split("\\, ")[1] + " " +
-									author.split("\\, ")[0], new Author(author));
+								this.authors.put(author, new Author(author));
 							}
 						}
 					}
