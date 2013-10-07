@@ -34,7 +34,7 @@ public class Parser {
 		
 		if(isValidSearchName(file_loc))
 			setFileLoc(file_loc);
-		parseFile();
+		parsePublications();
 	}
 	
 	/**
@@ -58,7 +58,7 @@ public class Parser {
 	 * @return true on success, false on error
 	 * @throws IOException
 	 */
-	public boolean parseFile() throws IOException {
+	public boolean parsePublications() throws IOException {
 		if(isValidSearchName(getFileLoc())) {
 			FileReader DBReader = new FileReader(getFileLoc());
 			
@@ -104,6 +104,15 @@ public class Parser {
 					if(partNum == 2)
 					{
 						authors = parseAuthors(next_line);
+						
+						for(String author : authors)
+						{
+							if(this.authors.get(author) == null)
+							{
+								this.authors.put(author.split("\\, ")[1] + " " +
+									author.split("\\, ")[0], new Author(author));
+							}
+						}
 					}
 					if(partNum == 3)
 					{
@@ -164,6 +173,21 @@ public class Parser {
 		}
 		
 		return false;
+	}
+	
+	/**
+	 * parses publications to assign the papers to the author that wrote them
+	 * 
+	 * @return true on success, false on failure
+	 */
+	public boolean parseAuthors() {
+		
+		for(Publication publication : )
+		{
+			
+		}
+		
+		return true;
 	}
 	
 	/**
