@@ -1,8 +1,8 @@
 import java.util.ArrayList;
 
 public class JournalArticle extends Publication {
-	private int volume;
-	private int issue;
+	private String volume;
+	private String issue;
 	
 	/**
 	 * JournalArticle constructor without link
@@ -17,7 +17,7 @@ public class JournalArticle extends Publication {
 	 * @param issue journal issue
 	 */
 	public JournalArticle(ArrayList<String> Authors, String titlePaper, String titleSerial, 
-			int pageStart, int pageEnd, String month, int year, int volume, int issue) {
+			String pageStart, String pageEnd, String month, String year, String volume, String issue) {
 		
 		super(Authors, titlePaper, titleSerial, pageStart, pageEnd, month, year);
 		
@@ -40,7 +40,7 @@ public class JournalArticle extends Publication {
 	 * @param issue journal issue
 	 */
 	public JournalArticle(ArrayList<String> Authors, String titlePaper, String titleSerial, 
-			int pageStart, int pageEnd, String month, int year, String link, int volume, int issue) {
+			String pageStart, String pageEnd, String month, String year, String link, String volume, String issue) {
 		
 		super(Authors, titlePaper, titleSerial, pageStart, pageEnd, month, year, link);
 		
@@ -80,29 +80,29 @@ public class JournalArticle extends Publication {
 		return out;
 	}
 	
-	public int getVolume() {
+	public String getVolume() {
 		return volume;
 	}
 	
-	public boolean setVolume(int volume) {
+	public boolean setVolume(String volume) {
 		if(isValid(volume)) {
 			this.volume = volume;
 			return true;
 		}
-		this.volume = -1;
+		this.volume = "";
 		return false;
 	}
 	
-	public int getIssue() {
+	public String getIssue() {
 		return issue;
 	}
 	
-	public boolean setIssue(int issue) {
+	public boolean setIssue(String issue) {
 		if(isValid(issue)) {
 			this.issue = issue;
 			return true;
 		}
-		this.issue = -1;
+		this.issue = "";
 		return false;
 	}
 }
