@@ -12,7 +12,8 @@ public class JournalArticle extends Publication {
 	 * @param titleSerial serial title
 	 * @param pageStart starting page
 	 * @param pageEnd ending page
-	 * @param date date of publication
+	 * @param month month of publication
+	 * @param year year of publication
 	 * @param volume journal volume
 	 * @param issue journal issue
 	 */
@@ -34,7 +35,8 @@ public class JournalArticle extends Publication {
 	 * @param titleSerial serial title
 	 * @param pageStart starting page
 	 * @param pageEnd ending page
-	 * @param date date of publication
+	 * @param month month of publication
+	 * @param year year of publication
 	 * @param link hyperlink to publication
 	 * @param volume journal volume
 	 * @param issue journal issue
