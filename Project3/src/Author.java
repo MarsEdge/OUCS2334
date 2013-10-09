@@ -17,6 +17,11 @@ public class Author implements Comparable<Author>{
 	 */
 	private ArrayList<String> publishedPapers = new ArrayList<String>();
 	
+	/**
+	 * default constructor
+	 * 
+	 * @param nameWhole name of author
+	 */
 	public Author(String nameWhole) {
 		setName(nameWhole);
 	}

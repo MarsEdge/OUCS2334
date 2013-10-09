@@ -1,7 +1,15 @@
 import java.util.ArrayList;
 
 public class JournalArticle extends Publication {
+	
+	/**
+	 * volume the Journal Article was in
+	 */
 	private String volume;
+	
+	/**
+	 * issue the Journal Article was in
+	 */
 	private String issue;
 	
 	/**
