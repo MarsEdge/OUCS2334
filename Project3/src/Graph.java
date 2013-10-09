@@ -3,10 +3,24 @@ import javax.swing.JFrame;
 
 public class Graph extends JFrame{
 
-	
+	/**
+	 * type of graph to create
+	 */
 	public String type;
+	
+	/**
+	 * the x-axis label/variable name
+	 */
 	public String xLabel;
+	
+	/**
+	 * the y-axis label/variable name
+	 */
 	public String yLabel;
+	
+	/**
+	 * the title of the graph
+	 */
 	public String title;
 
 	/**
