@@ -10,6 +10,8 @@ import java.util.Scanner;
 
 import javax.swing.JOptionPane;
 
+import org.junit.runner.manipulation.Sortable;
+
 
 /**
  * Project #2
@@ -62,6 +64,20 @@ public class Driver {
 				ArrayList<Publication> pubList = new ArrayList<Publication>();
 				pubList = p.getPublications();
 				
+				//TODO Sort pubList by paper title
+				for(Publication o1 : pubList){
+					for(Publication o2 : pubList){
+						int com = PublicationCompTitlePaper(o1, o2);
+						if(com<0){
+							Publication temp = o1;
+							o1=o2;
+							o2=temp;
+							
+					}
+				}
+				
+				}
+				
 				//Search through magazines. Check that all magazines are stored into one large arraylist
 				if(num==1)
 				{
@@ -99,6 +115,9 @@ public class Driver {
 				
 				//JOptionPane that displays search results
 				if(resultsBool==true){
+					
+					//Sort results (implement later)
+					
 					JOptionPane.showMessageDialog(null, results);
 					
 					//Yes and No JOptionPane used to continue searching or quit program
@@ -146,6 +165,11 @@ public class Driver {
 		}
 	}
 	
+	private static int PublicationCompTitlePaper(Publication o1, Publication o2) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
 	public <T extends Comparable<? super T>> void sort(List<T> list, Comparator<? super T> c) {
 		Object[] a = list.toArray();
 		Arrays.sort(a, (Comparator)c);
@@ -169,5 +193,12 @@ public class Driver {
 		ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream);
 		objectOutputStream.writeObject(results);
 		objectOutputStream.close();
+	}
+	
+	public int compare(Publication o1, Publication o2) {
+		// TODO Auto-generated method stub
+		int com = o1.getTitlePaper().compareTo(o2.getTitlePaper());
+
+		return com;
 	}
 }

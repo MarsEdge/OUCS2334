@@ -1,6 +1,7 @@
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectOutputStream;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Scanner;
@@ -17,12 +18,21 @@ import javax.swing.JOptionPane;
  * </P>
  *@version 1.0
  */
-public class Driver {
+public class Driver implements Serializable {
 	
-	int count=0;
-	
+	/**
+	 * serial ID
+	 */
+	private static final long serialVersionUID = 5481149857232568707L;
+
+	/**
+	 * list of publishers
+	 */
 	static HashMap<String, Publication> pubList;
 	
+	/**
+	 * list of authors
+	 */
 	static HashMap<String, Author> authorList;
 	
 	public static void main (String[] args) throws IOException{
@@ -161,4 +171,21 @@ public class Driver {
 		objectOutputStream.writeObject(results);
 		objectOutputStream.close();
 	}
+	
+	/**
+	 * Writes text file to disk
+	 */
+	public static void writeFileString(){
+		
+	}
+	
+	/**
+	 * Writes binary file to disk
+	 */
+	public static void writeFileBin(){
+		
+	}
+	
 }
+
+
