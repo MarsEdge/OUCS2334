@@ -21,16 +21,22 @@ public class Publication implements Comparable<Publication> {
 	/**
 	 * starting page
 	 */
-	private int pageStart;
+	private String pageStart;
 	
 	/**
 	 * ending page
 	 */
-	private int pageEnd;
+	private String pageEnd;
 	
+	/**
+	 * month the publication was published
+	 */
 	private String month;
 	
-	private int year;
+	/**
+	 * year the publication was published
+	 */
+	private String year;
 	
 	/**
 	 * hyperlink to publication (optional)
@@ -45,10 +51,11 @@ public class Publication implements Comparable<Publication> {
 	 * @param titleSerial serial title
 	 * @param pageStart starting page
 	 * @param pageEnd ending page
-	 * @param date date of publication
+	 * @param month month of publication
+	 * @param year year of publication
 	 */
 	public Publication(ArrayList<String> authors, String titlePaper, String titleSerial, 
-			int pageStart, int pageEnd, String month, int year){
+			String pageStart, String pageEnd, String month, String year){
 		
 		this.authors = new ArrayList<String>();
 		
@@ -75,11 +82,12 @@ public class Publication implements Comparable<Publication> {
 	 * @param titleSerial serial title
 	 * @param pageStart starting page
 	 * @param pageEnd ending page
-	 * @param date date of publication
+	 * @param month month of publication
+	 * @param year year of publication
 	 * @param link hyperlink to publication
 	 */
 	public Publication(ArrayList<String> authors, String titlePaper, String titleSerial, 
-			int pageStart, int pageEnd, String month, int year, String link){
+			String pageStart, String pageEnd, String month, String year, String link){
 		
 		this.authors = new ArrayList<String>();
 		
@@ -99,12 +107,6 @@ public class Publication implements Comparable<Publication> {
 		setDate(month, year);
 		
 		setLink(link);
-	}
-	
-	public Publication(String titlePaper) {
-		this.authors = new ArrayList<String>();
-		
-		setTitlePaper(titlePaper);
 	}
 
 	/**
@@ -227,32 +229,32 @@ public class Publication implements Comparable<Publication> {
 	
 	public boolean setTitlePaper(String titlePaper) {
 		this.titlePaper = titlePaper;
-		return false;
+		return true;
 	}
 	
-	public int getPageStart() {
+	public String getPageStart() {
 		return pageStart;
 	}
 	
-	public boolean setPageStart(int pageStart) {
+	public boolean setPageStart(String pageStart) {
 		this.pageStart = pageStart;
-		return false;
+		return true;
 	}
 	
-	public int getPageEnd() {
+	public String getPageEnd() {
 		return pageEnd;
 	}
 	
-	public boolean setPageEnd(int pageEnd) {
+	public boolean setPageEnd(String pageEnd) {
 		this.pageEnd = pageEnd;
-		return false;
+		return true;
 	}
 	
 	public String getDate() {
 		return month + year;
 	}
 	
-	public boolean setDate(String month, int year) {
+	public boolean setDate(String month, String year) {
 		this.month = month;
 		this.year = year;
 		return true;
@@ -264,6 +266,6 @@ public class Publication implements Comparable<Publication> {
 	
 	public boolean setLink(String link) {
 		this.link = link;
-		return false;
+		return true;
 	}
 }

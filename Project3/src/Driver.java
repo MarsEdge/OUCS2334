@@ -2,18 +2,14 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Comparator;
 import java.util.HashMap;
-import java.util.List;
-import java.util.ListIterator;
 import java.util.Scanner;
 
 import javax.swing.JOptionPane;
 
 
 /**
- * Project #2
+ * Project #3
  * CS 2334, Section 010
  * Oct 1, 2013
  * <P>
@@ -25,11 +21,11 @@ public class Driver {
 	
 	int count=0;
 	
-	HashMap<String, Publication> pubList;
+	static HashMap<String, Publication> pubList;
 	
-	HashMap<String, Author> authorList;
+	static HashMap<String, Author> authorList;
 	
-	public void main (String[] args) throws IOException{
+	public static void main (String[] args) throws IOException{
 		
 		//Scanner for user input data
 		Scanner in = new Scanner(System.in);
@@ -39,6 +35,10 @@ public class Driver {
 		
 			//Ask for and read in the file
 			String filename = JOptionPane.showInputDialog ( "Please enter the name of the file" );
+			
+			if(filename == null)
+				System.exit(-1);
+			
 			Parser p = new Parser(filename);
 			
 			//For loop for repeating search
@@ -46,7 +46,11 @@ public class Driver {
 			
 				//Save input as the choice
 				
-				String choice = JOptionPane.showInputDialog ( "Choose a criteria to serach by entering the coressponding digit: \n\n1. Name of Author \n2. Name of Paper/Article \n3. Name of the Journal/Collection of Paper \n4. Exit the Program" );
+				String choice = JOptionPane.showInputDialog ( "Choose a criteria to serach by entering the coressponding digit: \n\n1. Name of Author \n2. Name of Paper/Article \n3. Exit the Program" );
+				
+				if(choice == null)
+					System.exit(-1);
+				
 				int num = Integer.valueOf(choice);
 		
 				//Manages choice using if statements
@@ -54,8 +58,7 @@ public class Driver {
 				String search = "";
 				if(num==1){ search = JOptionPane.showInputDialog ( "You are searching by Name of Author. Please enter a name to search for" );}
 				else if(num==2){search = JOptionPane.showInputDialog ( "You are searching by Name of Article/Paper. Please enter a name to search for");}
-				else if(num==3){search = JOptionPane.showInputDialog ( "You are searching by Name of Journal/Collection of Papers. Please enter a name to search for");}
-				else if(num==4){i=1; System.exit(-1);}
+				else if(num==3){i=1; System.exit(-1);}
 				else JOptionPane.showMessageDialog(null, "Please enter a valid option number.");
 				
 				//Search for data here using specified criteria type
@@ -67,37 +70,34 @@ public class Driver {
 				pubList = new HashMap<String, Publication>();
 				pubList = p.getPublications();
 				
+				authorList = new HashMap<String, Author>();
+				authorList = p.getAuthors();
+				
 				//Search through publications
 				if(num==1)
 				{
 					Author foundAuthor = authorList.get(search);
-					
-					ArrayList<String> foundAuthorPapers = foundAuthor.getPublishedPapers();
-					
-					for(String paper : foundAuthorPapers)
+					if(foundAuthor != null)
 					{
-						results += pubList.get(paper).toString() + "\n" ;
+						ArrayList<String> foundAuthorPapers = foundAuthor.getPublishedPapers();
+						
+						for(String paper : foundAuthorPapers)
+						{
+							results += pubList.get(paper).toString() + "\n" ;
+						}
+						
+						resultsBool = true;
 					}
-					
-					resultsBool = true;
 				}
 				else if(num==2)
 				{
-					results = pubList.get(search).toString() + "\n" ;
-					resultsBool = true;
-				}
-				else if(num==3)
-				{
-					for(Publication pub : pubList)
+					Publication foundPub = pubList.get(search);
+					
+					if(foundPub != null)
+						
 					{
-						if(pub.getTitleSerial() != null && pub.getTitleSerial().contains(search))
-						{
-							results += pub.toString() + "\n";resultsBool = true;
-						}
-						else 
-						{
-							resultsBool = false;
-						}
+						results += foundPub.toString() + "\n" ;
+						resultsBool = true;
 					}
 				}
 				
@@ -146,18 +146,6 @@ public class Driver {
 				in.close();
 				System.exit(-1);
 			}
-		}
-	}
-	
-	public <T extends Comparable<? super T>> void sort(List<T> list, Comparator<? super T> c) {
-		Object[] a = list.toArray();
-		Arrays.sort(a, (Comparator)c);
-		count=0;
-		ListIterator<T> i = list.listIterator();
-		for (int j=0; j<a.length; j++) {
-			i.next();
-			i.set((T)a[j]);
-			count++;
 		}
 	}
 	

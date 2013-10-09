@@ -7,9 +7,14 @@ import java.util.HashMap;
 public class Parser {
 	
 	/**
-	 * list of all publications
+	 * list of all publications by title
 	 */
 	private HashMap<String, Publication> publications;
+	
+	/**
+	 * list of what publications which authors published
+	 */
+	private HashMap<String, Author> authors;
 	
 	/**
 	 * location of file to parse
@@ -20,14 +25,16 @@ public class Parser {
 	 * default constructor
 	 * 
 	 * @param file_loc location of file to parse
-	 * @throws IOException 
+	 * @throws IOException
 	 */
 	public Parser(String file_loc) throws IOException {
 		publications= new HashMap<String, Publication>();
 		
+		authors = new HashMap<String, Author>();
+		
 		if(isValidSearchName(file_loc))
 			setFileLoc(file_loc);
-		parseFile();
+		parsePublications();
 	}
 	
 	/**
@@ -51,7 +58,7 @@ public class Parser {
 	 * @return true on success, false on error
 	 * @throws IOException
 	 */
-	public boolean parseFile() throws IOException {
+	public boolean parsePublications() throws IOException {
 		if(isValidSearchName(getFileLoc())) {
 			FileReader DBReader = new FileReader(getFileLoc());
 			
@@ -69,17 +76,17 @@ public class Parser {
 			
 			String titleSerial = "";
 			
-			int pageStart = 0;
+			String pageStart = "0";
 			
-			int pageEnd = 0;
+			String pageEnd = "0";
 			
 			String Month = "";
 			
-			int year = 0;
+			String year ="";
 			
-			int volume = 0;
+			String volume = "";
 			
-			int issue = 0;
+			String issue = "";
 			
 			String link = "";
 			
@@ -96,7 +103,15 @@ public class Parser {
 					}
 					if(partNum == 2)
 					{
-						authors = parseAuthors(next_line);
+						authors = parseAuthorList(next_line);
+						
+						for(String author : authors)
+						{
+							if(this.authors.get(author) == null)
+							{
+								this.authors.put(author, new Author(author));
+							}
+						}
 					}
 					if(partNum == 3)
 					{
@@ -109,25 +124,42 @@ public class Parser {
 					if(partNum == 5)
 					{
 						if(type.toLowerCase().equals("conference paper")) {
-							pageStart = Integer.parseInt(next_line.split("\\-")[0]);
-						
-							pageEnd = Integer.parseInt(next_line.split("\\-")[1]);
+							pageStart = next_line.split("\\-")[0];
+							
+							if(next_line.contains("-"))
+							{
+								pageEnd = next_line.split("\\-")[1];
+							}
 						} else if(type.toLowerCase().equals("journal article")) {
-							volume = Integer.parseInt(next_line.split("\\(")[0]);
+							volume = next_line.split("\\(")[0];
 							
-							issue = Integer.parseInt(next_line.split("\\(")[1].split("\\)")[0]);
+							if(next_line.contains("("))
+							{
+								issue = next_line.split("\\(")[1].split("\\)")[0];
+							}
 							
-							pageStart = Integer.parseInt(next_line.split("\\:")[1].split("\\-")[0]);
+							if(next_line.contains(":"))
+							{
+								pageStart = next_line.split("\\:")[1].split("\\-")[0];
+							}
 							
-							pageEnd = Integer.parseInt(next_line.split("\\:")[1].split("\\-")[1]);
+							if(next_line.contains(":") && next_line.contains("-"))
+							{
+								pageEnd = next_line.split("\\:")[1].split("\\-")[1];
+							}
 						}
 					}
 					
 					if(partNum == 6)
 					{
-						Month = next_line.split("\\ ")[0];
-						
-						year = Integer.parseInt(next_line.split("\\ ")[1]);
+						if(next_line.contains(" ") == true)
+						{
+							Month = next_line.split("\\ ")[0];
+							
+							year = next_line.split("\\ ")[1];
+						}
+						else
+							Month = next_line;
 					}
 					if(partNum == 7)
 					{
@@ -153,10 +185,33 @@ public class Parser {
 			
 			DBReaderBuffered.close();
 			
+			parseAuthors();
+			
 			return true;
 		}
 		
 		return false;
+	}
+	
+	/**
+	 * parses publications to assign the papers to the author that wrote them
+	 */
+	public void parseAuthors() {
+		
+		//Iterator from http://stackoverflow.com/questions/1066589/java-iterate-through-hashmap
+		for(Publication pub : publications.values())
+		{
+			for(String author : pub.getAuthors())
+			{
+				if(this.authors.get(author) != null)
+				{
+					if(this.authors.get(author).getPublishedPapers().contains(pub.getTitlePaper()) == false)
+					{
+						this.authors.get(author).addPublishedPaper(pub.getTitlePaper());
+					}
+				}
+			}
+		}
 	}
 	
 	/**
@@ -174,7 +229,7 @@ public class Parser {
 	 * @param authorsStr line with all authors
 	 * @return ArrayList of authors
 	 */
-	public ArrayList<String> parseAuthors(String authorsStr) {
+	public ArrayList<String> parseAuthorList(String authorsStr) throws ArrayIndexOutOfBoundsException {
 		String[] parts = authorsStr.split("\\; ");
 		
 		ArrayList<String> out = new ArrayList<String>();
@@ -183,7 +238,14 @@ public class Parser {
 		{
 			if(author != null)
 			{
-				out.add(author);
+				if(author.contains(",") == true)
+				{
+					out.add(author.split("\\, ")[1] + " " + author.split("\\, ")[0]);
+				}
+				else if(author != null)
+				{
+					out.add(author);
+				}
 			}
 		}
 		return out;
@@ -211,5 +273,13 @@ public class Parser {
 	
 	public void setPublications(HashMap<String, Publication> publications) {
 		this.publications = publications;
+	}
+
+	public HashMap<String, Author> getAuthors() {
+		return this.authors;
+	}
+
+	public void setAuthors(HashMap<String, Author> authors) {
+		this.authors = authors;
 	}
 }
