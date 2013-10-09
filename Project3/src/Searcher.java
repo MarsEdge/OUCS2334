@@ -7,7 +7,6 @@ import java.util.List;
  * to count the number of comparisons for Project 2.
  * </P>
  * 
- * @author
  * @version 1.0
  */
 public class Searcher {

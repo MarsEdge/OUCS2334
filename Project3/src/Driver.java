@@ -162,7 +162,6 @@ public class Driver implements Serializable {
 	/**
 	 * writes resultant database to disk
 	 * 
-	 * @return true on success, false on error 
 	 * @throws IOException
 	 */
 	public static void writePublications(String filename, String results) throws IOException {
