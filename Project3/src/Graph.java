@@ -11,7 +11,7 @@ public class Graph extends JFrame{
 	/**
 	 * type of graph to create
 	 */
-	private String type;
+	private String typeOfGraph;
 	
 	/**
 	 * the x-axis label/variable name
@@ -32,10 +32,10 @@ public class Graph extends JFrame{
 	 * Default Graph shown at start of program
 	 */
 	public Graph(){
-		this.type = "";
-		this.xLabel = "";
-		this.yLabel = "";
-		this.title = "";
+		setTypeOfGraph("");
+		setXLabel("");
+		setYLabel("");
+		setTitle("");
 	}
 	
 	/**
@@ -44,7 +44,7 @@ public class Graph extends JFrame{
 	 */
 	public Graph(String type){
 		
-		this.type = type;
+		this.typeOfGraph = type;
 		typeSetVariables(type);
 		
 		
@@ -65,6 +65,41 @@ public class Graph extends JFrame{
 	 */
 	public static void displayGraph(Graph graph) {
 		//gui creation here
+	}
+
+	
+	
+	//Accessors for class variables
+	public String getTypeOfGraph() {
+		return typeOfGraph;
+	}
+
+	public void setTypeOfGraph(String typeOfGraph) {
+		this.typeOfGraph = typeOfGraph;
+	}
+
+	public String getXLabel() {
+		return xLabel;
+	}
+
+	public void setXLabel(String xLabel) {
+		this.xLabel = xLabel;
+	}
+
+	public String getYLabel() {
+		return yLabel;
+	}
+
+	public void setYLabel(String yLabel) {
+		this.yLabel = yLabel;
+	}
+	
+	public String getTitlel() {
+		return yLabel;
+	}
+
+	public void setTitle(String title){
+		this.title = title;
 	}
 	
 	
