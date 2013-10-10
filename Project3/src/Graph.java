@@ -11,22 +11,22 @@ public class Graph extends JFrame{
 	/**
 	 * type of graph to create
 	 */
-	public String type;
+	private String type;
 	
 	/**
 	 * the x-axis label/variable name
 	 */
-	public String xLabel;
+	private String xLabel;
 	
 	/**
 	 * the y-axis label/variable name
 	 */
-	public String yLabel;
+	private String yLabel;
 	
 	/**
 	 * the title of the graph
 	 */
-	public String title;
+	private String title;
 
 	/**
 	 * Default Graph shown at start of program
