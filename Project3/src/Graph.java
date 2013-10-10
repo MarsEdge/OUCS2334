@@ -26,16 +26,16 @@ public class Graph extends JFrame{
 	/**
 	 * the title of the graph
 	 */
-	private String title;
+	private String titleGraph;
 
 	/**
 	 * Default Graph shown at start of program
 	 */
 	public Graph(){
 		this.type = "";
-		this.xLabel = "";
-		this.yLabel = "";
-		this.title = "";
+		this.setXLabel("");
+		this.setYLabel("");
+		this.titleGraph = "";
 	}
 	
 	/**
@@ -66,6 +66,29 @@ public class Graph extends JFrame{
 	public static void displayGraph(Graph graph) {
 		//gui creation here
 	}
-	
+
+	public String getXLabel() {
+		return xLabel;
+	}
+
+	public void setXLabel(String xLabel) {
+		this.xLabel = xLabel;
+	}
+
+	public String getYLabel() {
+		return yLabel;
+	}
+
+	public void setYLabel(String yLabel) {
+		this.yLabel = yLabel;
+	}
+
+	public String getTitleGraph() {
+		return titleGraph;
+	}
+
+	public void setTitleGraph(String titleGraph) {
+		this.titleGraph = titleGraph;
+	}
 	
 }
