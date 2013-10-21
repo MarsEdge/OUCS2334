@@ -45,6 +45,9 @@ public class Publication implements Comparable<Publication> {
 	
 	/**
 	 * method of comparing publications to each other
+	 * 
+	 * 0 = Author
+	 * 1 = Paper Title
 	 */
 	public static int compareMethod = 0;
 	/**
