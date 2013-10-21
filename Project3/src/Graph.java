@@ -124,7 +124,7 @@ public class Graph extends JFrame{
 			setXLabel("Number of Publications");
 			setYLabel("Year");
 			setTitle("Number of Publications Each Year by " + authorName);
-			double[] values = new double[AuthorObj.getSizeOfPublishedPapers()];
+			double[] values = new double[AuthorObj.getPublishedPapers().size()];
 			int size = calculations[calculations.length]-calculations[0];
 		    String[] names = new String[size];
 			Arrays.sort(calculations);
@@ -151,7 +151,7 @@ public class Graph extends JFrame{
 			setXLabel("Number of Conference Papers");
 			setYLabel("Year");
 			setTitle("Number of Conference Papers Each Year by " + authorName);
-			double[] values = new double[AuthorObj.getSizeOfPublishedPapers()];
+			double[] values = new double[AuthorObj.getPublishedPapers().size()];
 			int size = calculations[calculations.length]-calculations[0];
 		    String[] names = new String[size];
 			Arrays.sort(calculations);
@@ -178,7 +178,7 @@ public class Graph extends JFrame{
 			setXLabel("Number of Journal Articles");
 			setYLabel("Year");
 			setTitle("Number of Journal Articles Each Year by " + authorName);
-			double[] values = new double[AuthorObj.getSizeOfPublishedPapers()];
+			double[] values = new double[AuthorObj.getPublishedPapers().size()];
 			int size = calculations[calculations.length]-calculations[0];
 		    String[] names = new String[size];
 			Arrays.sort(calculations);
@@ -207,7 +207,7 @@ public class Graph extends JFrame{
 			setTitle("Number of Co Authors per Publication by " + authorName);
 			
 			//TODO fix so that it works for collaborators
-			double[] values = new double[AuthorObj.getSizeOfPublishedPapers()];
+			double[] values = new double[AuthorObj.getPublishedPapers().size()];
 			int size = calculations[calculations.length]-calculations[0];
 		    String[] names = new String[size];
 			Arrays.sort(calculations);
