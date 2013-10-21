@@ -49,6 +49,7 @@ public class Publication implements Comparable<Publication> {
 	 * set to:
 	 * 0 = Author
 	 * 1 = Paper Title
+	 * 2 = Date
 	 */
 	public static int compareMethod = 0;
 	/**
@@ -180,7 +181,14 @@ public class Publication implements Comparable<Publication> {
 			else
 				return 0;
 		}
-		else
+		else if(compareMethod == 2)
+		{
+			if(this.getDate() != null && this.getDate().length() > 0 && 
+					other.getDate() != null && other.getDate().length() > 0 )
+				return this.getDate().compareTo(other.getDate());
+			else
+				return 0;
+		}
 			return 0;
 	}
 	

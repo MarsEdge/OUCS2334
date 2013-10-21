@@ -112,7 +112,8 @@ public class Driver implements Serializable {
 			if(resultsBool==true){
 				
 				Object[] options = {"Author",
-	                    "Paper Title"};
+	                    "Paper Title",
+	                    "Date"};
 				int sortingMethod = JOptionPane.showOptionDialog(null,
 						"Sort by Author or Paper Title?",
 						"What Sorting Method to Use?", 
