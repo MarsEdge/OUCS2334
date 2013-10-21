@@ -52,12 +52,48 @@ public class Driver implements Serializable {
 			
 			Parser p = new Parser(filename);
 			
+			
+			
 			//For loop for repeating search
 			for(int j=0; j==0;) {
-			
-				//Save input as the choice
 				
-				String choice = JOptionPane.showInputDialog ( "Choose a criteria to serach by entering the coressponding digit: \n\n1. Name of Author \n2. Name of Paper/Article \n3. Exit the Program" );
+				//Sort method
+				String sortBy = JOptionPane.showInputDialog ( "Choose an sort option: \n\nBI: Bibliographic \nAN: Author Name \nPT: Paper Title \nST: Serial Title \nCH: Chronological \nR:Random \n EP:Exit the Program" );
+				
+				if(sortBy == null)
+					System.exit(-1);
+		
+				//Manages choice using if statements
+				sortBy.toLowerCase();
+				
+				String sort = "";
+				if(sortBy=="bi"){ /*TODO sort by bi*/ sort = ("by bibliography.");}
+				else if(sortBy=="an"){/*sort by an*/ sort =  ("by author name.");}
+				else if(sortBy=="pt"){/*sort by pt*/ sort =  ("by paper title.");}
+				else if(sortBy=="st"){/*sort by st*/ sort =  ("by serial title.");}
+				else if(sortBy=="ch"){/*sort by ch*/ sort = ("chronologically.");}
+				else if(sortBy=="r"){/*sort by r*/ sort = ("randomly.");}
+				else if(sortBy=="ep"){i=1; System.exit(-1);}
+				else JOptionPane.showMessageDialog(null, "Please enter a valid two-letter option.");
+				
+				//Perform actions
+				String chooseAction = JOptionPane.showInputDialog ( "You have sorted " + sort + "\n\nWhat do you want to do next?: \n\nPS: Print to Screen \nPF: Print to File \nS: Search \nFA: Find Author \nEP:Exit the Program" );
+				
+				if(chooseAction == null)
+					System.exit(-1);
+				
+				chooseAction.toLowerCase();
+				
+				//TODO use below code in options
+				if(chooseAction=="ps"){}
+				else if(chooseAction=="pf"){}
+				else if(chooseAction=="s"){}
+				else if(chooseAction=="fa"){}
+				else if(chooseAction=="ep"){i=1; System.exit(-1);}
+				else JOptionPane.showMessageDialog(null, "Please enter a valid two-letter option.");
+				
+				//Save input as the choice
+				String choice = JOptionPane.showInputDialog ( "Choose a criteria to search by entering the coressponding digit: \n\n1. Name of Author \n2. Name of Paper/Article \n3. Exit the Program" );
 				
 				if(choice == null)
 					System.exit(-1);
