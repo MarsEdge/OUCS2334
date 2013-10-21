@@ -102,8 +102,9 @@ public class Author implements Comparable<Author>{
 	public void setName(String nameWhole) {
 		if(nameWhole.contains(" ") == true)
 		{
-			setNameLast(nameWhole.split("\\ ")[0]);
-			setNameFirst(nameWhole.split("\\ ")[1]);
+			String[] split = nameWhole.split("\\ ");
+			setNameLast(split[0]);
+			setNameFirst(split[split.length-1]);
 		}
 		else
 			setNameFirst(nameWhole);
