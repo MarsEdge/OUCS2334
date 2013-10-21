@@ -46,6 +46,7 @@ public class Publication implements Comparable<Publication> {
 	/**
 	 * method of comparing publications to each other
 	 * 
+	 * set to:
 	 * 0 = Author
 	 * 1 = Paper Title
 	 */
