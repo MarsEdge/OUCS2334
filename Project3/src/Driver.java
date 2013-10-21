@@ -86,11 +86,11 @@ public class Driver implements Serializable {
 				Author foundAuthor = authorList.get(search);
 				if(foundAuthor != null)
 				{
-					ArrayList<String> foundAuthorPapers = foundAuthor.getPublishedPapers();
+					ArrayList<Publication> foundAuthorPapers = foundAuthor.getPublishedPapers();
 					
-					for(String paper : foundAuthorPapers)
+					for(Publication paper : foundAuthorPapers)
 					{
-						results.add(pubList.get(paper));
+						results.add(pubList.get(paper.getTitlePaper()));
 					}
 					
 					resultsBool = true;

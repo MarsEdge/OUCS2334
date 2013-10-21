@@ -207,7 +207,7 @@ public class Parser {
 				{
 					if(this.authors.get(author).getPublishedPapers().contains(pub.getTitlePaper()) == false)
 					{
-						this.authors.get(author).addPublishedPaper(pub.getTitlePaper());
+						this.authors.get(author).addPublishedPaper(pub);
 					}
 				}
 			}

@@ -15,7 +15,7 @@ public class Author implements Comparable<Author>{
 	/**
 	 * publications published by this author
 	 */
-	private ArrayList<String> publishedPapers = new ArrayList<String>();
+	private ArrayList<Publication> publishedPapers = new ArrayList<Publication>();
 	
 	/**
 	 * default constructor
@@ -35,12 +35,12 @@ public class Author implements Comparable<Author>{
 		return this.getName().compareTo(arg0.getName());
 	}
 	
-	public ArrayList<String> getPublishedPapers()
+	public ArrayList<Publication> getPublishedPapers()
 	{
 		return publishedPapers;
 	}
 	
-	public boolean addPublishedPaper(String paper)
+	public boolean addPublishedPaper(Publication paper)
 	{
 		publishedPapers.add(paper);
 		return true;
@@ -65,7 +65,7 @@ public class Author implements Comparable<Author>{
 			
 		}
 		else {
-			for(String p : publishedPapers){
+			for(Publication p : publishedPapers){
 				/* TODO split publishedPapers into two lists. 
 				 * 1 of conference papers called conferencePapers (initialized above)
 				 * 1 of journal articles called journalPapers (initialized above)
