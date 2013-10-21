@@ -1,3 +1,7 @@
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+import java.awt.event.WindowListener;
+
 import javax.swing.JFrame;
 
 
@@ -27,6 +31,23 @@ public class Graph extends JFrame{
 	 * the title of the graph
 	 */
 	private String title;
+	
+	/**
+	 * the author whose data will be displayed
+	 */
+	private String authorName;
+	
+	/**
+	 * the values of each bar
+	 */
+	private double[] valuesBar;
+	
+	/**
+	 * the names of each bar
+	 */
+	private String[] namesBar;
+	
+	
 
 	/**
 	 * Default Graph shown at start of program
@@ -36,6 +57,7 @@ public class Graph extends JFrame{
 		setXLabel("");
 		setYLabel("");
 		setTitle("");
+		setAuthorName("");
 	}
 	
 	/**
@@ -44,18 +66,7 @@ public class Graph extends JFrame{
 	 */
 	public Graph(String type){
 		
-		this.typeOfGraph = type;
-		typeSetVariables(type);
-		
-		
-	}
-	
-	/**
-	 * Sets the variables used to create each graph given the type of graph
-	 * @param type		type of graph
-	 */
-	public static void typeSetVariables(String type){
-		//implement which x and y labels and title goes for each type
+		setTypeOfGraph(type);
 	}
 	
 	
@@ -63,19 +74,69 @@ public class Graph extends JFrame{
 	 * Displays the desired graph in a GUI.
 	 * @param graph			Graph object which contains information for graph
 	 */
-	public static void displayGraph(Graph graph) {
-		//gui creation here
+	public static void displayGraph(Graph graph){
+		//GUI creation here
+		JFrame f = new JFrame();
+	    f.setSize(400, 300);
+	    //TODO fix this
+	    //f.getContentPane().add(new ChartPanel(valuesBar, namesBar, title));
+
+	    WindowListener wndCloser = new WindowAdapter() {
+	      public void windowClosing(WindowEvent e) {
+	        System.exit(0);
+	      }
+	    };
+	    f.addWindowListener(wndCloser);
+	    f.setVisible(true);
 	}
 
-	
-	
+
 	//Accessors for class variables
 	public String getTypeOfGraph() {
 		return typeOfGraph;
 	}
 
+	//Sets the variables used to create each graph given the type of graph
 	public void setTypeOfGraph(String typeOfGraph) {
 		this.typeOfGraph = typeOfGraph;
+		
+		if(typeOfGraph=="TP"){
+			setXLabel("Number of Publications");
+			setYLabel("Type of Publication");
+			setTitle("Number of Each Type of Publication by " + authorName);
+			//TODO variable for size of array
+			double[] values = new double[2];
+		    String[] names = new String[2];
+		    //TODO values go here
+		    values[0] = 1;
+		    names[0] = "Conference Paper";
+		    values[1] = 1;
+		    names[1] = "Journal Article";
+		    setValuesBar(values);
+		    setNamesBar(names);
+		}
+		else if(typeOfGraph=="PY"){
+			setXLabel("Number of Publications");
+			setYLabel("Year");
+			setTitle("Number of Publications Each Year by " + authorName);
+			
+		}
+		else if(typeOfGraph=="CPY"){
+			setXLabel("Number of Conference Papers");
+			setYLabel("Year");
+			setTitle("Number of Conference Papers Each Year by " + authorName);
+		}
+		else if(typeOfGraph=="JAY"){
+			setXLabel("Number of Journal Articles");
+			setYLabel("Year");
+			setTitle("Number of Journal Articles Each Year by " + authorName);
+		}
+		else if(typeOfGraph=="NC"){
+			setXLabel("Number of Times");
+			setYLabel("Number of Collaborators");
+			setTitle("Number of Co Authors per Publication by " + authorName);
+		}
+		
 	}
 
 	public String getXLabel() {
@@ -94,7 +155,7 @@ public class Graph extends JFrame{
 		this.yLabel = yLabel;
 	}
 	
-	public String getTitlel() {
+	public String getTitle() {
 		return yLabel;
 	}
 
@@ -102,5 +163,28 @@ public class Graph extends JFrame{
 		this.title = title;
 	}
 	
+	public String getAuthorName() {
+		return yLabel;
+	}
+
+	public void setAuthorName(String authorName){
+		this.authorName = authorName;
+	}
+
+	public double[] getValuesBar() {
+		return valuesBar;
+	}
+
+	public void setValuesBar(double[] values) {
+		this.valuesBar = values;
+	}
+
+	public String[] getNamesBar() {
+		return namesBar;
+	}
+
+	public void setNamesBar(String[] namesBar) {
+		this.namesBar = namesBar;
+	}
 	
 }
