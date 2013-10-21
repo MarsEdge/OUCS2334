@@ -1,5 +1,4 @@
 import java.util.ArrayList;
-import java.util.Comparator;
 
 
 public class Publication implements Comparable<Publication> {
@@ -44,6 +43,10 @@ public class Publication implements Comparable<Publication> {
 	 */
 	private String link;
 	
+	/**
+	 * method of comparing publications to each other
+	 */
+	public static int compareMethod = 0;
 	/**
 	 * Publication constructor without link
 	 * 
@@ -156,8 +159,25 @@ public class Publication implements Comparable<Publication> {
 	}
 	
 	@Override
-	public int compareTo(Publication o) {
-		return this.getTitlePaper().compareTo(o.getTitlePaper());
+	public int compareTo(Publication other) {
+		if(compareMethod == 0)
+		{
+			if(this.getAuthors() != null && this.getAuthors().size() > 0 && 
+					other.getAuthors() != null && other.getAuthors().size() > 0)
+				return this.getAuthors().get(0).compareTo(other.getAuthors().get(0));
+			else
+				return 0;
+		}
+		else if(compareMethod == 1)
+		{
+			if(this.getTitlePaper() != null && this.getTitlePaper().length() > 0 && 
+					other.getTitlePaper() != null && other.getTitlePaper().length() > 0 )
+				return this.getTitlePaper().compareTo(other.getTitlePaper());
+			else
+				return 0;
+		}
+		else
+			return 0;
 	}
 	
 	public String toString() {
@@ -185,34 +205,6 @@ public class Publication implements Comparable<Publication> {
 		out += "\n\tHyperlink = " + getLink();
 		
 		return out;
-	}
-	
-	/**
-	 *comparator to sort by first author
-	 */
-	public class PubCompAuthor implements Comparator<Publication>{
-		@Override
-		public int compare(Publication a, Publication b) {
-			if(a.getAuthors() != null && a.getAuthors().size() > 0 && 
-					b.getAuthors() != null && b.getAuthors().size() > 0)
-				return a.getAuthors().get(0).compareTo(b.getAuthors().get(0));
-			else
-				return 0;
-		}
-	}
-	
-	/**
-	 *comparator to sort by paper title
-	 */
-	public class PubCompTitlePaper implements Comparator<Publication>{
-		@Override
-		public int compare(Publication a, Publication b) {
-			if(a.getTitlePaper() != null && a.getTitlePaper().length() > 0 && 
-					b.getTitlePaper() != null && b.getTitlePaper().length() > 0 )
-				return a.getTitlePaper().compareTo(b.getTitlePaper());
-			else
-				return 0;
-		}
 	}
 	
 	public ArrayList<String> getAuthors() {
