@@ -201,6 +201,20 @@ public class Publication implements Comparable<Publication> {
 		}
 	}
 	
+	/**
+	 *comparator to sort by paper title
+	 */
+	private class PubCompTitlePaper implements Comparator<Publication>{
+		@Override
+		public int compare(Publication a, Publication b) {
+			if(a.getTitlePaper() != null && a.getTitlePaper().length() > 0 && 
+					b.getTitlePaper() != null && b.getTitlePaper().length() > 0 )
+				return a.getTitlePaper().compareTo(b.getTitlePaper());
+			else
+				return 0;
+		}
+	}
+	
 	public ArrayList<String> getAuthors() {
 		if(isValid(authors))
 			return authors;
