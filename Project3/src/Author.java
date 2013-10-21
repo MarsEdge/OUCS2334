@@ -46,6 +46,48 @@ public class Author implements Comparable<Author>{
 		return true;
 	}
 	
+	public int[] valueCalculator(String desiredValue){
+		
+		int[] calculatedValues = new int[publishedPapers.size()];
+		ArrayList<String> conferencePapers = new ArrayList<String>();
+		ArrayList<String> journalPapers = new ArrayList<String>();
+		
+		if(desiredValue == "NC"){
+			//TODO calculate collaborations
+			
+		}
+		else if(desiredValue == "PY"){
+			//TODO get all year values from publishedPapers and store in calculateVvalues
+						
+		}
+		else {
+			for(String p : publishedPapers){
+				//TODO split publishedPapers into two lists. 1 of conference papers, 1 of journal articles
+				
+			}
+			//for conference paper choice
+			if(desiredValue == "TP"){
+				calculatedValues = new int[2];
+				calculatedValues[0] = conferencePapers.size();
+				calculatedValues[1] = journalPapers.size();
+			}
+
+			//for journal article choice
+			else if(desiredValue == "CPY"){
+				calculatedValues = new int[conferencePapers.size()];
+				
+				//TODO copy section from PY if statement
+				
+			}
+			else if(desiredValue == "JAY"){
+				calculatedValues = new int[journalPapers.size()];
+				
+				//TODO copy section from PY if statement
+			}		
+		}
+		return calculatedValues;
+	}
+	
 	public String getName() {
 		return getNameFirst() + " " + getNameLast();
 	}
@@ -74,5 +116,9 @@ public class Author implements Comparable<Author>{
 
 	public void setNameLast(String nameLast) {
 		this.nameLast = nameLast;
+	}
+	
+	public int getSizeOfPublishedPapers() {
+		return publishedPapers.size();
 	}
 }

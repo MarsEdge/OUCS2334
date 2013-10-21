@@ -1,6 +1,8 @@
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
+import java.util.Arrays;
+import java.util.Collections;
 
 import javax.swing.JFrame;
 
@@ -47,6 +49,10 @@ public class Graph extends JFrame{
 	 */
 	private String[] namesBar;
 	
+	/**
+	 * Author object used for calculating data for the author
+	 */
+	private Author AuthorObj = new Author(authorName);
 	
 
 	/**
@@ -99,18 +105,17 @@ public class Graph extends JFrame{
 	//Sets the variables used to create each graph given the type of graph
 	public void setTypeOfGraph(String typeOfGraph) {
 		this.typeOfGraph = typeOfGraph;
+		int[]calculations = AuthorObj.valueCalculator(typeOfGraph);
 		
 		if(typeOfGraph=="TP"){
 			setXLabel("Number of Publications");
 			setYLabel("Type of Publication");
 			setTitle("Number of Each Type of Publication by " + authorName);
-			//TODO variable for size of array
 			double[] values = new double[2];
 		    String[] names = new String[2];
-		    //TODO values go here
-		    values[0] = 1;
+		    values[0] = calculations[0];
 		    names[0] = "Conference Paper";
-		    values[1] = 1;
+		    values[1] = calculations[1];
 		    names[1] = "Journal Article";
 		    setValuesBar(values);
 		    setNamesBar(names);
@@ -119,22 +124,111 @@ public class Graph extends JFrame{
 			setXLabel("Number of Publications");
 			setYLabel("Year");
 			setTitle("Number of Publications Each Year by " + authorName);
+			double[] values = new double[AuthorObj.getSizeOfPublishedPapers()];
+			int size = calculations[calculations.length]-calculations[0];
+		    String[] names = new String[size];
+			Arrays.sort(calculations);
+			names[0] = String.valueOf(calculations[0]);
+			for(int k=1; k<=calculations.length;k++){
+				names[k] = names[k-1]+1;
+			}
+			for(String n: names){
+				int nInt = Integer.valueOf(n);
+				for(int i=0, j=0; i<=calculations.length; i++){
+					if(calculations[i]==nInt){
+						values[j]++;
+					}
+					else{
+						j++;
+					}
+				}
+			}
+		    setValuesBar(values);
+		    setNamesBar(names);
 			
 		}
 		else if(typeOfGraph=="CPY"){
 			setXLabel("Number of Conference Papers");
 			setYLabel("Year");
 			setTitle("Number of Conference Papers Each Year by " + authorName);
+			double[] values = new double[AuthorObj.getSizeOfPublishedPapers()];
+			int size = calculations[calculations.length]-calculations[0];
+		    String[] names = new String[size];
+			Arrays.sort(calculations);
+			names[0] = String.valueOf(calculations[0]);
+			for(int k=1; k<=calculations.length;k++){
+				names[k] = names[k-1]+1;
+			}
+			for(String n: names){
+				int nInt = Integer.valueOf(n);
+				for(int i=0, j=0; i<=calculations.length; i++){
+					if(calculations[i]==nInt){
+						values[j]++;
+					}
+					else{
+						j++;
+					}
+				}
+			}
+		    setValuesBar(values);
+		    setNamesBar(names);
+		    
 		}
 		else if(typeOfGraph=="JAY"){
 			setXLabel("Number of Journal Articles");
 			setYLabel("Year");
 			setTitle("Number of Journal Articles Each Year by " + authorName);
+			double[] values = new double[AuthorObj.getSizeOfPublishedPapers()];
+			int size = calculations[calculations.length]-calculations[0];
+		    String[] names = new String[size];
+			Arrays.sort(calculations);
+			names[0] = String.valueOf(calculations[0]);
+			for(int k=1; k<=calculations.length;k++){
+				names[k] = names[k-1]+1;
+			}
+			for(String n: names){
+				int nInt = Integer.valueOf(n);
+				for(int i=0, j=0; i<=calculations.length; i++){
+					if(calculations[i]==nInt){
+						values[j]++;
+					}
+					else{
+						j++;
+					}
+				}
+			}
+		    setValuesBar(values);
+		    setNamesBar(names);
+		    
 		}
 		else if(typeOfGraph=="NC"){
 			setXLabel("Number of Times");
 			setYLabel("Number of Collaborators");
 			setTitle("Number of Co Authors per Publication by " + authorName);
+			
+			//TODO fix so that it works for collaborators
+			double[] values = new double[AuthorObj.getSizeOfPublishedPapers()];
+			int size = calculations[calculations.length]-calculations[0];
+		    String[] names = new String[size];
+			Arrays.sort(calculations);
+			names[0] = String.valueOf(calculations[0]);
+			for(int k=1; k<=calculations.length;k++){
+				names[k] = names[k-1]+1;
+			}
+			for(String n: names){
+				int nInt = Integer.valueOf(n);
+				for(int i=0, j=0; i<=calculations.length; i++){
+					if(calculations[i]==nInt){
+						values[j]++;
+					}
+					else{
+						j++;
+					}
+				}
+			}
+		    setValuesBar(values);
+		    setNamesBar(names);
+			
 		}
 		
 	}
@@ -185,6 +279,14 @@ public class Graph extends JFrame{
 
 	public void setNamesBar(String[] namesBar) {
 		this.namesBar = namesBar;
+	}
+
+	public Author getAuthorObj() {
+		return AuthorObj;
+	}
+
+	public void setAuthorObj(Author authorObj) {
+		AuthorObj = authorObj;
 	}
 	
 }
