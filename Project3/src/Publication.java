@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Comparator;
 
 
 public class Publication implements Comparable<Publication> {
@@ -184,6 +185,20 @@ public class Publication implements Comparable<Publication> {
 		out += "\n\tHyperlink = " + getLink();
 		
 		return out;
+	}
+	
+	/**
+	 *comparator to sort by first author
+	 */
+	private class PubCompAuthor implements Comparator<Publication>{
+		@Override
+		public int compare(Publication a, Publication b) {
+			if(a.getAuthors() != null && a.getAuthors().size() > 0 && 
+					b.getAuthors() != null && b.getAuthors().size() > 0)
+				return a.getAuthors().get(0).compareTo(b.getAuthors().get(0));
+			else
+				return 0;
+		}
 	}
 	
 	public ArrayList<String> getAuthors() {
