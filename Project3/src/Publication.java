@@ -44,6 +44,10 @@ public class Publication implements Comparable<Publication> {
 	private String link;
 	
 	/**
+	 * method of comparing publications to each other
+	 */
+	public static int compareMethod = 0;
+	/**
 	 * Publication constructor without link
 	 * 
 	 * @param authors list of authors
@@ -155,8 +159,25 @@ public class Publication implements Comparable<Publication> {
 	}
 	
 	@Override
-	public int compareTo(Publication o) {
-		return this.getTitlePaper().compareTo(o.getTitlePaper());
+	public int compareTo(Publication other) {
+		if(compareMethod == 0)
+		{
+			if(this.getAuthors() != null && this.getAuthors().size() > 0 && 
+					other.getAuthors() != null && other.getAuthors().size() > 0)
+				return this.getAuthors().get(0).compareTo(other.getAuthors().get(0));
+			else
+				return 0;
+		}
+		else if(compareMethod == 1)
+		{
+			if(this.getTitlePaper() != null && this.getTitlePaper().length() > 0 && 
+					other.getTitlePaper() != null && other.getTitlePaper().length() > 0 )
+				return this.getTitlePaper().compareTo(other.getTitlePaper());
+			else
+				return 0;
+		}
+		else
+			return 0;
 	}
 	
 	public String toString() {

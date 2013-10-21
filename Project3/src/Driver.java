@@ -3,6 +3,7 @@ import java.io.IOException;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.Scanner;
 
@@ -72,7 +73,7 @@ public class Driver implements Serializable {
 				else JOptionPane.showMessageDialog(null, "Please enter a valid option number.");
 				
 				//Search for data here using specified criteria type
-				String results = "";
+				ArrayList<Publication> results = new ArrayList<Publication>();
 				//the results of the search
 				Boolean resultsBool = false;
 				
@@ -93,7 +94,7 @@ public class Driver implements Serializable {
 						
 						for(String paper : foundAuthorPapers)
 						{
-							results += pubList.get(paper).toString() + "\n" ;
+							results.add(pubList.get(paper));
 						}
 						
 						resultsBool = true;
@@ -106,20 +107,44 @@ public class Driver implements Serializable {
 					if(foundPub != null)
 						
 					{
-						results += foundPub.toString() + "\n" ;
+						results.add(pubList.get(foundPub));
 						resultsBool = true;
 					}
 				}
 				
 				//JOptionPane that displays search results
 				if(resultsBool==true){
-					JOptionPane.showMessageDialog(null, results);
+					
+					Object[] options = {"Author",
+		                    "Paper Title"};
+					int sortingMethod = JOptionPane.showOptionDialog(null,
+							"Sort by Author or Paper Title?",
+							"What Sorting Method to Use?", 
+							JOptionPane.YES_NO_CANCEL_OPTION,
+						    JOptionPane.QUESTION_MESSAGE,
+						    null,
+						    options,
+						    options[1]);
+					
+					results.get(0);
+					Publication.compareMethod = sortingMethod;
+					
+					Collections.sort(results);
+					
+					String out="";
+					
+					for(Publication Pub : results)
+					{
+						out+=Pub.toString() + "\n";
+					}
+					
+					JOptionPane.showMessageDialog(null, out);
 					
 					//Yes and No JOptionPane used to continue searching or quit program
 					if (JOptionPane.showConfirmDialog(null, "Would you like to save the results?", "WARNING", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
 					    //Yes option
 						//Write to file
-						writePublications("Results.txt", results);
+						writePublications("Results.txt", out);
 						JOptionPane.showMessageDialog(null, "The results were written to the file Results.txt");
 					} else 
 					{
