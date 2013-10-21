@@ -190,7 +190,7 @@ public class Publication implements Comparable<Publication> {
 	/**
 	 *comparator to sort by first author
 	 */
-	private class PubCompAuthor implements Comparator<Publication>{
+	public class PubCompAuthor implements Comparator<Publication>{
 		@Override
 		public int compare(Publication a, Publication b) {
 			if(a.getAuthors() != null && a.getAuthors().size() > 0 && 
@@ -204,7 +204,7 @@ public class Publication implements Comparable<Publication> {
 	/**
 	 *comparator to sort by paper title
 	 */
-	private class PubCompTitlePaper implements Comparator<Publication>{
+	public class PubCompTitlePaper implements Comparator<Publication>{
 		@Override
 		public int compare(Publication a, Publication b) {
 			if(a.getTitlePaper() != null && a.getTitlePaper().length() > 0 && 
