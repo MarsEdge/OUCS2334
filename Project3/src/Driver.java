@@ -166,29 +166,19 @@ public class Driver implements Serializable {
 					    graphOptions,
 					    graphOptions[5]);
 				
+					if(graphChoice<5){
+						Graph newGraph = new Graph((String) graphOptions[graphChoice]);
+	            		 newGraph.displayGraph();
+					}
+					else l=1;
 
-		        switch (graphChoice) {
-		            case 1:  Graph newGraphTP = new Graph("TP");
-		                     break;
-		            case 2:  Graph newGraphPY = new Graph("PY");
-		                     break;
-		            case 3:  Graph newGraphCPY = new Graph("CPY");
-		                     break;
-		            case 4:  Graph newGraphJAY = new Graph("JAY");
-		                     break;
-		            case 5:  Graph newGraphNC = new Graph("NC");
-		                     break;
-		            case 6:  l++;
-		            		 break;
-		            default: l++;
-		            		 break;
-		        }
 		        
 		      //TODO Yes and No JOptionPane used to show another graph or continue
 				if (JOptionPane.showConfirmDialog(null, "Would you like to see another graph?", "WARNING", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
+					l=0;
 				}
 				else {
-					l++;
+					l=1;
 				}
 		        
 			}

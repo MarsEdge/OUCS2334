@@ -73,7 +73,6 @@ public class Graph extends JFrame{
 	public Graph(String type){
 		
 		setTypeOfGraph(type);
-		displayGraph();
 	}
 	
 	
