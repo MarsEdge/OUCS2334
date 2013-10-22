@@ -68,9 +68,15 @@ public class Stats {
 	 * Helper function to get number of coauthors in ArrayList
 	 * @param pub publications to get number from
 	 * 
-	 * @return number of coauthors in ArrayList
+	 * @return number of coauthors as an Array of integers
 	 */
-	public static int NumCoAuthors(Publication pub) {
-		return pub.getAuthors().size();
+	public static int[] NumCoAuthors(ArrayList<Publication> pubs) {
+		int[] coAuthorNumArray = new int[pubs.size()];
+		
+		for(int i=0; i<=pubs.size(); i++){
+			coAuthorNumArray[i]= pubs.get(i).getAuthors().size();
+		}
+		
+		return coAuthorNumArray;
 	}
 }

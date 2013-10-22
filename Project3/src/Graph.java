@@ -208,12 +208,13 @@ public class Graph extends JFrame{
 			setTitle("Number of Co Authors per Publication by " + authorName);
 			
 			//TODO fix so that it works for collaborators
-			double[] values = new double[AuthorObj.getPublishedPapers().size()];
-			int size = calculations[calculations.length]-calculations[0];
+			int[] coAuthors = Stats.NumCoAuthors(pub);
+			Arrays.sort(coAuthors);
+			int size = coAuthors[coAuthors.length];
+			double[] values = new double[size];
 		    String[] names = new String[size];
-			Arrays.sort(calculations);
 			names[0] = String.valueOf(calculations[0]);
-			for(int k=1; k<=calculations.length;k++){
+			for(int k=1; k<=size;k++){
 				names[k] = names[k-1]+1;
 			}
 			for(String n: names){
