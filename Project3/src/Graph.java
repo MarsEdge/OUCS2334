@@ -73,6 +73,7 @@ public class Graph extends JFrame{
 	public Graph(String type){
 		
 		setTypeOfGraph(type);
+		displayGraph();
 	}
 	
 	
@@ -80,12 +81,11 @@ public class Graph extends JFrame{
 	 * Displays the desired graph in a GUI.
 	 * @param graph			Graph object which contains information for graph
 	 */
-	public static void displayGraph(Graph graph){
+	public void displayGraph(){
 		//GUI creation here
 		JFrame f = new JFrame();
-	    f.setSize(400, 300);
-	    //TODO fix this
-	    //f.getContentPane().add(new ChartPanel(valuesBar, namesBar, title));
+	    f.setSize(400, 300); 
+	    f.getContentPane().add(new ChartPanel(this.valuesBar, this.namesBar, this.title));
 
 	    WindowListener wndCloser = new WindowAdapter() {
 	      public void windowClosing(WindowEvent e) {

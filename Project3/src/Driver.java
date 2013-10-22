@@ -149,6 +149,38 @@ public class Driver implements Serializable {
 					JOptionPane.showMessageDialog(null, "The results were not saved.");
 				}
 				
+				//TODO add  for loop to repeat
+				//Yes and No JOptionPane used to show a graph
+				Object[] graphOptions = {"TP",
+	                    "PY",
+	                    "CPY",
+	                    "JAY",
+	                    "NC",
+	                    "None"};
+				int graphChoice = JOptionPane.showOptionDialog(null,
+						"Would you like to graph information for this author? \nIf yes, please choose one of the following types of graph: \n\nTP: Type of Publication \nPY: Publications per Year \nCPY: Conference Papers per Year \nJAY: Journal Articles per Year \nNC: Number of co-authors per publication",
+						"Would you like to create a graph using this information?", 
+						JOptionPane.YES_NO_CANCEL_OPTION,
+					    JOptionPane.QUESTION_MESSAGE,
+					    null,
+					    graphOptions,
+					    graphOptions[1]);
+				
+
+		        switch (graphChoice) {
+		            case 1:  Graph newGraphTP = new Graph("TP");
+		                     break;
+		            case 2:  Graph newGraphPY = new Graph("PY");
+		                     break;
+		            case 3:  Graph newGraphCPY = new Graph("CPY");
+		                     break;
+		            case 4:  Graph newGraphJAY = new Graph("JAY");
+		                     break;
+		            case 5:  Graph newGraphNC = new Graph("NC");
+		                     break;
+		            case 6:  break;
+		            default: break;
+		        }
 			}
 			else if(resultsBool==false) JOptionPane.showMessageDialog(null, "There were no publications with that matched your search.");
 			
