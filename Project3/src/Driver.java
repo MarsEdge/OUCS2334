@@ -149,7 +149,7 @@ public class Driver implements Serializable {
 					JOptionPane.showMessageDialog(null, "The results were not saved.");
 				}
 				
-				//TODO add  for loop to repeat
+			for(int l=0;l==0;){
 				//Yes and No JOptionPane used to show a graph
 				Object[] graphOptions = {"TP",
 	                    "PY",
@@ -164,7 +164,7 @@ public class Driver implements Serializable {
 					    JOptionPane.QUESTION_MESSAGE,
 					    null,
 					    graphOptions,
-					    graphOptions[1]);
+					    graphOptions[5]);
 				
 
 		        switch (graphChoice) {
@@ -178,9 +178,21 @@ public class Driver implements Serializable {
 		                     break;
 		            case 5:  Graph newGraphNC = new Graph("NC");
 		                     break;
-		            case 6:  break;
-		            default: break;
+		            case 6:  l++;
+		            		 break;
+		            default: l++;
+		            		 break;
 		        }
+		        
+		      //TODO Yes and No JOptionPane used to show another graph or continue
+				if (JOptionPane.showConfirmDialog(null, "Would you like to see another graph?", "WARNING", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
+				}
+				else {
+					l++;
+				}
+		        
+			}
+				
 			}
 			else if(resultsBool==false) JOptionPane.showMessageDialog(null, "There were no publications with that matched your search.");
 			

@@ -3,7 +3,6 @@ import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collections;
 
 import javax.swing.JFrame;
 
@@ -85,7 +84,7 @@ public class Graph extends JFrame{
 	public void displayGraph(){
 		//GUI creation here
 		JFrame f = new JFrame();
-	    f.setSize(400, 300); 
+	    f.setSize(600, 500); 
 	    f.getContentPane().add(new ChartPanel(this.valuesBar, this.namesBar, this.title));
 
 	    WindowListener wndCloser = new WindowAdapter() {
@@ -125,18 +124,20 @@ public class Graph extends JFrame{
 			setXLabel("Number of Publications");
 			setYLabel("Year");
 			setTitle("Number of Publications Each Year by " + authorName);
-			double[] values = new double[AuthorObj.getPublishedPapers().size()];
-			int size = calculations[calculations.length]-calculations[0];
+			ArrayList<Publication> cPub = AuthorObj.getPublishedPapers();
+			int[] years = Stats.NumOfYears(cPub);
+			Arrays.sort(years);
+			int size = years[years.length]-years[0];
+			double[] values = new double[size];
 		    String[] names = new String[size];
-			Arrays.sort(calculations);
-			names[0] = String.valueOf(calculations[0]);
-			for(int k=1; k<=calculations.length;k++){
+			names[0] = String.valueOf(years[0]);
+			for(int k=1; k<=size;k++){
 				names[k] = names[k-1]+1;
 			}
 			for(String n: names){
 				int nInt = Integer.valueOf(n);
-				for(int i=0, j=0; i<=calculations.length; i++){
-					if(calculations[i]==nInt){
+				for(int i=0, j=0; i<=size; i++){
+					if(years[i]==nInt){
 						values[j]++;
 					}
 					else{
@@ -152,18 +153,20 @@ public class Graph extends JFrame{
 			setXLabel("Number of Conference Papers");
 			setYLabel("Year");
 			setTitle("Number of Conference Papers Each Year by " + authorName);
-			double[] values = new double[AuthorObj.getPublishedPapers().size()];
-			int size = calculations[calculations.length]-calculations[0];
+			ArrayList<Publication> jPub = AuthorObj.getPublishedPapers();
+			int[] years = Stats.NumOfYears(jPub);
+			Arrays.sort(years);
+			int size = years[years.length]-years[0];
+			double[] values = new double[size];
 		    String[] names = new String[size];
-			Arrays.sort(calculations);
-			names[0] = String.valueOf(calculations[0]);
-			for(int k=1; k<=calculations.length;k++){
+			names[0] = String.valueOf(years[0]);
+			for(int k=1; k<=size;k++){
 				names[k] = names[k-1]+1;
 			}
 			for(String n: names){
 				int nInt = Integer.valueOf(n);
-				for(int i=0, j=0; i<=calculations.length; i++){
-					if(calculations[i]==nInt){
+				for(int i=0, j=0; i<=size; i++){
+					if(years[i]==nInt){
 						values[j]++;
 					}
 					else{
@@ -179,18 +182,19 @@ public class Graph extends JFrame{
 			setXLabel("Number of Journal Articles");
 			setYLabel("Year");
 			setTitle("Number of Journal Articles Each Year by " + authorName);
-			double[] values = new double[AuthorObj.getPublishedPapers().size()];
-			int size = calculations[calculations.length]-calculations[0];
+			int[] years = Stats.NumOfYears(pub);
+			Arrays.sort(years);
+			int size = years[years.length]-years[0];
+			double[] values = new double[size];
 		    String[] names = new String[size];
-			Arrays.sort(calculations);
-			names[0] = String.valueOf(calculations[0]);
-			for(int k=1; k<=calculations.length;k++){
+			names[0] = String.valueOf(years[0]);
+			for(int k=1; k<=size;k++){
 				names[k] = names[k-1]+1;
 			}
 			for(String n: names){
 				int nInt = Integer.valueOf(n);
-				for(int i=0, j=0; i<=calculations.length; i++){
-					if(calculations[i]==nInt){
+				for(int i=0, j=0; i<=size; i++){
+					if(years[i]==nInt){
 						values[j]++;
 					}
 					else{
@@ -207,20 +211,20 @@ public class Graph extends JFrame{
 			setYLabel("Number of Collaborators");
 			setTitle("Number of Co Authors per Publication by " + authorName);
 			
-			//TODO fix so that it works for collaborators
+			//TODO make sure it works
 			int[] coAuthors = Stats.NumCoAuthors(pub);
 			Arrays.sort(coAuthors);
 			int size = coAuthors[coAuthors.length];
 			double[] values = new double[size];
 		    String[] names = new String[size];
-			names[0] = String.valueOf(calculations[0]);
+			names[0] = String.valueOf(coAuthors[0]);
 			for(int k=1; k<=size;k++){
 				names[k] = names[k-1]+1;
 			}
 			for(String n: names){
 				int nInt = Integer.valueOf(n);
-				for(int i=0, j=0; i<=calculations.length; i++){
-					if(calculations[i]==nInt){
+				for(int i=0, j=0; i<=size; i++){
+					if(coAuthors[i]==nInt){
 						values[j]++;
 					}
 					else{

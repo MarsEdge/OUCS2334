@@ -46,55 +46,6 @@ public class Author implements Comparable<Author>{
 		return true;
 	}
 	
-	public int[] valueCalculator(String desiredValue){
-		
-		int[] calculatedValues = new int[publishedPapers.size()];
-		ArrayList<String> conferencePapers = new ArrayList<String>();
-		ArrayList<String> journalPapers = new ArrayList<String>();
-		
-		if(desiredValue == "NC"){
-			//TODO calculate collaborations
-			/* needs to basically return the size of the ArrayList<String> of Authors
-			 * for every publication in publishedPapers and store in calculatedValues
-			 */
-
-		}
-		else if(desiredValue == "PY"){
-			//TODO get all year values from publishedPapers and store in calculateValues
-			//This should be able to be copied and pasted right into the last two todo statements
-			
-		}
-		else {
-			for(Publication p : publishedPapers){
-				/* TODO split publishedPapers into two lists. 
-				 * 1 of conference papers called conferencePapers (initialized above)
-				 * 1 of journal articles called journalPapers (initialized above)
-				*/
-				
-			}
-			if(desiredValue == "TP"){
-				calculatedValues = new int[2];
-				calculatedValues[0] = conferencePapers.size();
-				calculatedValues[1] = journalPapers.size();
-			}
-			
-			//for conference paper choice
-			else if(desiredValue == "CPY"){
-				calculatedValues = new int[conferencePapers.size()];
-				
-				//TODO copy section from PY if statement
-				
-			}
-			//for journal article choice
-			else if(desiredValue == "JAY"){
-				calculatedValues = new int[journalPapers.size()];
-				
-				//TODO copy section from PY if statement
-			}		
-		}
-		return calculatedValues;
-	}
-	
 	public String getName() {
 		return getNameFirst() + " " + getNameLast();
 	}

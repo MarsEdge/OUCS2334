@@ -287,6 +287,10 @@ public class Publication implements Comparable<Publication> {
 		return month + year;
 	}
 	
+	public String getYear() {
+		return year;
+	}
+	
 	public boolean setDate(String month, String year) {
 		this.month = month;
 		this.year = year;

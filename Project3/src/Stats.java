@@ -1,5 +1,4 @@
 import java.util.ArrayList;
-import java.util.HashMap;
 
 public class Stats {
 	
@@ -47,21 +46,14 @@ public class Stats {
 	 * 
 	 * @return number of different years in ArrayList
 	 */
-	public static int NumOfYears(ArrayList<Publication> pubs) {
-		int out = 0;
-		HashMap<String, Publication> pubMap = new HashMap<String, Publication>();
+	public static int[] NumOfYears(ArrayList<Publication> pubs) {
+		int[] numYears = new int[pubs.size()];
 		
-		for(Publication pub : pubs)
-		{
-			if(!pubMap.containsKey(pub.getDate()))
-			{
-				out++;
-				
-				pubMap.put(pub.getDate(), pub);
-			}
+		for(int i=0; i<=pubs.size(); i++){
+			numYears[i]= Integer.valueOf(pubs.get(i).getYear());
 		}
 		
-		return out;
+		return numYears;
 	}
 	
 	/**
@@ -79,4 +71,43 @@ public class Stats {
 		
 		return coAuthorNumArray;
 	}
+	
+	/**
+	 * Helper function get only conference papers from all publications
+	 * @param pubs publications to get papers from
+	 * 
+	 * @return ArrayList of conference papers found in pubs
+	 */
+	public static ArrayList<Publication> ListOfConferencePapers(ArrayList<Publication> pubs) {
+		ArrayList<Publication> papers = new ArrayList<Publication>();
+		
+		for(Publication p: pubs){
+			if((JournalArticle)(p) == null)
+			{
+				papers.add(p);
+			}
+		}
+		
+		return papers;
+	}
+	
+	/**
+	 * Helper function get only journal articles from all publications
+	 * @param pubs publications to get papers from
+	 * 
+	 * @return ArrayList of journal articles found in pubs
+	 */
+	public static ArrayList<Publication> ListOfJournalArticles(ArrayList<Publication> pubs) {
+		ArrayList<Publication> papers = new ArrayList<Publication>();
+		
+		for(Publication p: pubs){
+			if((JournalArticle)(p) != null)
+			{
+				papers.add(p);
+			}
+		}
+		
+		return papers;
+	}
+	
 }
