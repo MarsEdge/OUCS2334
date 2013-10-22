@@ -1,6 +1,7 @@
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 
@@ -105,7 +106,7 @@ public class Graph extends JFrame{
 	//Sets the variables used to create each graph given the type of graph
 	public void setTypeOfGraph(String typeOfGraph) {
 		this.typeOfGraph = typeOfGraph;
-		int[]calculations = AuthorObj.valueCalculator(typeOfGraph);
+		ArrayList<Publication> pub = AuthorObj.getPublishedPapers();
 		
 		if(typeOfGraph=="TP"){
 			setXLabel("Number of Publications");
@@ -113,9 +114,9 @@ public class Graph extends JFrame{
 			setTitle("Number of Each Type of Publication by " + authorName);
 			double[] values = new double[2];
 		    String[] names = new String[2];
-		    values[0] = calculations[0];
+		    values[0] = Stats.NumPubs(pub)-Stats.NumJournals(pub);
 		    names[0] = "Conference Paper";
-		    values[1] = calculations[1];
+		    values[1] = Stats.NumJournals(pub);
 		    names[1] = "Journal Article";
 		    setValuesBar(values);
 		    setNamesBar(names);
