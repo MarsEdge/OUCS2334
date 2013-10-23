@@ -49,6 +49,9 @@ public class Graph extends JFrame{
 	 */
 	private Author author;
 	
+	/**
+	 * Map of all authors
+	 */
 	private HashMap<String, Author> authors;
 	
 	/**
@@ -262,10 +265,6 @@ public class Graph extends JFrame{
 		return yLabel;
 	}
 
-	public void setAuthor(String authorName){
-		author = authors.get(authorName);
-	}
-
 	public double[] getValuesBar() {
 		return valuesBar;
 	}
@@ -284,6 +283,10 @@ public class Graph extends JFrame{
 
 	public Author getAuthor() {
 		return author;
+	}
+	
+	public void setAuthor(String authorName){
+		author = authors.get(authorName);
 	}
 
 	public HashMap<String, Author> getAuthors() {
