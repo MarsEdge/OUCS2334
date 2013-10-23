@@ -123,16 +123,20 @@ public class Stats {
 	 * Helper function to get number of coauthors in ArrayList
 	 * @param pub publications to get number from
 	 * 
-	 * @return number of coauthors as an Array of integers
+	 * @return HashMap of Publication name and number of coauthors
 	 */
-	public static int[] NumCoAuthors(ArrayList<Publication> pubs) {
-		int[] coAuthorNumArray = new int[pubs.size()];
+	public static HashMap<String, Integer> NumCoAuthors(ArrayList<Publication> pubs) {
+		HashMap<String, Integer> out = new HashMap<String, Integer>();
 		
-		for(int i=0; i<pubs.size(); i++){
-			coAuthorNumArray[i]= pubs.get(i).getAuthors().size();
+		for(Publication pub : pubs)
+		{
+			 if(!out.containsKey(pub.getTitlePaper()))
+			 {
+				 out.put(pub.getTitlePaper().substring(0, 12), pub.getAuthors().size()-1);
+			 }
 		}
 		
-		return coAuthorNumArray;
+		return out;
 	}
 	
 	/**
