@@ -3,6 +3,8 @@ import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
+import java.util.HashMap;
 
 import javax.swing.JFrame;
 
@@ -52,9 +54,8 @@ public class Graph extends JFrame{
 	/**
 	 * Author object used for calculating data for the author
 	 */
-	private Author AuthorObj = new Author(authorName);
+	private Author AuthorObj = new Author("");
 	
-
 	/**
 	 * Default Graph shown at start of program
 	 */
@@ -112,7 +113,7 @@ public class Graph extends JFrame{
 			setTitle("Number of Each Type of Publication by " + authorName);
 			double[] values = new double[2];
 		    String[] names = new String[2];
-		    values[0] = Stats.NumPubs(pub)-Stats.NumJournals(pub);
+		    values[0] = Stats.NumCPs(pub)-Stats.NumJournals(pub);
 		    names[0] = "Conference Paper";
 		    values[1] = Stats.NumJournals(pub);
 		    names[1] = "Journal Article";
@@ -124,26 +125,19 @@ public class Graph extends JFrame{
 			setYLabel("Year");
 			setTitle("Number of Publications Each Year by " + authorName);
 			ArrayList<Publication> cPub = AuthorObj.getPublishedPapers();
-			int[] years = Stats.NumOfYears(cPub);
-			Arrays.sort(years);
-			int size = years[years.length]-years[0];
-			double[] values = new double[size];
-		    String[] names = new String[size];
-			names[0] = String.valueOf(years[0]);
-			for(int k=1; k<=size;k++){
-				names[k] = names[k-1]+1;
-			}
-			for(String n: names){
-				int nInt = Integer.valueOf(n);
-				for(int i=0, j=0; i<=size; i++){
-					if(years[i]==nInt){
-						values[j]++;
-					}
-					else{
-						j++;
-					}
-				}
-			}
+			HashMap<String, Integer> years = Stats.NumOfYears(cPub);
+			
+			Integer[] valuesObj = (Integer[]) years.values().toArray();
+		    String[] names = (String[]) years.keySet().toArray();
+		    
+		    double[] values;
+		    
+		    //convert valuesObj to primitive type
+		    for(int i; i<valuesObj.length; i++)
+		    {
+		    	values[i] = valuesObj[i];
+		    }
+		    
 		    setValuesBar(values);
 		    setNamesBar(names);
 			
@@ -153,7 +147,7 @@ public class Graph extends JFrame{
 			setYLabel("Year");
 			setTitle("Number of Conference Papers Each Year by " + authorName);
 			ArrayList<Publication> jPub = AuthorObj.getPublishedPapers();
-			int[] years = Stats.NumOfYears(jPub);
+			int[] years = Stats.NumOfCPYears(jPub);
 			Arrays.sort(years);
 			int size = years[years.length]-years[0];
 			double[] values = new double[size];

@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class Stats {
 	
@@ -8,7 +9,7 @@ public class Stats {
 	 * 
 	 * @return number of Publications in ArrayList
 	 */
-	public static int NumPubs(ArrayList<Publication> pubs) {
+	public static int NumCPs(ArrayList<Publication> pubs) {
 		int out=0;
 		
 		for(Publication pub : pubs)
@@ -46,11 +47,46 @@ public class Stats {
 	 * 
 	 * @return number of different years in ArrayList
 	 */
-	public static int[] NumOfYears(ArrayList<Publication> pubs) {
-		int[] numYears = new int[pubs.size()];
+	public static HashMap<String, Integer> NumOfYears(ArrayList<Publication> pubs) {
+		HashMap<String, Integer> numYears = new HashMap<String, Integer>();
 		
-		for(int i=0; i<=pubs.size(); i++){
-			numYears[i]= Integer.valueOf(pubs.get(i).getYear());
+		for(Publication pub : pubs)
+		{
+			 if(numYears.get(pub.getDate()) == null)
+			 {
+				 numYears.put(pub.getDate(), 1);
+			 }
+			 else
+			 {
+				 numYears.put(pub.getDate(),numYears.get(pub.getDate()) + 1);
+			 }
+		}
+		
+		return numYears;
+	}
+	
+	/**
+	 * Helper function to get number of different years in ArrayList that are Publications
+	 * @param pubs publications to get number from
+	 * 
+	 * @return number of different years in ArrayList that are Publications
+	 */
+	public static HashMap<String, Integer> NumOfCPYears(ArrayList<Publication> pubs) {
+		HashMap<String, Integer> numYears = new HashMap<String, Integer>();
+		
+		for(Publication pub : pubs)
+		{
+			if((JournalArticle)(pub) == null)
+			{
+				if(numYears.get(pub.getDate()) == null)
+				{
+					numYears.put(pub.getDate(), 1);
+				}
+				else
+				{
+					numYears.put(pub.getDate(),numYears.get(pub.getDate()) + 1);
+				}
+			}
 		}
 		
 		return numYears;
