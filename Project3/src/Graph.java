@@ -71,8 +71,8 @@ public class Graph extends JFrame{
 	 * Constructor for a Graph given the type of graph asked for by the user
 	 * @param type        type of graph to create
 	 */
-	public Graph(String type){
-		
+	public Graph(String type, String authorName){
+		setAuthorName(authorName);
 		setTypeOfGraph(type);
 	}
 	
@@ -84,7 +84,8 @@ public class Graph extends JFrame{
 	public void displayGraph(){
 		//GUI creation here
 		JFrame f = new JFrame();
-	    f.setSize(600, 500); 
+		f.setSize(1000, 900);
+	    f.setLocation(0,0);
 	    f.getContentPane().add(new ChartPanel(this.valuesBar, this.namesBar, this.title));
 
 	    WindowListener wndCloser = new WindowAdapter() {
@@ -93,6 +94,7 @@ public class Graph extends JFrame{
 	      }
 	    };
 	    f.addWindowListener(wndCloser);
+	    f.pack();
 	    f.setVisible(true);
 	}
 
@@ -149,7 +151,7 @@ public class Graph extends JFrame{
 			ArrayList<Publication> jPub = AuthorObj.getPublishedPapers();
 			int[] years = Stats.NumOfCPYears(jPub);
 			Arrays.sort(years);
-			int size = years[years.length]-years[0];
+			int size = years[years.length-1]-years[0];
 			double[] values = new double[size];
 		    String[] names = new String[size];
 			names[0] = String.valueOf(years[0]);
@@ -177,7 +179,7 @@ public class Graph extends JFrame{
 			setTitle("Number of Journal Articles Each Year by " + authorName);
 			int[] years = Stats.NumOfYears(pub);
 			Arrays.sort(years);
-			int size = years[years.length]-years[0];
+			int size = years[years.length-1]-years[0];
 			double[] values = new double[size];
 		    String[] names = new String[size];
 			names[0] = String.valueOf(years[0]);
@@ -207,7 +209,7 @@ public class Graph extends JFrame{
 			//TODO make sure it works
 			int[] coAuthors = Stats.NumCoAuthors(pub);
 			Arrays.sort(coAuthors);
-			int size = coAuthors[coAuthors.length];
+			int size = coAuthors[coAuthors.length-1];
 			double[] values = new double[size];
 		    String[] names = new String[size];
 			names[0] = String.valueOf(coAuthors[0]);
@@ -261,6 +263,8 @@ public class Graph extends JFrame{
 	}
 
 	public void setAuthorName(String authorName){
+		Author auth = new Author(authorName);
+		setAuthorObj(auth);
 		this.authorName = authorName;
 	}
 

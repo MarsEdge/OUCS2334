@@ -63,8 +63,9 @@ public class Driver implements Serializable {
 			//Manages choice using if statements
 			
 			String search = "";
-			if(num==1){ search = JOptionPane.showInputDialog ( "You are searching by Name of Author. Please enter a name to search for" );}
-			else if(num==2){search = JOptionPane.showInputDialog ( "You are searching by Name of Article/Paper. Please enter a name to search for");}
+			int testIfAuthor = 0;		//Tests to make sure search string is an author name, for use later when creating graph
+			if(num==1){ testIfAuthor = 1; search = JOptionPane.showInputDialog ( "You are searching by Name of Author. Please enter a name to search for" );}
+			else if(num==2){testIfAuthor = 0;search = JOptionPane.showInputDialog ( "You are searching by Name of Article/Paper. Please enter a name to search for");}
 			else if(num==3){i=1; System.exit(-1);}
 			else JOptionPane.showMessageDialog(null, "Please enter a valid option number.");
 			
@@ -149,39 +150,50 @@ public class Driver implements Serializable {
 					JOptionPane.showMessageDialog(null, "The results were not saved.");
 				}
 				
-			for(int l=0;l==0;){
-				//Yes and No JOptionPane used to show a graph
-				Object[] graphOptions = {"TP",
-	                    "PY",
-	                    "CPY",
-	                    "JAY",
-	                    "NC",
-	                    "None"};
-				int graphChoice = JOptionPane.showOptionDialog(null,
-						"Would you like to graph information for this author? \nIf yes, please choose one of the following types of graph: \n\nTP: Type of Publication \nPY: Publications per Year \nCPY: Conference Papers per Year \nJAY: Journal Articles per Year \nNC: Number of co-authors per publication",
-						"Would you like to create a graph using this information?", 
-						JOptionPane.YES_NO_CANCEL_OPTION,
-					    JOptionPane.QUESTION_MESSAGE,
-					    null,
-					    graphOptions,
-					    graphOptions[5]);
 				
-					if(graphChoice<5){
-						Graph newGraph = new Graph((String) graphOptions[graphChoice]);
-	            		 newGraph.displayGraph();
-					}
-					else l=1;
+				//test to see if user searched for author, if not ask for author to use in graphs
+				if(testIfAuthor == 0){
+					search = JOptionPane.showInputDialog ( "Please enter an Author name to use in the graphs" );
+				}
+				
+				//graphing
+				for(int l=0;l==0;){
+					//Yes and No JOptionPane used to show a graph
+					Object[] graphOptions = {"TP",
+							"PY",
+							"CPY",
+							"JAY",
+							"NC",
+							"None"};
+					int graphChoice = JOptionPane.showOptionDialog(null,
+							"Would you like to graph information for this author? \nIf yes, please choose one of the following types of graph: \n\nTP: Type of Publication \nPY: Publications per Year \nCPY: Conference Papers per Year \nJAY: Journal Articles per Year \nNC: Number of co-authors per publication",
+							"Would you like to create a graph using this information?", 
+							JOptionPane.YES_NO_CANCEL_OPTION,
+							JOptionPane.QUESTION_MESSAGE,
+							null,
+							graphOptions,
+							graphOptions[5]);
+				
+						if(graphChoice<5){
+							Graph newGraph = new Graph((String) graphOptions[graphChoice],search);
+							newGraph.displayGraph();
+							
+							//TODO Yes and No JOptionPane used to show another graph or continue
+							if (JOptionPane.showConfirmDialog(null, "Would you like to see another graph?", "WARNING", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
+								l=0;
+							}
+							else {
+								l=1;
+							}
+						}
+						else if(graphChoice==5){
+							l=1;
+						}
 
 		        
-		      //TODO Yes and No JOptionPane used to show another graph or continue
-				if (JOptionPane.showConfirmDialog(null, "Would you like to see another graph?", "WARNING", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
-					l=0;
-				}
-				else {
-					l=1;
-				}
+						
 		        
-			}
+				}
 				
 			}
 			else if(resultsBool==false) JOptionPane.showMessageDialog(null, "There were no publications with that matched your search.");
