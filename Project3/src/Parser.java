@@ -158,6 +158,12 @@ public class Parser {
 							
 							year = next_line.split("\\ ")[1];
 						}
+						else if(next_line.length() >= 6 && Publication.isNumeric(next_line.substring(next_line.length()-2)))
+						{
+							Month = next_line.substring(0, next_line.length()-6);
+							
+							year = next_line.substring(next_line.length()-5, next_line.length()-1);
+						}
 						else
 							Month = next_line;
 					}
