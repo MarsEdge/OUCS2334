@@ -2,7 +2,6 @@ import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashMap;
 
 import javax.swing.JFrame;
@@ -125,9 +124,6 @@ public class Graph extends JFrame{
 		    names[1] = "Journal Article";
 		    setValuesBar(values);
 		    setNamesBar(names);
-		    
-		    System.out.println(values[0]);
-		    System.out.println(values[1]);
 		}
 		else if(typeOfGraph=="PY"){
 			setXLabel("Number of Publications");
@@ -214,30 +210,26 @@ public class Graph extends JFrame{
 			setYLabel("Number of Collaborators");
 			setTitle("Number of Co Authors per Publication by " + author.getName());
 			
-			//TODO make sure it works
-			int[] coAuthors = Stats.NumCoAuthors(pub);
-			Arrays.sort(coAuthors);
-			int size = coAuthors[coAuthors.length];
-			double[] values = new double[size];
-		    String[] names = new String[size];
-			names[0] = String.valueOf(coAuthors[0]);
-			for(int k=1; k<=size;k++){
-				names[k] = names[k-1]+1;
-			}
-			for(String n: names){
-				int nInt = Integer.valueOf(n);
-				for(int i=0, j=0; i<=size; i++){
-					if(coAuthors[i]==nInt){
-						values[j]++;
-					}
-					else{
-						j++;
-					}
-				}
-			}
-		    setValuesBar(values);
-		    setNamesBar(names);
+			HashMap<String, Integer> coAuthors = Stats.NumCoAuthors(pub);
 			
+			double[] values = new double[coAuthors.size()];
+		    String[] names = new String[coAuthors.size()];
+
+
+		    int index = 0;
+		    for (Integer value : coAuthors.values()) {
+		    	values[index] = value;
+		    	index++;
+		    }
+		    
+		    index = 0;
+		    for (String value : coAuthors.keySet()) {
+		    	names[index] = value;
+		    	index++;
+		    }
+		    
+		    setValuesBar(values);
+		    setNamesBar(names);			
 		}
 		
 	}
