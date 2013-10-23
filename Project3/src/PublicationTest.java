@@ -30,15 +30,4 @@ public class PublicationTest {
 		
 		Assert.assertEquals(pub.getDate(), "month year");
 	}
-
-	@Test
-	public void testCompareTo() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testGetAuthors() {
-		fail("Not yet implemented");
-	}
-
 }
