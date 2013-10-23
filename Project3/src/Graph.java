@@ -3,7 +3,6 @@ import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.HashMap;
 
 import javax.swing.JFrame;
@@ -37,11 +36,6 @@ public class Graph extends JFrame{
 	private String title;
 	
 	/**
-	 * the author whose data will be displayed
-	 */
-	private String authorName;
-	
-	/**
 	 * the values of each bar
 	 */
 	private double[] valuesBar;
@@ -54,7 +48,9 @@ public class Graph extends JFrame{
 	/**
 	 * Author object used for calculating data for the author
 	 */
-	private Author AuthorObj = new Author("");
+	private Author author;
+	
+	private HashMap<String, Author> authors;
 	
 	/**
 	 * Default Graph shown at start of program
@@ -64,15 +60,25 @@ public class Graph extends JFrame{
 		setXLabel("");
 		setYLabel("");
 		setTitle("");
-		setAuthorName("");
+		setAuthor("");
 	}
 	
 	/**
 	 * Constructor for a Graph given the type of graph asked for by the user
 	 * @param type        type of graph to create
 	 */
-	public Graph(String type, String authorName){
-		setAuthorName(authorName);
+	public Graph(String type){
+		
+		setTypeOfGraph(type);
+	}
+	
+	/**
+	 * Constructor for a Graph given the type of graph asked for by the user
+	 * @param type        type of graph to create
+	 */
+	public Graph(String type, String authorName, HashMap<String, Author> authors){
+		setAuthors(authors);
+		setAuthor(authorName);
 		setTypeOfGraph(type);
 	}
 	
@@ -84,8 +90,7 @@ public class Graph extends JFrame{
 	public void displayGraph(){
 		//GUI creation here
 		JFrame f = new JFrame();
-		f.setSize(1000, 900);
-	    f.setLocation(0,0);
+	    f.setSize(600, 500); 
 	    f.getContentPane().add(new ChartPanel(this.valuesBar, this.namesBar, this.title));
 
 	    WindowListener wndCloser = new WindowAdapter() {
@@ -94,7 +99,6 @@ public class Graph extends JFrame{
 	      }
 	    };
 	    f.addWindowListener(wndCloser);
-	    f.pack();
 	    f.setVisible(true);
 	}
 
@@ -107,96 +111,100 @@ public class Graph extends JFrame{
 	//Sets the variables used to create each graph given the type of graph
 	public void setTypeOfGraph(String typeOfGraph) {
 		this.typeOfGraph = typeOfGraph;
-		ArrayList<Publication> pub = AuthorObj.getPublishedPapers();
+		ArrayList<Publication> pub = author.getPublishedPapers();
 		
 		if(typeOfGraph=="TP"){
 			setXLabel("Number of Publications");
 			setYLabel("Type of Publication");
-			setTitle("Number of Each Type of Publication by " + authorName);
+			setTitle("Number of Each Type of Publication by " + author.getName());
 			double[] values = new double[2];
 		    String[] names = new String[2];
-		    values[0] = Stats.NumCPs(pub)-Stats.NumJournals(pub);
+		    values[0] = Stats.NumCPs(pub);
 		    names[0] = "Conference Paper";
 		    values[1] = Stats.NumJournals(pub);
 		    names[1] = "Journal Article";
 		    setValuesBar(values);
 		    setNamesBar(names);
+		    
+		    System.out.println(values[0]);
+		    System.out.println(values[1]);
 		}
 		else if(typeOfGraph=="PY"){
 			setXLabel("Number of Publications");
 			setYLabel("Year");
-			setTitle("Number of Publications Each Year by " + authorName);
-			ArrayList<Publication> cPub = AuthorObj.getPublishedPapers();
+			setTitle("Number of Publications Each Year by " + author.getName());
+			ArrayList<Publication> cPub = author.getPublishedPapers();
+			
 			HashMap<String, Integer> years = Stats.NumOfYears(cPub);
 			
-			Integer[] valuesObj = (Integer[]) years.values().toArray();
-		    String[] names = (String[]) years.keySet().toArray();
+		    String[] names = new String[years.size()];
 		    
-		    double[] values;
+		    double[] values = new double[years.size()];
 		    
-		    //convert valuesObj to primitive type
-		    for(int i; i<valuesObj.length; i++)
-		    {
-		    	values[i] = valuesObj[i];
+		    int index = 0;
+		    for (Integer value : years.values()) {
+		    	values[index] = value;
+		    	index++;
+		    }
+		    
+		    index = 0;
+		    for (String value : years.keySet()) {
+		    	names[index] = value;
+		    	index++;
 		    }
 		    
 		    setValuesBar(values);
 		    setNamesBar(names);
-			
 		}
 		else if(typeOfGraph=="CPY"){
 			setXLabel("Number of Conference Papers");
 			setYLabel("Year");
-			setTitle("Number of Conference Papers Each Year by " + authorName);
-			ArrayList<Publication> jPub = AuthorObj.getPublishedPapers();
-			int[] years = Stats.NumOfCPYears(jPub);
-			Arrays.sort(years);
-			int size = years[years.length-1]-years[0];
-			double[] values = new double[size];
-		    String[] names = new String[size];
-			names[0] = String.valueOf(years[0]);
-			for(int k=1; k<=size;k++){
-				names[k] = names[k-1]+1;
-			}
-			for(String n: names){
-				int nInt = Integer.valueOf(n);
-				for(int i=0, j=0; i<=size; i++){
-					if(years[i]==nInt){
-						values[j]++;
-					}
-					else{
-						j++;
-					}
-				}
-			}
+			setTitle("Number of Conference Papers Each Year by " + author.getName());
+			ArrayList<Publication> jPub = author.getPublishedPapers();
+			HashMap<String, Integer> years = Stats.NumOfCPYears(jPub);
+			
+			String[] names = new String[years.size()];
+			    
+		    double[] values = new double[years.size()];
+		    
+		    int index = 0;
+		    for (Integer value : years.values()) {
+		    	values[index] = value;
+		    	index++;
+		    }
+		    
+		    index = 0;
+		    for (String value : years.keySet()) {
+		    	names[index] = value;
+		    	index++;
+		    }
+		    
 		    setValuesBar(values);
 		    setNamesBar(names);
-		    
 		}
 		else if(typeOfGraph=="JAY"){
 			setXLabel("Number of Journal Articles");
 			setYLabel("Year");
-			setTitle("Number of Journal Articles Each Year by " + authorName);
-			int[] years = Stats.NumOfYears(pub);
-			Arrays.sort(years);
-			int size = years[years.length-1]-years[0];
-			double[] values = new double[size];
-		    String[] names = new String[size];
-			names[0] = String.valueOf(years[0]);
-			for(int k=1; k<=size;k++){
-				names[k] = names[k-1]+1;
-			}
-			for(String n: names){
-				int nInt = Integer.valueOf(n);
-				for(int i=0, j=0; i<=size; i++){
-					if(years[i]==nInt){
-						values[j]++;
-					}
-					else{
-						j++;
-					}
-				}
-			}
+			setTitle("Number of Journal Articles Each Year by " + author.getName());
+			ArrayList<Publication> jPub = author.getPublishedPapers();
+			HashMap<String, Integer> years = Stats.NumOfJounalYears(jPub);
+			
+			String[] names = new String[years.size()];
+			
+		    double[] values = new double[years.size()];
+		    
+		    int index = 0;
+		    for (Integer value : years.values()) {
+		    	values[index] = value;
+		    	index++;
+		    }
+		    
+		    index = 0;
+		    for (String value : years.keySet()) {
+		    	names[index] = value;
+		    	index++;
+		    }
+		    
 		    setValuesBar(values);
 		    setNamesBar(names);
 		    
@@ -204,12 +212,12 @@ public class Graph extends JFrame{
 		else if(typeOfGraph=="NC"){
 			setXLabel("Number of Times");
 			setYLabel("Number of Collaborators");
-			setTitle("Number of Co Authors per Publication by " + authorName);
+			setTitle("Number of Co Authors per Publication by " + author.getName());
 			
 			//TODO make sure it works
 			int[] coAuthors = Stats.NumCoAuthors(pub);
 			Arrays.sort(coAuthors);
-			int size = coAuthors[coAuthors.length-1];
+			int size = coAuthors[coAuthors.length];
 			double[] values = new double[size];
 		    String[] names = new String[size];
 			names[0] = String.valueOf(coAuthors[0]);
@@ -262,10 +270,8 @@ public class Graph extends JFrame{
 		return yLabel;
 	}
 
-	public void setAuthorName(String authorName){
-		Author auth = new Author(authorName);
-		setAuthorObj(auth);
-		this.authorName = authorName;
+	public void setAuthor(String authorName){
+		author = authors.get(authorName);
 	}
 
 	public double[] getValuesBar() {
@@ -284,12 +290,15 @@ public class Graph extends JFrame{
 		this.namesBar = namesBar;
 	}
 
-	public Author getAuthorObj() {
-		return AuthorObj;
+	public Author getAuthor() {
+		return author;
 	}
 
-	public void setAuthorObj(Author authorObj) {
-		AuthorObj = authorObj;
+	public HashMap<String, Author> getAuthors() {
+		return authors;
 	}
-	
+
+	public void setAuthors(HashMap<String, Author> authors) {
+		this.authors = authors;
+	}
 }

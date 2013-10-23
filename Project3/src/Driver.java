@@ -175,7 +175,7 @@ public class Driver implements Serializable {
 							graphOptions[5]);
 				
 						if(graphChoice<5){
-							Graph newGraph = new Graph((String) graphOptions[graphChoice],search);
+							Graph newGraph = new Graph((String) graphOptions[graphChoice],search, authorList);
 							newGraph.displayGraph();
 							
 							//TODO Yes and No JOptionPane used to show another graph or continue
