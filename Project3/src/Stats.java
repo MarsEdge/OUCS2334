@@ -14,7 +14,7 @@ public class Stats {
 		
 		for(Publication pub : pubs)
 		{
-			if((JournalArticle)(pub) == null)
+			if(!(pub instanceof JournalArticle))
 			{
 				out++;
 			}
@@ -33,7 +33,7 @@ public class Stats {
 		
 		for(Publication pub : pubs)
 		{
-			if((JournalArticle)(pub) != null)
+			if(pub instanceof JournalArticle)
 			{
 				out++;
 			}
@@ -52,7 +52,7 @@ public class Stats {
 		
 		for(Publication pub : pubs)
 		{
-			 if(numYears.get(pub.getDate()) == null)
+			 if(!numYears.containsKey(pub.getDate()))
 			 {
 				 numYears.put(pub.getDate(), 1);
 			 }
@@ -76,9 +76,36 @@ public class Stats {
 		
 		for(Publication pub : pubs)
 		{
-			if((JournalArticle)(pub) == null)
+			if(!(pub instanceof JournalArticle))
 			{
-				if(numYears.get(pub.getDate()) == null)
+				if(!numYears.containsKey(pub.getDate()))
+				{
+					numYears.put(pub.getDate(), 1);
+				}
+				else
+				{
+					numYears.put(pub.getDate(),numYears.get(pub.getDate()) + 1);
+				}
+			}
+		}
+		
+		return numYears;
+	}
+	
+	/**
+	 * Helper function to get number of different years in ArrayList that are Journal Articles
+	 * @param pubs publications to get number from
+	 * 
+	 * @return number of different years in ArrayList that are Journal Articles
+	 */
+	public static HashMap<String, Integer> NumOfJounalYears(ArrayList<Publication> pubs) {
+		HashMap<String, Integer> numYears = new HashMap<String, Integer>();
+		
+		for(Publication pub : pubs)
+		{
+			if(pub instanceof JournalArticle)
+			{
+				if(!numYears.containsKey(pub.getDate()))
 				{
 					numYears.put(pub.getDate(), 1);
 				}
@@ -118,7 +145,7 @@ public class Stats {
 		ArrayList<Publication> papers = new ArrayList<Publication>();
 		
 		for(Publication p: pubs){
-			if((JournalArticle)(p) == null)
+			if(!p.getClass().isInstance(JournalArticle.class))
 			{
 				papers.add(p);
 			}
@@ -137,7 +164,7 @@ public class Stats {
 		ArrayList<Publication> papers = new ArrayList<Publication>();
 		
 		for(Publication p: pubs){
-			if((JournalArticle)(p) != null)
+			if(p.getClass().isInstance(JournalArticle.class))
 			{
 				papers.add(p);
 			}
