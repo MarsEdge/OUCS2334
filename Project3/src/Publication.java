@@ -284,7 +284,7 @@ public class Publication implements Comparable<Publication> {
 	}
 	
 	public String getDate() {
-		return month + year;
+		return month + " " + year;
 	}
 	
 	public String getYear() {
