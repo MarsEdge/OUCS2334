@@ -138,43 +138,4 @@ public class Stats {
 		
 		return out;
 	}
-	
-	/**
-	 * Helper function get only conference papers from all publications
-	 * @param pubs publications to get papers from
-	 * 
-	 * @return ArrayList of conference papers found in pubs
-	 */
-	public static ArrayList<Publication> ListOfConferencePapers(ArrayList<Publication> pubs) {
-		ArrayList<Publication> papers = new ArrayList<Publication>();
-		
-		for(Publication p: pubs){
-			if(!p.getClass().isInstance(JournalArticle.class))
-			{
-				papers.add(p);
-			}
-		}
-		
-		return papers;
-	}
-	
-	/**
-	 * Helper function get only journal articles from all publications
-	 * @param pubs publications to get papers from
-	 * 
-	 * @return ArrayList of journal articles found in pubs
-	 */
-	public static ArrayList<Publication> ListOfJournalArticles(ArrayList<Publication> pubs) {
-		ArrayList<Publication> papers = new ArrayList<Publication>();
-		
-		for(Publication p: pubs){
-			if(p.getClass().isInstance(JournalArticle.class))
-			{
-				papers.add(p);
-			}
-		}
-		
-		return papers;
-	}
-	
 }
