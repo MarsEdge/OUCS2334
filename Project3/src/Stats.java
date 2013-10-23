@@ -49,7 +49,7 @@ public class Stats {
 	public static int[] NumOfYears(ArrayList<Publication> pubs) {
 		int[] numYears = new int[pubs.size()];
 		
-		for(int i=0; i<=pubs.size(); i++){
+		for(int i=0; i<pubs.size(); i++){
 			numYears[i]= Integer.valueOf(pubs.get(i).getYear());
 		}
 		
@@ -65,7 +65,7 @@ public class Stats {
 	public static int[] NumCoAuthors(ArrayList<Publication> pubs) {
 		int[] coAuthorNumArray = new int[pubs.size()];
 		
-		for(int i=0; i<=pubs.size(); i++){
+		for(int i=0; i<pubs.size(); i++){
 			coAuthorNumArray[i]= pubs.get(i).getAuthors().size();
 		}
 		
