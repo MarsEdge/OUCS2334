@@ -46,12 +46,13 @@ public class Stats {
 	 * 
 	 * @return number of different years in ArrayList
 	 */
-	public static int[] NumOfYears(ArrayList<Publication> pubs) {
-		int[] numYears = new int[pubs.size()];
+	public static ArrayList<Integer> NumOfYears(ArrayList<Publication> pubs) {
+		ArrayList<Integer> numYears = new ArrayList<Integer>();
 		
-		for(int i=0; i<pubs.size(); i++){
-			numYears[i]= Integer.valueOf(pubs.get(i).getYear());
+		for(Publication p:pubs){
+			numYears.add(Integer.valueOf(p.getYear()));
 		}
+		
 		
 		return numYears;
 	}

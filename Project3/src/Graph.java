@@ -3,6 +3,7 @@ import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 
 import javax.swing.JFrame;
 
@@ -59,11 +60,11 @@ public class Graph extends JFrame{
 	 * Default Graph shown at start of program
 	 */
 	public Graph(){
-		setTypeOfGraph("");
-		setXLabel("");
-		setYLabel("");
-		setTitle("");
-		setAuthorName("");
+		setTypeOfGraph("TP");
+		setXLabel("X");
+		setYLabel("Y");
+		setTitle("Sample Graph");
+		setAuthorName("Dean Hougen");
 	}
 	
 	/**
@@ -126,19 +127,21 @@ public class Graph extends JFrame{
 			setYLabel("Year");
 			setTitle("Number of Publications Each Year by " + authorName);
 			ArrayList<Publication> cPub = AuthorObj.getPublishedPapers();
-			int[] years = Stats.NumOfYears(cPub);
-			Arrays.sort(years);
-			int size = years[years.length]-years[0];
+			ArrayList<Integer> years = Stats.NumOfYears(cPub);
+			Collections.sort(years);
+			//System.out.println(years[years.length]);
+			//System.out.println(years[0]);
+			int size = years.get(years.size())-years.get(0);
 			double[] values = new double[size];
 		    String[] names = new String[size];
-			names[0] = String.valueOf(years[0]);
+			names[0] = String.valueOf(years.get(0));
 			for(int k=1; k<=size;k++){
 				names[k] = names[k-1]+1;
 			}
 			for(String n: names){
 				int nInt = Integer.valueOf(n);
 				for(int i=0, j=0; i<=size; i++){
-					if(years[i]==nInt){
+					if(years.get(i)==nInt){
 						values[j]++;
 					}
 					else{
@@ -155,19 +158,21 @@ public class Graph extends JFrame{
 			setYLabel("Year");
 			setTitle("Number of Conference Papers Each Year by " + authorName);
 			ArrayList<Publication> jPub = AuthorObj.getPublishedPapers();
-			int[] years = Stats.NumOfYears(jPub);
-			Arrays.sort(years);
-			int size = years[years.length-1]-years[0];
+			ArrayList<Integer> years = Stats.NumOfYears(jPub);
+			Collections.sort(years);
+			//System.out.println(years[years.length]);
+			//System.out.println(years[0]);
+			int size = years.get(years.size())-years.get(0);
 			double[] values = new double[size];
 		    String[] names = new String[size];
-			names[0] = String.valueOf(years[0]);
+			names[0] = String.valueOf(years.get(0));
 			for(int k=1; k<=size;k++){
 				names[k] = names[k-1]+1;
 			}
 			for(String n: names){
 				int nInt = Integer.valueOf(n);
 				for(int i=0, j=0; i<=size; i++){
-					if(years[i]==nInt){
+					if(years.get(i)==nInt){
 						values[j]++;
 					}
 					else{
@@ -183,19 +188,21 @@ public class Graph extends JFrame{
 			setXLabel("Number of Journal Articles");
 			setYLabel("Year");
 			setTitle("Number of Journal Articles Each Year by " + authorName);
-			int[] years = Stats.NumOfYears(pub);
-			Arrays.sort(years);
-			int size = years[years.length-1]-years[0];
+			ArrayList<Integer> years = Stats.NumOfYears(pub);
+			Collections.sort(years);
+			//System.out.println(years[years.length]);
+			//System.out.println(years[0]);
+			int size = years.get(years.size())-years.get(0);
 			double[] values = new double[size];
 		    String[] names = new String[size];
-			names[0] = String.valueOf(years[0]);
+			names[0] = String.valueOf(years.get(0));
 			for(int k=1; k<=size;k++){
 				names[k] = names[k-1]+1;
 			}
 			for(String n: names){
 				int nInt = Integer.valueOf(n);
 				for(int i=0, j=0; i<=size; i++){
-					if(years[i]==nInt){
+					if(years.get(i)==nInt){
 						values[j]++;
 					}
 					else{
