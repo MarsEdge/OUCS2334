@@ -76,8 +76,4 @@ public class Author implements Comparable<Author>{
 	public void setNameLast(String nameLast) {
 		this.nameLast = nameLast;
 	}
-	
-	public int getSizeOfPublishedPapers() {
-		return publishedPapers.size();
-	}
 }
