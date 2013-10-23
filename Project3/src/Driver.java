@@ -178,7 +178,6 @@ public class Driver implements Serializable {
 						Graph newGraph = new Graph((String) graphOptions[graphChoice],search, authorList);
 						newGraph.displayGraph();
 						
-						//TODO Yes and No JOptionPane used to show another graph or continue
 						if (JOptionPane.showConfirmDialog(null, "Would you like to see another graph?", "WARNING", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
 							l=0;
 						}
