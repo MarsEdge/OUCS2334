@@ -15,7 +15,8 @@ import javax.swing.JOptionPane;
  * CS 2334, Section 010
  * Oct 1, 2013
  * <P>
- * This class will allow you to read a file of publication information, search through the data, and write data onto a file.
+ * This class will allow you to read a file of publication information, search through the data,
+ *  write data onto a file, and display bar graphs of the data.
  * </P>
  *@version 1.0
  */
