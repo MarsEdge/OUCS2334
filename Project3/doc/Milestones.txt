@@ -1,0 +1,12 @@
+1. Implement Serializable for the list of publications and for any other classes necessary to save and load all publication and author data.
+	Driver implements Serializable
+2. Use object serialization to save and load the list of the publications to and from a binary file.
+	is Driver.writePublications()
+3. Implement a simple graphical display for showing counts of data.
+	is Graph
+4. Create a class to store information on individual authors.
+	is Author
+5. Use the HashMap class to save to and retrieve information on authors.
+	is Publication.authors
+6. Determine how to connect authors to publications and vice versa
+	uses pointers to Author instances throughout classes
