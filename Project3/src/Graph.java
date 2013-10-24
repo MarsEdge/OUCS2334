@@ -91,7 +91,6 @@ public class Graph extends JFrame{
 	
 	/**
 	 * Displays the desired graph in a GUI.
-	 * @param graph			Graph object which contains information for graph
 	 */
 	public void displayGraph(){
 		//GUI creation here

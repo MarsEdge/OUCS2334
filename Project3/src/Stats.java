@@ -121,7 +121,7 @@ public class Stats {
 	
 	/**
 	 * Helper function to get number of coauthors in ArrayList
-	 * @param pub publications to get number from
+	 * @param pubs publications to get number from
 	 * 
 	 * @return HashMap of Publication name and number of coauthors
 	 */
