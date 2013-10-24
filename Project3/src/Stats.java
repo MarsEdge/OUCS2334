@@ -52,13 +52,13 @@ public class Stats {
 		
 		for(Publication pub : pubs)
 		{
-			 if(!numYears.containsKey(pub.getDate()))
+			 if(!numYears.containsKey(pub.getYear()))
 			 {
-				 numYears.put(pub.getDate(), 1);
+				 numYears.put(pub.getYear(), 1);
 			 }
 			 else
 			 {
-				 numYears.put(pub.getDate(),numYears.get(pub.getDate()) + 1);
+				 numYears.put(pub.getYear(),numYears.get(pub.getYear()) + 1);
 			 }
 		}
 		
@@ -78,13 +78,13 @@ public class Stats {
 		{
 			if(!(pub instanceof JournalArticle))
 			{
-				if(!numYears.containsKey(pub.getDate()))
+				if(!numYears.containsKey(pub.getYear()))
 				{
-					numYears.put(pub.getDate(), 1);
+					numYears.put(pub.getYear(), 1);
 				}
 				else
 				{
-					numYears.put(pub.getDate(),numYears.get(pub.getDate()) + 1);
+					numYears.put(pub.getYear(),numYears.get(pub.getYear()) + 1);
 				}
 			}
 		}
@@ -105,13 +105,13 @@ public class Stats {
 		{
 			if(pub instanceof JournalArticle)
 			{
-				if(!numYears.containsKey(pub.getDate()))
+				if(!numYears.containsKey(pub.getYear()))
 				{
-					numYears.put(pub.getDate(), 1);
+					numYears.put(pub.getYear(), 1);
 				}
 				else
 				{
-					numYears.put(pub.getDate(),numYears.get(pub.getDate()) + 1);
+					numYears.put(pub.getYear(),numYears.get(pub.getYear()) + 1);
 				}
 			}
 		}

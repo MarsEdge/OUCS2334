@@ -1,10 +1,14 @@
+import java.awt.BorderLayout;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 
 import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.SwingConstants;
 
 
 public class Graph extends JFrame{
@@ -92,8 +96,13 @@ public class Graph extends JFrame{
 	public void displayGraph(){
 		//GUI creation here
 		JFrame f = new JFrame();
-	    f.setSize(600, 500); 
-	    f.getContentPane().add(new ChartPanel(this.valuesBar, this.namesBar, this.title));
+	    f.setSize(600, 500);
+	    JLabel xLabel = new JLabel(getXLabel());
+	    JLabel yLabel = new JLabel(getYLabel());
+	    yLabel.setHorizontalAlignment(SwingConstants.CENTER);
+	    f.add(xLabel, BorderLayout.WEST);
+	    f.add(yLabel, BorderLayout.SOUTH);
+	    f.getContentPane().add(new ChartPanel(this.valuesBar, this.namesBar, this.title), BorderLayout.CENTER);
 
 	    WindowListener wndCloser = new WindowAdapter() {
 	      public void windowClosing(WindowEvent e) {
@@ -210,10 +219,44 @@ public class Graph extends JFrame{
 		}
 		else if(typeOfGraph=="NC"){
 			setXLabel("Number of Times");
-			setYLabel("Number of Collaborators");
+			setYLabel("Number of Co Authors");
 			setTitle("Number of Co Authors per Publication by " + author.getName());
 			
 			HashMap<String, Integer> coAuthors = Stats.NumCoAuthors(pub);
+			
+			double[] values = new double[coAuthors.size()];
+		    //String[] names = new String[coAuthors.size()];
+		    double[] tempValues = new double[coAuthors.size()];
+		    
+		    int index = 0;
+		    for (Integer value : coAuthors.values()) {
+		    	tempValues[index] = value;
+		    	index++;
+		    }
+		    Arrays.sort(tempValues);
+		    int size = (int) tempValues[tempValues.length -1];
+		    String[] names = new String[size+1];
+		    values = new double[size+1];
+		    names[0] = "0";
+		    for(int k=1; k<=size;k++){
+	        	names[k] = String.valueOf(Integer.valueOf(names[k-1])+1);
+	        }
+		    
+		    for(String n: names){
+		    	double nDbl = (double) Integer.valueOf(n);
+		    	for(double t: tempValues){
+		    		if(t==nDbl){
+		    			values[(int) nDbl]++;
+		    		}
+		    	}
+	        }
+		    
+	        setValuesBar(values);
+	        setNamesBar(names);
+				
+			
+			
+			/*HashMap<String, Integer> coAuthors = Stats.NumCoAuthors(pub);
 			
 			double[] values = new double[coAuthors.size()];
 		    String[] names = new String[coAuthors.size()];
@@ -232,7 +275,8 @@ public class Graph extends JFrame{
 		    }
 		    
 		    setValuesBar(values);
-		    setNamesBar(names);			
+		    setNamesBar(names);	
+		    */		
 		}
 		
 	}
