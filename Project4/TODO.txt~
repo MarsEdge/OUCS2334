@@ -6,7 +6,7 @@ need class for
 		month / year
 		location
 		collection of conference chairs (scholars)
-		collection of conference program commitee members (scholars)
+		collection of conference program committee members (scholars)
 		collection of articles published
 	conference paper
 		collection of authors
@@ -16,7 +16,7 @@ need class for
 		optional link
 	journal
 		name of publisher
-		location wheere published
+		location where published
 		collection of volumes in journal
 	volume
 		collection of issues
@@ -40,7 +40,7 @@ need class for
 		research area(s)
 		collection of
 			publications
-			orginized conferences
+			organized conferences
 	ScholarshipModel
 		no duplicate scholars
 			notify if duplicate exists
@@ -64,24 +64,17 @@ need class for
 				some will be inactive
 				
 				options:
-					load scholarsip (init active)
+					load scholarship (init active)
 						if unsaved data
 							popup dialog asks to save / export / discard data before load
 						else
 							popup file explorer
 								read via bin
 						enables / disables buttons due to stuff existing
-					save scholarsip (init inactive)
+					save scholarship (init inactive)
 						active when data is entered
 						popup save dialog
-					import scholarsip (init active)
-						if unsaved data
-							popup dialog asks to save / export / discard data before load
-						else
-							popup file explorer
-								read via txt
-						enables / disables buttons due to stuff existing
-					export scholarsip (init inactive)
+					export scholarship (init inactive)
 						active when data is entered
 						popup save dialog
 		plot menu
@@ -90,11 +83,11 @@ need class for
 			3 vertical lists
 				title above each
 				set of buttons below
-					initally most buttons will be inactive except "add scholar"
+					initially most buttons will be inactive except "add scholar"
 				
 				left list
 					title = scholars
-					butons = 
+					buttons = 
 						"add scholar"
 							dialog popup
 								asks for:
@@ -103,19 +96,19 @@ need class for
 									research areas
 								1+ scholar = active "add serials" button
 						"delete selected scholars"
-							dialog popup to confim deleting
-							if causes empty author list in publicaiton, remove publication
-							if causes empty editor / program chair or reviewer / program commitee list, remove that serial
+							dialog popup to confirm deleting
+							if causes empty author list in publication, remove publication
+							if causes empty editor / program chair or reviewer / program committee list, remove that serial
 						"delete all scholars"
-							dialog popup to confim deleting
+							dialog popup to confirm deleting
 							all scholarship data is deleted
 				middle list
 					title = serials
 					buttons = 
 						"add serials"
-							askes for
+							asks for
 								serial info
-							when adding editor / program chair or reviewer / program commitee, user selects from list of available scholars
+							when adding editor / program chair or reviewer / program committee, user selects from list of available scholars
 							once first serial has been added, "add papers" becomes active
 						"delete selected serials"
 						"delete all serials"
@@ -123,7 +116,7 @@ need class for
 					title = papers
 					buttons = 
 						"add papers"
-							askes for
+							asks for
 								paper data
 							must be at least 1 author / serial data
 							user selects author from list of available scholars
@@ -135,15 +128,15 @@ need class for
 	display view
 		plot menu marked "plot"
 			has entries for
-				type of publicaiton
-				publicaitons per year
-				confernece papers per year
+				type of publication
+				publications per year
+				conference papers per year
 				journal articles per year
-				# of coauthors per publicaiton
+				# of coauthors per publication
 			creates new view unless already open
 				can be closed without closing the program
 			if any entries selected
-				user is askes what scholars to display from list
+				user is asks what scholars to display from list
 			if scholar for display view is deleted
 				close plot view
 		displays active bar chart
@@ -153,9 +146,6 @@ need class for
 		= "ScholarPubController"
 		ensures all views are updated properly
 ways to enter data for model
-	read in from txt file ("importing")
 	read in using object io ("loading")
 	typed in by user using input views ("entering")
-Text io
-	same as project 3
 
