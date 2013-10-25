@@ -114,7 +114,7 @@ public class AcademicPapersInputWindow extends JFrame {
 		// Set up the content pane and add all the panels to it.
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setLayout(new GridLayout(0, 1, 5, 5));
-		add(jmBar);
+		setJMenuBar(jmBar);
 		add(jtBar);
 		add(jplTitle);
 		add(jplAuthorNames);
