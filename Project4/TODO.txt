@@ -22,7 +22,7 @@ need class for
 		collection of issues
 	issue
 		month / year when was published
-		collection of 
+		collection of
 			editors (scholars)
 			reviewers (scholars)
 			articles published within issue
@@ -74,13 +74,6 @@ need class for
 					save scholarship (init inactive)
 						active when data is entered
 						popup save dialog
-					import scholarship (init active)
-						if unsaved data
-							popup dialog asks to save / export / discard data before load
-						else
-							popup file explorer
-								read via txt
-						enables / disables buttons due to stuff existing
 					export scholarship (init inactive)
 						active when data is entered
 						popup save dialog
@@ -153,9 +146,6 @@ need class for
 		= "ScholarPubController"
 		ensures all views are updated properly
 ways to enter data for model
-	read in from txt file ("importing")
 	read in using object io ("loading")
 	typed in by user using input views ("entering")
-Text io
-	same as project 3
 
