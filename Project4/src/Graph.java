@@ -126,7 +126,7 @@ public class Graph extends JFrame{
 		if(typeOfGraph=="TP"){
 			setXLabel("Number of Publications");
 			setYLabel("Type of Publication");
-			setTitle("Number of Each Type of Publication by " + getScholar().name.getNameFirst() + " " + getScholar().name.getNameLast());
+			setTitle("Number of Each Type of Publication by " + getScholar().getName().getNameFirst() + " " + getScholar().getName().getNameLast());
 			double[] values = new double[2];
 		    String[] names = new String[2];
 		    values[0] = Stats.NumCPs(pub);
@@ -139,7 +139,7 @@ public class Graph extends JFrame{
 		else if(typeOfGraph=="PY"){
 			setXLabel("Number of Publications");
 			setYLabel("Year");
-			setTitle("Number of Publications Each Year by " + getScholar().name.getNameFirst() + " " + getScholar().name.getNameLast());
+			setTitle("Number of Publications Each Year by " + getScholar().getName().getNameFirst() + " " + getScholar().getName().getNameLast());
 			ArrayList<Publication> cPub = getScholar().getPublishedPapers();
 			
 			HashMap<String, Integer> years = Stats.NumOfYears(cPub);
@@ -166,7 +166,7 @@ public class Graph extends JFrame{
 		else if(typeOfGraph=="CPY"){
 			setXLabel("Number of Conference Papers");
 			setYLabel("Year");
-			setTitle("Number of Conference Papers Each Year by " + getScholar().name.getNameFirst() + " " + getScholar().name.getNameLast());
+			setTitle("Number of Conference Papers Each Year by " + getScholar().getName().getNameFirst() + " " + getScholar().getName().getNameLast());
 			ArrayList<Publication> jPub = getScholar().getPublishedPapers();
 			HashMap<String, Integer> years = Stats.NumOfCPYears(jPub);
 			
@@ -192,7 +192,7 @@ public class Graph extends JFrame{
 		else if(typeOfGraph=="JAY"){
 			setXLabel("Number of Journal Articles");
 			setYLabel("Year");
-			setTitle("Number of Journal Articles Each Year by " + getScholar().name.getNameFirst() + " " + getScholar().name.getNameLast());
+			setTitle("Number of Journal Articles Each Year by " + getScholar().getName().getNameFirst() + " " + getScholar().getName().getNameLast());
 			ArrayList<Publication> jPub = getScholar().getPublishedPapers();
 			HashMap<String, Integer> years = Stats.NumOfJounalYears(jPub);
 			
@@ -219,7 +219,7 @@ public class Graph extends JFrame{
 		else if(typeOfGraph=="NC"){
 			setXLabel("Number of Times");
 			setYLabel("Number of Co Authors");
-			setTitle("Number of Co Authors per Publication by " + getScholar().name.getNameFirst() + " " + getScholar().name.getNameLast());
+			setTitle("Number of Co Authors per Publication by " + getScholar().getName().getNameFirst() + " " + getScholar().getName().getNameLast());
 			
 			HashMap<String, Integer> coAuthors = Stats.NumCoAuthors(pub);
 			
