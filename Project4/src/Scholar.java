@@ -2,15 +2,7 @@ import java.util.ArrayList;
 
 public class Scholar implements Comparable<Scholar>{
 	
-	/**
-	 * first name of the scholar
-	 */
-	private String nameFirst;
-	
-	/**
-	 * last name of the scholar
-	 */
-	private String nameLast;
+	public Name name;
 	
 	/**
 	 * publications published by this scholar
@@ -23,16 +15,16 @@ public class Scholar implements Comparable<Scholar>{
 	 * @param nameWhole name of author
 	 */
 	public Scholar(String nameWhole) {
-		setName(nameWhole);
+		name.setName(nameWhole);
 	}
 	
 	public String toString() {
-		return getName();
+		return name.getName();
 	}
 	
 	@Override
 	public int compareTo(Scholar arg0) {
-		return this.getName().compareTo(arg0.getName());
+		return this.name.getName().compareTo(arg0.name.getName());
 	}
 	
 	public ArrayList<Publication> getPublishedPapers()
@@ -44,36 +36,5 @@ public class Scholar implements Comparable<Scholar>{
 	{
 		publishedPapers.add(paper);
 		return true;
-	}
-	
-	public String getName() {
-		return getNameFirst() + " " + getNameLast();
-	}
-
-	public void setName(String nameWhole) {
-		if(nameWhole.contains(" ") == true)
-		{
-			String[] split = nameWhole.split("\\ ");
-			setNameLast(split[0]);
-			setNameFirst(split[split.length-1]);
-		}
-		else
-			setNameFirst(nameWhole);
-	}
-	
-	public String getNameFirst() {
-		return nameFirst;
-	}
-
-	public void setNameFirst(String nameFirst) {
-		this.nameFirst = nameFirst;
-	}
-
-	public String getNameLast() {
-		return nameLast;
-	}
-
-	public void setNameLast(String nameLast) {
-		this.nameLast = nameLast;
 	}
 }

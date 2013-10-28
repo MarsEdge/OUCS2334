@@ -13,5 +13,12 @@ public class Conference {
 	public void setSponsor(Name sponsor) {
 		this.sponsor = sponsor;
 	}
-	
+
+	public ArrayList<Meeting> getMeetings() {
+		return meetings;
+	}
+
+	public void setMeetings(ArrayList<Meeting> meetings) {
+		this.meetings = meetings;
+	}
 }
