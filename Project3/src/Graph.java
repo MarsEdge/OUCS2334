@@ -126,7 +126,7 @@ public class Graph extends JFrame{
 		if(typeOfGraph=="TP"){
 			setXLabel("Number of Publications");
 			setYLabel("Type of Publication");
-			setTitle("Number of Each Type of Publication by " + getAuthor().getNameFirst() + " " + getAuthor().getNameLast());
+			setTitle("Number of Each Type of Publication by " + getAuthor().getName());
 			double[] values = new double[2];
 		    String[] names = new String[2];
 		    values[0] = Stats.NumCPs(pub);
