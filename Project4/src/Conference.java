@@ -21,4 +21,12 @@ public class Conference {
 	public void setMeetings(ArrayList<Meeting> meetings) {
 		this.meetings = meetings;
 	}
+	
+	public void addMeeting(Meeting meeting) {
+		this.meetings.add(meeting);
+	}
+	
+	public void removeMeeting(Meeting meeting) {
+		this.meetings.remove(meeting);
+	}
 }
