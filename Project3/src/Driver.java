@@ -105,7 +105,7 @@ public class Driver implements Serializable {
 				if(foundPub != null)
 					
 				{
-					results.add(pubList.get(foundPub));
+					results.add(pubList.get(search));
 					resultsBool = true;
 				}
 			}
