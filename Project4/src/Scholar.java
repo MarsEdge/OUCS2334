@@ -9,6 +9,12 @@ public class Scholar implements Comparable<Scholar>{
 	 */
 	private ArrayList<Publication> publishedPapers = new ArrayList<Publication>();
 	
+	private ArrayList<String> affiliations;
+	
+	private ArrayList<String> researchAreas;
+	
+	private ArrayList<Conference> conferencesOrganized;
+	
 	/**
 	 * default constructor
 	 * 
@@ -40,9 +46,57 @@ public class Scholar implements Comparable<Scholar>{
 		return publishedPapers;
 	}
 	
-	public boolean addPublishedPaper(Publication paper)
+	public void addPublishedPaper(Publication paper)
 	{
 		publishedPapers.add(paper);
-		return true;
 	}
+
+	public ArrayList<String> getAffiliations() {
+		return affiliations;
+	}
+
+	public void setAffiliations(ArrayList<String> affiliations) {
+		this.affiliations = affiliations;
+	}
+	
+	public void addAffiliation(String affiliation) {
+		this.affiliations.add(affiliation);
+	}
+	
+	public void removeAffiliation(String affiliation) {
+		this.affiliations.remove(affiliation);
+	}
+
+	public ArrayList<String> getResearchAreas() {
+		return researchAreas;
+	}
+
+	public void setResearchAreas(ArrayList<String> researchAreas) {
+		this.researchAreas = researchAreas;
+	}
+	
+	public void addResearchArea(String area) {
+		this.researchAreas.add(area);
+	}
+	
+	public void removeResearchArea(String area) {
+		this.researchAreas.remove(area);
+	}
+
+	public ArrayList<Conference> getConferencesOrganized() {
+		return conferencesOrganized;
+	}
+
+	public void setConferencesOrganized(ArrayList<Conference> conferencesOrganized) {
+		this.conferencesOrganized = conferencesOrganized;
+	}
+	
+	public void addConferencesOrganized(Conference conference) {
+		this.conferencesOrganized.add(conference);
+	}
+	
+	public void removeConferencesOrganized(Conference conference) {
+		this.conferencesOrganized.remove(conference);
+	}
+	
 }
