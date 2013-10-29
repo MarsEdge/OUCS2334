@@ -12,6 +12,9 @@ public class JournalArticle extends Publication {
 	 */
 	private String issue;
 	
+	/** journal the article was published in */
+	private Journal journal;
+	
 	/**
 	 * JournalArticle constructor without link
 	 * 
@@ -95,5 +98,13 @@ public class JournalArticle extends Publication {
 		}
 		this.issue = "";
 		return false;
+	}
+
+	public Journal getJournal() {
+		return journal;
+	}
+
+	public void setJournal(Journal journal) {
+		this.journal = journal;
 	}
 }
