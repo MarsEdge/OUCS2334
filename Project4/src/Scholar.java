@@ -4,15 +4,16 @@ public class Scholar implements Comparable<Scholar>{
 	
 	private Name name;
 	
-	/**
-	 * publications published by this scholar
-	 */
+	/** publications published by this scholar */
 	private ArrayList<Publication> publishedPapers = new ArrayList<Publication>();
 	
+	/** institutional affiliation(s) */
 	private ArrayList<String> affiliations;
 	
+	/** areas of research */
 	private ArrayList<String> researchAreas;
 	
+	/** conferences organized by this scholar */
 	private ArrayList<Conference> conferencesOrganized;
 	
 	/**
