@@ -2,8 +2,10 @@ import java.util.ArrayList;
 
 public class Conference {
 	
+	/** Conference sponsor */
 	private Name sponsor;
 	
+	/** list of all meetings at conference */
 	private ArrayList<Meeting> meetings;
 
 	public Name getSponsor() {
