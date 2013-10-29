@@ -2,20 +2,37 @@ import java.util.HashMap;
 
 public class Meeting {
 	
+	/** meeting date */
 	private Date date;
 	
+	/** meeting location */
 	private Location location; 
 	
+	/** meeting committee chairs */
 	private HashMap<String, Scholar> chairs;
 	
+	/** meeting committee members */
 	private HashMap<String, Scholar> committeeMembers;
 	
+	/** meeting publications */
 	private HashMap<String, Publication> publications;
 	
+	/**
+	 * default constructor
+	 */
 	public Meeting() {
 		//TODO implement
 	}
 	
+	/**
+	 * constructor with all fields
+	 * 
+	 * @param date meeting date
+	 * @param location meeting location
+	 * @param chairs meeting committee chairs
+	 * @param committeeMembers meeting committee members
+	 * @param publications meeting publications
+	 */
 	public Meeting(Date date, Location location, HashMap<String, Scholar> chairs, 
 			HashMap<String, Scholar> committeeMembers, 
 			HashMap<String, Publication> publications) {
