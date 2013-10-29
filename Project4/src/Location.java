@@ -5,7 +5,15 @@ public class Location {
 	private String state;
 	
 	private String country;
-
+	
+	public Location() {
+		//TODO implement
+	}
+	
+	public Location(String city, String state, String country) {
+		//TODO implement
+	}
+	
 	public String getCity() {
 		return city;
 	}
