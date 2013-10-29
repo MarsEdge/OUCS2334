@@ -2,12 +2,16 @@ import java.util.HashMap;
 
 public class Issue {
 	
+	/** publication date */
 	private Date pubDate;
 	
+	/** map of issue editors */
 	private HashMap<String, Scholar> editors;
 	
+	/** map of issue reviewers */
 	private HashMap<String, Scholar> reviewers;
 	
+	/** map of articles in issue */
 	private HashMap<String, JournalArticle> articles;
 
 	public Date getPubDate() {
