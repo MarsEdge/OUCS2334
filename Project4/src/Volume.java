@@ -2,6 +2,7 @@ import java.util.ArrayList;
 
 public class Volume {
 	
+	/** issues in this volume */
 	private ArrayList<Issue> issues;
 
 	public ArrayList<Issue> getIssues() {
