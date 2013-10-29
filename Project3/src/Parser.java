@@ -246,7 +246,8 @@ public class Parser {
 			{
 				if(author.contains(",") == true)
 				{
-					out.add(author.split("\\, ")[1] + " " + author.split("\\, ")[0]);
+					String[] splits = author.split("\\, ");
+					out.add(splits[splits.length-1] + " " + splits[0]);
 				}
 				else if(author != null)
 				{
