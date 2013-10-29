@@ -19,12 +19,12 @@ public class Scholar implements Comparable<Scholar>{
 	}
 	
 	public String toString() {
-		return name.getName();
+		return name.getNameFull();
 	}
 	
 	@Override
 	public int compareTo(Scholar arg0) {
-		return this.name.getName().compareTo(arg0.name.getName());
+		return this.name.getNameFull().compareTo(arg0.name.getNameFull());
 	}
 	
 	public Name getName() {

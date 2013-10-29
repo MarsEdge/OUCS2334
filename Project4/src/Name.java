@@ -10,7 +10,7 @@ public class Name {
 	 */
 	private String nameLast;
 	
-	public String getName() {
+	public String getNameFull() {
 		return getNameFirst() + " " + getNameLast();
 	}
 
