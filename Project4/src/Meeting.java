@@ -11,7 +11,17 @@ public class Meeting {
 	private HashMap<String, Scholar> committeeMembers;
 	
 	private HashMap<String, Publication> publications;
-
+	
+	public Meeting() {
+		//TODO implement
+	}
+	
+	public Meeting(Date date, Location location, HashMap<String, Scholar> chairs, 
+			HashMap<String, Scholar> committeeMembers, 
+			HashMap<String, Publication> publications) {
+		//TODO implement
+	}
+	
 	public Date getDate() {
 		return date;
 	}
