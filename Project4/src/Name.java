@@ -10,6 +10,9 @@ public class Name {
 	 */
 	private String nameLast;
 	
+	/**
+	 * @return full name
+	 */
 	public String getNameFull() {
 		return getNameFirst() + " " + getNameLast();
 	}
@@ -25,6 +28,9 @@ public class Name {
 			setNameFirst(nameWhole);
 	}
 	
+	/**
+	 * @return first name
+	 */
 	public String getNameFirst() {
 		return nameFirst;
 	}
@@ -33,6 +39,9 @@ public class Name {
 		this.nameFirst = nameFirst;
 	}
 
+	/**
+	 * @return last name
+	 */
 	public String getNameLast() {
 		return nameLast;
 	}
