@@ -134,11 +134,8 @@ public class Scholarship implements Serializable{
 		
 	}
 
-
-
-
-
-	
-	
+	public static void main(String args[]) {
+		
+	}
 	
 }
