@@ -18,7 +18,7 @@ public class Scholarship implements Serializable{
 	private HashMap<String, Publication> pubMap;
 	
 	/**
-	 * No arguement constructor which creates an empty scholarship
+	 * No argument constructor which creates an empty scholarship
 	 */
 	public Scholarship(){
 	}
