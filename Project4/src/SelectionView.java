@@ -110,7 +110,8 @@ public class SelectionView {
 	
 	/**
 	 * Opens a graph given the type of graph and scholar
-	 * @param filename
+	 * @param typeOfGraph type of graph to open
+	 * @param scholar scholar who's graph to open
 	 */
 	private void openGraph(String typeOfGraph, Scholar scholar){
 		

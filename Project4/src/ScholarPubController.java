@@ -107,7 +107,7 @@ public class ScholarPubController {
 
 
 	/**
-	 * @param theView on which the listeners should be set
+	 * @param SelectionView on which the listeners should be set
 	 */
 	public void setInputWindow(SelectionView view) {
 		inputView = view;
