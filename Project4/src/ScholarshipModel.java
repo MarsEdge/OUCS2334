@@ -9,7 +9,6 @@ import java.util.ArrayList;
 
 /**
  * Model for scholarship
- * @author John Frashier with parts taken from Lab 6
  *
  */
 public class ScholarshipModel extends Scholarship{
