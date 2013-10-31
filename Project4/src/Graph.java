@@ -10,7 +10,11 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
 
-
+/**
+ * Used as display view
+ * @author John Frashier
+ *
+ */
 public class Graph extends JFrame{
 
 	/**

@@ -1,6 +1,6 @@
 import java.util.ArrayList;
 
-public class Journal {
+public class Journal extends Serial {
 	
 	/** publisher name */
 	private Name pubName;

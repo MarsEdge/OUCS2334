@@ -1,6 +1,6 @@
 import java.util.ArrayList;
 
-public class Conference {
+public class Conference extends Serial {
 	
 	/** Conference sponsor */
 	private Name sponsor;
