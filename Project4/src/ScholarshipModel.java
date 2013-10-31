@@ -33,52 +33,101 @@ public class ScholarshipModel extends Scholarship{
 		super();
 	}
 	
-
+	/**
+	 * Method to add a scholarship.
+	 * Uses the overridden method of the same name from the superclass
+	 * Then generates a new ActionEvent and notifies listeners, if any, of this change.
+	 */
 	public void addScholarship(Scholarship scholarship) {
 		super.addScholarship(scholarship);
 		processEvent(new ActionEvent(this, ActionEvent.ACTION_PERFORMED, "add scholarship"));
 	}
 	
+	/**
+	 * Method to add a scholar
+	 * Uses the overridden method of the same name from the superclass
+	 * Then generates a new ActionEvent and notifies listeners, if any, of this change.
+	 */
 	public void addScholar(Scholar scholar) {
 		super.addScholar(scholar);
 		processEvent(new ActionEvent(this, ActionEvent.ACTION_PERFORMED, "add scholar"));
 	}
 	
+	/**
+	 * Method to delete a scholar
+	 * Uses the overridden method of the same name from the superclass
+	 * Then generates a new ActionEvent and notifies listeners, if any, of this change.
+	 */
 	public void deleteSelectedScholar(Scholar scholar) {
 		super.deleteSelectedScholar(scholar);
 		processEvent(new ActionEvent(this, ActionEvent.ACTION_PERFORMED, "deletes selected scholar(s)"));
 	}
 	
+	/**
+	 * Method to delete all scholars
+	 * Uses the overridden method of the same name from the superclass
+	 * Then generates a new ActionEvent and notifies listeners, if any, of this change.
+	 */
 	public void deleteAllScholars() {
 		super.deleteAllScholars();
 		processEvent(new ActionEvent(this, ActionEvent.ACTION_PERFORMED, "deletes all scholars"));
 	}
 	
+	/**
+	 * Method to add a serial
+	 * Uses the overridden method of the same name from the superclass
+	 * Then generates a new ActionEvent and notifies listeners, if any, of this change.
+	 */
 	public void addSerial(Serial serial) {
 		super.addSerial(serial);
 		processEvent(new ActionEvent(this, ActionEvent.ACTION_PERFORMED, "add serial"));
 	}
 	
+	/**
+	 * Method to delete a serial
+	 * Uses the overridden method of the same name from the superclass
+	 * Then generates a new ActionEvent and notifies listeners, if any, of this change.
+	 */
 	public void deleteSelectedSerial(Serial serial) {
 		super.deleteSelectedSerial(serial);
 		processEvent(new ActionEvent(this, ActionEvent.ACTION_PERFORMED, "deletes selected serial(s)"));
 	}
 	
+	/**
+	 * Method to delete all serials
+	 * Uses the overridden method of the same name from the superclass
+	 * Then generates a new ActionEvent and notifies listeners, if any, of this change.
+	 */
 	public void deleteAllSerials() {
 		super.deleteAllSerials();
 		processEvent(new ActionEvent(this, ActionEvent.ACTION_PERFORMED, "deletes all serials"));
 	}
 	
+	/**
+	 * Method to add a paper
+	 * Uses the overridden method of the same name from the superclass
+	 * Then generates a new ActionEvent and notifies listeners, if any, of this change.
+	 */
 	public void addPaper(Publication pub) {
 		super.addPaper(pub);
 		processEvent(new ActionEvent(this, ActionEvent.ACTION_PERFORMED, "add paper"));
 	}
 	
+	/**
+	 * Method to delete a paper
+	 * Uses the overridden method of the same name from the superclass
+	 * Then generates a new ActionEvent and notifies listeners, if any, of this change.
+	 */
 	public void deleteSelectedPaper(Publication pub) {
 		super.deleteSelectedPaper(pub);
 		processEvent(new ActionEvent(this, ActionEvent.ACTION_PERFORMED, "deletes selected paper(s)"));
 	}
 	
+	/**
+	 * Method to delete all papers
+	 * Uses the overridden method of the same name from the superclass
+	 * Then generates a new ActionEvent and notifies listeners, if any, of this change.
+	 */
 	public void deleteAllPapers() {
 		super.deleteAllPapers();
 		processEvent(new ActionEvent(this, ActionEvent.ACTION_PERFORMED, "deletes all papers"));
@@ -101,6 +150,12 @@ public class ScholarshipModel extends Scholarship{
 			actionListenerList.remove(l);
 	}
 	
+	/**
+	 * Saves a scholarship
+	 * @param filename	file being saved to
+	 * @param scholarship	scholarhip object being saved
+	 * @throws IOException
+	 */
 	public void saveScholarship (String filename, ScholarshipModel scholarship) throws IOException {
 		FileOutputStream fileOutputStream = new FileOutputStream(filename);
 		ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream);
@@ -108,6 +163,12 @@ public class ScholarshipModel extends Scholarship{
 		objectOutputStream.close();
 	}
 	
+	/**
+	 * Loads a scholarship
+	 * @param filename		file being loaded
+	 * @throws IOException
+	 * @throws ClassNotFoundException
+	 */
 	public void loadScholarship(String filename) throws IOException, ClassNotFoundException {
 		FileInputStream fileInputStream = new FileInputStream(filename);
 		ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream);
