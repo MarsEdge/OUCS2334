@@ -20,26 +20,20 @@ public class ScholarshipModel extends Scholarship{
 	private static final long serialVersionUID = 1488399746422340039L;
 
 	/**
-	 * List to keep track of who is registered to listen for events from the academicPapersModel.
+	 * List to keep track of who is registered to listen for events from the ScholarshipModel.
 	 */
 	private ArrayList<ActionListener> actionListenerList;
 	
 
 	/**
-	 * No argument constructor creates an empty collection of academic papers using the no argument
+	 * No argument constructor creates an empty scholarship using the no argument
 	 * constructor of the superclass.
 	 */
 	public ScholarshipModel() {
 		super();
 	}
 	
-	/**
-	 * Method to add one academic paper to the collection of academic papers.
-	 * Uses the overridden method of the same name from the superclass to actually add the paper.
-	 * Then it generates a new ActionEvent and notifies listeners, if any, of this addition.
-	 * 
-	 * @param academicPaper 	The academic paper to be added to the collection.
-	 */
+
 	public void addScholarship(Scholarship scholarship) {
 		super.addScholarship(scholarship);
 		processEvent(new ActionEvent(this, ActionEvent.ACTION_PERFORMED, "add scholarship"));
@@ -55,8 +49,8 @@ public class ScholarshipModel extends Scholarship{
 		processEvent(new ActionEvent(this, ActionEvent.ACTION_PERFORMED, "deletes selected scholar(s)"));
 	}
 	
-	public void deleteAllScholars(Scholar scholar) {
-		super.deleteAllScholars(scholar);
+	public void deleteAllScholars() {
+		super.deleteAllScholars();
 		processEvent(new ActionEvent(this, ActionEvent.ACTION_PERFORMED, "deletes all scholars"));
 	}
 	
@@ -70,23 +64,23 @@ public class ScholarshipModel extends Scholarship{
 		processEvent(new ActionEvent(this, ActionEvent.ACTION_PERFORMED, "deletes selected serial(s)"));
 	}
 	
-	public void deleteAllSerials(Serial serial) {
-		super.deleteAllSerials(serial);
+	public void deleteAllSerials() {
+		super.deleteAllSerials();
 		processEvent(new ActionEvent(this, ActionEvent.ACTION_PERFORMED, "deletes all serials"));
 	}
 	
-	public void addPaper(Paper paper) {
-		super.addPaper(paper);
+	public void addPaper(Publication pub) {
+		super.addPaper(pub);
 		processEvent(new ActionEvent(this, ActionEvent.ACTION_PERFORMED, "add paper"));
 	}
 	
-	public void deleteSelectedPaper(Paper paper) {
-		super.deleteSelectedPaper(paper);
+	public void deleteSelectedPaper(Publication pub) {
+		super.deleteSelectedPaper(pub);
 		processEvent(new ActionEvent(this, ActionEvent.ACTION_PERFORMED, "deletes selected paper(s)"));
 	}
 	
-	public void deleteAllPapers(Paper paper) {
-		super.deleteAllPapers(paper);
+	public void deleteAllPapers() {
+		super.deleteAllPapers();
 		processEvent(new ActionEvent(this, ActionEvent.ACTION_PERFORMED, "deletes all papers"));
 	}
 	
@@ -119,7 +113,8 @@ public class ScholarshipModel extends Scholarship{
 		ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream);
 		ScholarshipModel scholarship = (ScholarshipModel) objectInputStream.readObject();
 		objectInputStream.close();
-		this.setAcademicPaperMap(scholarship.getScholarshipMap());
+		//this.setAcademicPaperMap(scholarship.getScholarList());
+		//fix this
 		
 		processEvent(new ActionEvent(this, ActionEvent.ACTION_PERFORMED, "read academic paper list"));
 	}
