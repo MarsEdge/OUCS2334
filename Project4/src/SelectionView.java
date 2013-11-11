@@ -1,16 +1,21 @@
+import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
 
 import javax.swing.JButton;
 import javax.swing.JFileChooser;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JMenu;
+import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
+import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 
 
-public class SelectionView {
+public class SelectionView extends JFrame{
 
 	//Creates all needed JMenuItems
 	private JMenuItem jmiLoad = new JMenuItem("Load Scholarship");
@@ -24,7 +29,8 @@ public class SelectionView {
 	private JMenuItem jmiJAY = new JMenuItem("Journal Articles Per Year");
 	private JMenuItem jmiCA = new JMenuItem("Coauthors Per Publication");
 	
-	//Creates all JMenus
+	//Creates all JMenus and JMenuBar
+	private JMenuBar jmBar = new JMenuBar();
 	private JMenu jmFile = new JMenu("File");
 	private JMenu jmPlot = new JMenu("Plot");
 	
@@ -48,6 +54,11 @@ public class SelectionView {
 	private JScrollPane jspScholars = new JScrollPane(jlScholars);
 	private JScrollPane jspSerials = new JScrollPane(jlSerials);
 	private JScrollPane jspPapers = new JScrollPane(jlPapers);
+	
+	//Creates all JLabels
+	private JLabel jlblScholar = new JLabel("Scholar");
+	private JLabel jlblSerial = new JLabel("Serial");
+	private JLabel jlblPaper = new JLabel("Paper");
 
 	
 	// Creates a JFileChooser
@@ -59,6 +70,60 @@ public class SelectionView {
 	public SelectionView(){
 		
 		//Action listeners will be in here
+		
+		setTitle("Add New Academic Papers to Your List of Academic Papers");
+		
+		// TODO: Add file menu and its contents and toolbar
+		
+		
+		// Create panels for author names, paper titles, publisher names, 
+		// publication dates, and type of publication buttons
+		
+		JPanel jplScholar = new JPanel(new GridLayout(5, 1));
+		jplScholar.add(jlblScholar);
+		jplScholar.add(jspScholars);
+		jplScholar.add(jbAddScholar);
+		jplScholar.add(jbDeleteSelectedScholar);
+		jplScholar.add(jbDeleteAllScholar);
+		
+		JPanel jplSerial = new JPanel(new GridLayout(1, 0, 5, 5));
+		jplSerial.add(jlblSerial);
+		jplSerial.add(jspSerials);
+		jplSerial.add(jbAddSerial);
+		jplSerial.add(jbDeleteSelectedSerial);
+		jplSerial.add(jbDeleteAllSerial);
+		
+		JPanel jplPaper = new JPanel(new GridLayout(1, 0, 5, 5));
+		jplPaper.add(jlblPaper);
+		jplPaper.add(jspPapers);
+		jplPaper.add(jbAddPaper);
+		jplPaper.add(jbDeleteSelectedPaper);
+		jplPaper.add(jbDeleteAllPaper);
+		
+		jmFile.add(jmiLoad);
+		jmFile.add(jmiSave);
+		jmFile.add(jmiImport);
+		jmFile.add(jmiExport);
+		jmFile.add(jmiExit);
+		
+		jmPlot.add(jmiTP);
+		jmPlot.add(jmiPY);
+		jmPlot.add(jmiCPY);
+		jmPlot.add(jmiJAY);
+		jmPlot.add(jmiCA);
+		
+		jmBar.add(jmFile);
+		jmBar.add(jmPlot);
+
+		// Set up the content pane and add all the panels to it.
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setLayout(new GridLayout(1, 3, 5, 5));
+		setJMenuBar(jmBar);
+		add(jplScholar);
+		add(jplSerial);
+		add(jplPaper);
+		pack();
+		setVisible(true);
 		
 	}
 	
