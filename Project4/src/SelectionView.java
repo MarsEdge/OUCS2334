@@ -17,11 +17,14 @@ import javax.swing.JScrollPane;
 
 public class SelectionView extends JFrame{
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 2451946204670756691L;
+	
 	//Creates all needed JMenuItems
 	private JMenuItem jmiLoad = new JMenuItem("Load Scholarship");
 	private JMenuItem jmiSave = new JMenuItem("Save Scholarship");
-	private JMenuItem jmiImport = new JMenuItem("Import Scholarship");
-	private JMenuItem jmiExport = new JMenuItem("Export Scholarship");
 	private JMenuItem jmiExit = new JMenuItem("Exit");
 	private JMenuItem jmiTP = new JMenuItem("Type of Publicataion");
 	private JMenuItem jmiPY = new JMenuItem("Publications Per Year");
@@ -69,41 +72,64 @@ public class SelectionView extends JFrame{
 	 */
 	public SelectionView(){
 		
-		//Action listeners will be in here
-		
 		setTitle("Add New Academic Papers to Your List of Academic Papers");
-		
-		// TODO: Add file menu and its contents and toolbar
-		
-		
-		// Create panels for author names, paper titles, publisher names, 
-		// publication dates, and type of publication buttons
-		
-		JPanel jplScholar = new JPanel(new GridLayout(5, 1));
-		jplScholar.add(jlblScholar);
+
+		JPanel jplScholar = new JPanel(new GridLayout(3, 1, 2, 2));
+		JPanel scholarLabelPanel = new JPanel();
+		JPanel scholarButtonPanel = new JPanel(new GridLayout(3, 1));
+		JPanel scholarAddPanel = new JPanel();
+		JPanel scholarDelPanel = new JPanel();
+		JPanel scholarDelAllPanel = new JPanel();
+		scholarAddPanel.add(jbAddScholar);
+		scholarDelPanel.add(jbDeleteSelectedScholar);
+		scholarDelAllPanel.add(jbDeleteAllScholar);
+		scholarButtonPanel.add(scholarAddPanel);
+		scholarButtonPanel.add(scholarDelPanel);
+		scholarButtonPanel.add(scholarDelAllPanel);
+		scholarLabelPanel.add(jlblScholar);
+		jplScholar.add(scholarLabelPanel);
 		jplScholar.add(jspScholars);
-		jplScholar.add(jbAddScholar);
-		jplScholar.add(jbDeleteSelectedScholar);
-		jplScholar.add(jbDeleteAllScholar);
+		jplScholar.add(scholarButtonPanel);
+
 		
-		JPanel jplSerial = new JPanel(new GridLayout(1, 0, 5, 5));
-		jplSerial.add(jlblSerial);
+		JPanel jplSerial = new JPanel(new GridLayout(3, 1, 2, 2));
+		JPanel serialLabelPanel = new JPanel();
+		JPanel serialButtonPanel = new JPanel(new GridLayout(3, 1));
+		JPanel serialAddPanel = new JPanel();
+		JPanel serialDelPanel = new JPanel();
+		JPanel serialDelAllPanel = new JPanel();
+		serialAddPanel.add(jbAddSerial);
+		serialDelPanel.add(jbDeleteSelectedSerial);
+		serialDelAllPanel.add(jbDeleteAllSerial);
+		serialButtonPanel.add(serialAddPanel);
+		serialButtonPanel.add(serialDelPanel);
+		serialButtonPanel.add(serialDelAllPanel);
+		serialLabelPanel.add(jlblSerial);
+		jplSerial.add(serialLabelPanel);
 		jplSerial.add(jspSerials);
-		jplSerial.add(jbAddSerial);
-		jplSerial.add(jbDeleteSelectedSerial);
-		jplSerial.add(jbDeleteAllSerial);
+		jplSerial.add(serialButtonPanel);
+
 		
-		JPanel jplPaper = new JPanel(new GridLayout(1, 0, 5, 5));
-		jplPaper.add(jlblPaper);
+		JPanel jplPaper = new JPanel(new GridLayout(3, 1, 2, 2));
+		JPanel paperLabelPanel = new JPanel();
+		JPanel paperButtonPanel = new JPanel(new GridLayout(3, 1));
+		JPanel paperAddPanel = new JPanel();
+		JPanel paperDelPanel = new JPanel();
+		JPanel paperDelAllPanel = new JPanel();
+		paperAddPanel.add(jbAddPaper);
+		paperDelPanel.add(jbDeleteSelectedPaper);
+		paperDelAllPanel.add(jbDeleteAllPaper);
+		paperButtonPanel.add(paperAddPanel);
+		paperButtonPanel.add(paperDelPanel);
+		paperButtonPanel.add(paperDelAllPanel);
+		paperLabelPanel.add(jlblPaper);
+		jplPaper.add(paperLabelPanel);
 		jplPaper.add(jspPapers);
-		jplPaper.add(jbAddPaper);
-		jplPaper.add(jbDeleteSelectedPaper);
-		jplPaper.add(jbDeleteAllPaper);
+		jplPaper.add(paperButtonPanel);
+		
 		
 		jmFile.add(jmiLoad);
 		jmFile.add(jmiSave);
-		jmFile.add(jmiImport);
-		jmFile.add(jmiExport);
 		jmFile.add(jmiExit);
 		
 		jmPlot.add(jmiTP);
@@ -151,29 +177,6 @@ public class SelectionView extends JFrame{
 	}
 	
 	/**
-	 * Imports scholarship from text file
-	 * @param filename
-	 */
-	private void importFile(File filename){
-		
-	}
-	
-	/**
-	 * Exports the scholarship to text file
-	 */
-	private void exportFile(){
-		
-	}
-	
-	/**
-	 * Exports the scholarship using a specified text file
-	 * @param filename
-	 */
-	private void exportFile(File filename){
-		
-	}
-	
-	/**
 	 * Opens a graph given the type of graph and scholar
 	 * @param typeOfGraph type of graph to open
 	 * @param scholar scholar who's graph to open
@@ -182,13 +185,7 @@ public class SelectionView extends JFrame{
 		
 	}
 	
-	/**
-	 * Will create frame and set properties
-	 * @param args
-	 */
-	public static void main(String[] args){
-		
-	}
+
 	
 	
 	
