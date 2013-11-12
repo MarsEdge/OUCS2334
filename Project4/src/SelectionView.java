@@ -2,6 +2,8 @@ import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
+import java.io.IOException;
+import java.util.HashMap;
 
 import javax.swing.JButton;
 import javax.swing.JFileChooser;
@@ -157,7 +159,19 @@ public class SelectionView extends JFrame{
 	 * Loads scholarship from binary file
 	 * @param filename
 	 */
-	private void loadFile(File filename){
+	private void loadFile(String filename){
+		//TODO 
+		ScholarshipModel  model = new ScholarshipModel();
+		
+		try {
+			model.loadScholarship(filename);
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 	}
 	
@@ -172,7 +186,7 @@ public class SelectionView extends JFrame{
 	 * Saves the scholarship using a specified binary file
 	 * @param filename
 	 */
-	private void saveFile(File filename){
+	private void saveFile(String filename){
 		
 	}
 	
@@ -181,12 +195,47 @@ public class SelectionView extends JFrame{
 	 * @param typeOfGraph type of graph to open
 	 * @param scholar scholar who's graph to open
 	 */
-	private void openGraph(String typeOfGraph, Scholar scholar){
-		
+	private void openGraph(String typeOfGraph, String scholar, HashMap<String, Scholar> scholars){
+		Graph display = new Graph(typeOfGraph, scholar, scholars);
 	}
 	
 
+	//Action Listeners for buttons
+	void addScholarListener(ActionListener AddScholarListener){
+		jbAddScholar.addActionListener(AddScholarListener);
+	}
 	
+	void deleteScholarListener(ActionListener DeleteScholarListener){
+		jbDeleteSelectedScholar.addActionListener(DeleteScholarListener);
+	}
+	
+	void deleteAllScholarListener(ActionListener DeleteAllScholarListener){
+		jbDeleteAllScholar.addActionListener(DeleteAllScholarListener);
+	}
+	
+	void addSerialListener(ActionListener AddSerialListener){
+		jbAddSerial.addActionListener(AddSerialListener);
+	}
+	
+	void deleteSerialListener(ActionListener DeleteSerialListener){
+		jbDeleteSelectedSerial.addActionListener(DeleteSerialListener);
+	}
+	
+	void deleteAllSerialListener(ActionListener DeleteAllSerialListener){
+		jbDeleteAllSerial.addActionListener(DeleteAllSerialListener);
+	}
+	
+	void addPaperListener(ActionListener AddPaperListener){
+		jbAddPaper.addActionListener(AddPaperListener);
+	}
+	
+	void deletePaperListener(ActionListener DeletePaperListener){
+		jbDeleteSelectedPaper.addActionListener(DeletePaperListener);
+	}
+	
+	void deleteAllPaperListener(ActionListener DeleteAllPaperListener){
+		jbDeleteAllPaper.addActionListener(DeleteAllPaperListener);
+	}
 	
 	
 }

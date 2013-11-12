@@ -1,7 +1,9 @@
+import java.awt.Frame;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
 import java.util.ArrayList;
+
 import javax.swing.JOptionPane;
 
 
@@ -9,26 +11,25 @@ import javax.swing.JOptionPane;
 public class ScholarPubController {
 	
 	private ScholarshipModel model;
-	private SelectionView inputView;
-
+	private SelectionView view;
+	
 	/**
-	 * Creates new controller
+	 * Creates new controller with model and view
 	 */
-	public ScholarPubController(){
-	}
-
-	/**
-	 * @param model to set as the model
-	 */
-	public void setModel(ScholarshipModel model){
+	public ScholarPubController(ScholarshipModel model, SelectionView view){
 		this.model = model;
-	}
-
-	/**
-	 * @return model
-	 */
-	public ScholarshipModel getModel(){ 
-		return model;
+		this.view = view;
+		
+		this.view.addScholarListener(AddScholarListener);
+		this.view.deleteScholarListener(DeleteScholarListener);
+		this.view.deleteAllScholarListener(DeleteAllScholarListener);
+		this.view.addSerialListener(AddSerialListener);
+		this.view.deleteSerialListener(DeleteSerialListener);
+		this.view.deleteAllSerialListener(DeleteAllSerialListener);
+		this.view.addPaperListener(AddPaperListener);
+		this.view.deletePaperListener(DeletePaperListener);
+		this.view.deleteAllPaperListener(DeleteAllPaperListener);
+				
 	}
 	
 	/**
@@ -36,6 +37,13 @@ public class ScholarPubController {
 	 */
 	private class AddScholarListener implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
+			Frame frame = new Frame();
+			Object[] obj = null;
+			String name = (String)JOptionPane.showInputDialog(frame, "Add a Scholar:\n"+ "Enter the Scholar's name","Add Scholar", JOptionPane.QUESTION_MESSAGE,null, obj,"Dean Hougen");
+			String aff = (String)JOptionPane.showInputDialog(frame, "Add a Scholar:\n"+ "Enter " + name + "'s affiliation","Add Scholar", JOptionPane.QUESTION_MESSAGE,null, obj,"University of Oklahoma");
+			String research = (String)JOptionPane.showInputDialog(frame, "Add a Scholar:\n"+ "Enter " + name + "'s research areas","Add Scholar", JOptionPane.QUESTION_MESSAGE,null, obj,"Artificial Intelligence");
+			
+			model.addScholar(new Scholar(name, aff, research));
 		}
 	}
 	
@@ -60,6 +68,27 @@ public class ScholarPubController {
 	 */
 	private class AddSerialListener implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
+			Frame frame = new Frame();
+			Object[] obj = {"Journal", "Conference"};
+			String type = (String)JOptionPane.showInputDialog(frame, "Add a Serial:\n"+ "What kind of serial?","Add Serial", JOptionPane.QUESTION_MESSAGE,null, obj,"Journal");
+			
+			Object[] auth = new Object[model.getScholarList().size() + 1];
+			int i = 0;
+			for(Scholar sch : model.getScholarList()){
+				auth[i]=sch;
+				i++;
+			}
+			
+			String editor = (String)JOptionPane.showInputDialog(frame, "Add a Serial:\n"+ "Who is the editor?","Add Serial", JOptionPane.QUESTION_MESSAGE,null, auth, null);
+			String reviewer = (String)JOptionPane.showInputDialog(frame, "Add a Serial:\n"+ "Who is the reviewer","Add Serial", JOptionPane.QUESTION_MESSAGE,null, auth,null);
+			
+			// editor / program chair or reviewer / program committee
+			if(type=="Journal"){
+				model.addSerial(new Journal(editor, reviewer));
+			}
+			else model.addSerial(new Conference(editor, reviewer));
+				
+			
 		}
 	}
 	
@@ -101,24 +130,6 @@ public class ScholarPubController {
 	private class DeleteAllPapersListener implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
 		}
-	}
-	
-
-
-
-	/**
-	 * @param view on which the listeners should be set
-	 */
-	public void setInputWindow(SelectionView view) {
-		inputView = view;
-		//listeners here
-	}
-
-	/**
-	 * @return the window (in case it needs to be sent messages from elsewhere)
-	 */
-	public SelectionView getInputWindow() {
-		return inputView;
 	}
 	
 	
