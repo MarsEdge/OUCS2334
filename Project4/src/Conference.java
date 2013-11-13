@@ -3,17 +3,21 @@ import java.util.ArrayList;
 public class Conference extends Serial {
 	
 	/** Conference sponsor */
-	private Name sponsor;
+	private Name sponsor = new Name();
 	
 	/** list of all meetings at conference */
-	private ArrayList<Meeting> meetings;
+	private ArrayList<Meeting> meetings = new ArrayList<Meeting>();
+
+	public Conference(String chairs, String members) {
+		addMeeting(new Meeting(chairs, members));
+	}
 
 	public Name getSponsor() {
 		return sponsor;
 	}
 
-	public void setSponsor(Name sponsor) {
-		this.sponsor = sponsor;
+	public void setSponsor(String sponsor) {
+		this.sponsor.setName(sponsor);
 	}
 
 	public ArrayList<Meeting> getMeetings() {

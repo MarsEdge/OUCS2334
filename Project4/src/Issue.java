@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.HashMap;
 
 public class Issue {
@@ -6,13 +7,18 @@ public class Issue {
 	private Date pubDate;
 	
 	/** map of issue editors */
-	private HashMap<String, Scholar> editors;
+	private ArrayList<String> editors = new ArrayList<String>();
 	
 	/** map of issue reviewers */
-	private HashMap<String, Scholar> reviewers;
+	private ArrayList<String> reviewers = new ArrayList<String>();
 	
 	/** map of articles in issue */
-	private HashMap<String, JournalArticle> articles;
+	private ArrayList<String> articles = new ArrayList<String>();
+
+	public Issue(String editors, String reviewers) {
+		addEditor(editors);
+		addReviewer(reviewers);
+	}
 
 	public Date getPubDate() {
 		return pubDate;
@@ -22,48 +28,48 @@ public class Issue {
 		this.pubDate = pubDate;
 	}
 
-	public HashMap<String, Scholar> getEditors() {
+	public ArrayList<String> getEditors() {
 		return editors;
 	}
 
-	public void setEditors(HashMap<String, Scholar> editors) {
+	public void setEditors(ArrayList<String> editors) {
 		this.editors = editors;
 	}
 	
-	public void addEditor(String key, Scholar value) {
-		this.editors.put(key, value);
+	public void addEditor(String key) {
+		this.editors.add(key);
 	}
 	
 	public void removeEditor(String key) {
 		this.editors.remove(key);
 	}
 	
-	public HashMap<String, Scholar> getReviewers() {
+	public ArrayList<String> getReviewers() {
 		return reviewers;
 	}
 
-	public void setReviewers(HashMap<String, Scholar> reviewers) {
+	public void setReviewers(ArrayList<String> reviewers) {
 		this.reviewers = reviewers;
 	}
 	
-	public void addReviewer(String key, Scholar value) {
-		this.reviewers.put(key, value);
+	public void addReviewer(String key) {
+		this.reviewers.add(key);
 	}
 	
 	public void removeReviewer(String key) {
 		this.reviewers.remove(key);
 	}
 
-	public HashMap<String, JournalArticle> getArticles() {
+	public ArrayList<String> getArticles() {
 		return articles;
 	}
 
-	public void setArticles(HashMap<String, JournalArticle> articles) {
+	public void setArticles(ArrayList<String> articles) {
 		this.articles = articles;
 	}
 	
-	public void addArticle(String key, JournalArticle value) {
-		this.articles.put(key, value);
+	public void addArticle(String key) {
+		this.articles.add(key);
 	}
 	
 	public void removeArticle(String key) {

@@ -3,13 +3,17 @@ import java.util.ArrayList;
 public class Journal extends Serial {
 	
 	/** publisher name */
-	private Name pubName;
+	private Name pubName = new Name();
 	
 	/** publisher location */
-	private Location pubLocation;
+	private Location pubLocation = new Location();
 	
 	/** list of volumes in Journal */
-	private ArrayList<Volume> volumes;
+	private ArrayList<Volume> volumes = new ArrayList<Volume>();
+
+	public Journal(String editor, String reviewer) {
+		addVolume(new Volume(editor, reviewer));
+	}
 
 	public Name getPubName() {
 		return pubName;

@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.HashMap;
 
 public class Meeting {
@@ -9,19 +10,20 @@ public class Meeting {
 	private Location location; 
 	
 	/** meeting committee chairs */
-	private HashMap<String, Scholar> chairs;
+	private ArrayList<String> chairs = new ArrayList<String>();
 	
 	/** meeting committee members */
-	private HashMap<String, Scholar> committeeMembers;
+	private ArrayList<String> committeeMembers = new ArrayList<String>();
 	
 	/** meeting publications */
-	private HashMap<String, Publication> publications;
+	private ArrayList<String> publications = new ArrayList<String>();
 	
 	/**
 	 * default constructor
 	 */
-	public Meeting() {
-		//TODO implement
+	public Meeting(String chairs, String members) {
+		addChair(chairs);
+		addCommitteeMembers(members);
 	}
 	
 	/**
@@ -55,48 +57,48 @@ public class Meeting {
 		this.location = location;
 	}
 
-	public HashMap<String, Scholar> getChairs() {
+	public ArrayList<String> getChairs() {
 		return chairs;
 	}
 
-	public void setChairs(HashMap<String, Scholar> chairs) {
+	public void setChairs(ArrayList<String> chairs) {
 		this.chairs = chairs;
 	}
 	
-	public void addChair(String key, Scholar value) {
-		this.chairs.put(key, value);
+	public void addChair(String key) {
+		this.chairs.add(key);
 	}
 	
 	public void removeChair(String key) {
 		this.chairs.remove(key);
 	}
 
-	public HashMap<String, Scholar> getCommitteeMembers() {
+	public ArrayList<String> getCommitteeMembers() {
 		return committeeMembers;
 	}
 
-	public void setCommitteeMembers(HashMap<String, Scholar> committeeMembers) {
+	public void setCommitteeMembers(ArrayList<String> committeeMembers) {
 		this.committeeMembers = committeeMembers;
 	}
 	
-	public void addCommitteeMembers(String key, Scholar value) {
-		this.committeeMembers.put(key, value);
+	public void addCommitteeMembers(String key) {
+		this.committeeMembers.add(key);
 	}
 	
 	public void removeCommitteeMembers(String key) {
 		this.committeeMembers.remove(key);
 	}
 
-	public HashMap<String, Publication> getPublications() {
+	public ArrayList<String> getPublications() {
 		return publications;
 	}
 
-	public void setPublications(HashMap<String, Publication> publications) {
+	public void setPublications(ArrayList<String> publications) {
 		this.publications = publications;
 	}
 	
-	public void addPublication(String key, Publication value) {
-		this.publications.put(key, value);
+	public void addPublication(String key) {
+		this.publications.add(key);
 	}
 	
 	public void removePublication(String key) {
