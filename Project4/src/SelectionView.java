@@ -289,7 +289,7 @@ public class SelectionView extends JFrame implements ActionListener {
 	}
 
 	private void populateSerialList() {
-		Object[] SerialObjectArray = model.getSerialMap().values().toArray();
+		Object[] SerialObjectArray = model.getSerialMap().toArray();
 		
 		// To cast down the array of objects (which are really AcademicPapers)
 		// to an array of AcademicPapers

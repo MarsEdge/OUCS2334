@@ -13,9 +13,9 @@ public class Scholarship implements Serializable{
 	//ArrayList of Scholar objects
 	private ArrayList<Scholar> scholarList = new ArrayList<Scholar>();
 	//Maps Serial title with Serial object
-	private HashMap<String, Serial> serialMap;
+	private ArrayList<Serial> serialMap = new ArrayList<Serial>();
 	//Maps Publication title to  Publication object
-	private HashMap<String, Publication> pubMap;
+	private ArrayList<Publication>  pubMap = new ArrayList<Publication>();
 	
 	/**
 	 * No argument constructor which creates an empty scholarship
@@ -35,16 +35,16 @@ public class Scholarship implements Serializable{
 	 * Getter for values of the HashMap of Serials
 	 * @return a copy of serialMap
 	 */
-	public HashMap<String, Serial> getSerialMap() {
-		return new HashMap<String, Serial>(serialMap);
+	public ArrayList<Serial> getSerialMap() {
+		return serialMap;
 	}
 	
 	/**
 	 * Getter for values of the HashMap of Publications
 	 * @return a copy of pubMap
 	 */
-	public HashMap<String, Publication> getPubMap() {
-		return new HashMap<String, Publication>(pubMap);
+	public ArrayList<Publication> getPubMap() {
+		return pubMap;
 	}
 
 	/**
@@ -77,7 +77,7 @@ public class Scholarship implements Serializable{
 	 * @param serial	serial object being added
 	 */
 	public void addSerial(Serial serial) {
-		
+		this.serialMap.add(serial);
 	}
 	
 	/**
@@ -93,7 +93,7 @@ public class Scholarship implements Serializable{
 	 * Method to delete all serials
 	 */
 	public void deleteAllSerials() {
-		// TODO Auto-generated method stub
+		this.serialMap.clear();
 		
 	}
 
@@ -102,8 +102,7 @@ public class Scholarship implements Serializable{
 	 * @param pub	the publication being added
 	 */
 	public void addPaper(Publication pub) {
-		// TODO Auto-generated method stub
-		
+		this.pubMap.add(pub);
 	}
 
 	/**

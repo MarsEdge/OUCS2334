@@ -11,6 +11,11 @@ public class Conference extends Serial {
 	public Conference(String chairs, String members) {
 		addMeeting(new Meeting(chairs, members));
 	}
+	
+	@Override
+	public String toString() {
+		return meetings.get(0).getChairs().get(0) + "'s Conference";
+	}
 
 	public Name getSponsor() {
 		return sponsor;
