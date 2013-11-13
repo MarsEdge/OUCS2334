@@ -20,15 +20,16 @@ public class ScholarPubController {
 		this.model = model;
 		this.view = view;
 		
-		this.view.addScholarListener(new AddScholarListener());
-		this.view.deleteScholarListener(new DeleteScholarListener());
-		this.view.deleteAllScholarListener(new DeleteAllScholarsListener());
-		this.view.addSerialListener(new AddSerialListener());
-		this.view.deleteSerialListener(new DeleteSerialListener());
-		this.view.deleteAllSerialListener(new DeleteAllSerialsListener());
-		this.view.addPaperListener(new AddPaperListener());
-		this.view.deletePaperListener(new DeletePaperListener());
-		this.view.deleteAllPaperListener(new DeleteAllPapersListener());
+		this.view.getJbAddScholar().addActionListener(new AddScholarListener());
+		this.view.getJbDeleteSelectedScholar().addActionListener(new DeleteScholarListener());
+		this.view.getJbDeleteAllScholar().addActionListener(new DeleteAllScholarsListener());
+		
+		this.view.getJbAddSerial().addActionListener(new AddSerialListener());
+		this.view.getJbDeleteSelectedSerial().addActionListener(new DeleteSerialListener());
+		this.view.getJbDeleteAllSerial().addActionListener(new DeleteAllSerialsListener());
+		this.view.getJbAddPaper().addActionListener(new AddPaperListener());
+		this.view.getJbDeleteSelectedPaper().addActionListener(new DeletePaperListener());
+		this.view.getJbDeleteAllPaper().addActionListener(new DeleteAllPapersListener());
 				
 	}
 	

@@ -17,7 +17,7 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 
 
-public class SelectionView extends JFrame{
+public class SelectionView extends JFrame implements ActionListener {
 
 	/**
 	 * 
@@ -41,6 +41,9 @@ public class SelectionView extends JFrame{
 	
 	//Creates all JButtons
 	private JButton jbAddScholar = new JButton("Add Scholar");
+	
+	
+
 	private JButton jbDeleteSelectedScholar = new JButton("Delete Selected Scholar(s)");
 	private JButton jbDeleteAllScholar = new JButton("Delete All Scholars");
 	private JButton jbAddSerial = new JButton("Add Serial");
@@ -68,6 +71,8 @@ public class SelectionView extends JFrame{
 	
 	// Creates a JFileChooser
 	private JFileChooser jFileChooser = new JFileChooser(new File("."));
+	
+	private ScholarshipModel model;
 
 	/**
 	 *  Will fill the frame with content and hold the addActionListeners
@@ -200,42 +205,57 @@ public class SelectionView extends JFrame{
 	}
 	
 
-	//Action Listeners for buttons
-	void addScholarListener(ActionListener AddScholarListener){
-		jbAddScholar.addActionListener(AddScholarListener);
+	public ScholarshipModel getModel() {
+		return model;
+	}
+
+	public void setModel(ScholarshipModel model) {
+		this.model = model;
+		
+		if (this.model != null) {
+			// Register the view as listener for the model
+			model.addActionListener(this);
 	}
 	
-	void deleteScholarListener(ActionListener DeleteScholarListener){
-		jbDeleteSelectedScholar.addActionListener(DeleteScholarListener);
+	public JButton getJbAddScholar() {
+		return jbAddScholar;
 	}
-	
-	void deleteAllScholarListener(ActionListener DeleteAllScholarListener){
-		jbDeleteAllScholar.addActionListener(DeleteAllScholarListener);
+
+	public JButton getJbDeleteSelectedScholar() {
+		return jbDeleteSelectedScholar;
 	}
-	
-	void addSerialListener(ActionListener AddSerialListener){
-		jbAddSerial.addActionListener(AddSerialListener);
+
+	public JButton getJbDeleteAllScholar() {
+		return jbDeleteAllScholar;
 	}
-	
-	void deleteSerialListener(ActionListener DeleteSerialListener){
-		jbDeleteSelectedSerial.addActionListener(DeleteSerialListener);
+
+	public JButton getJbAddSerial() {
+		return jbAddSerial;
 	}
-	
-	void deleteAllSerialListener(ActionListener DeleteAllSerialListener){
-		jbDeleteAllSerial.addActionListener(DeleteAllSerialListener);
+
+	public JButton getJbDeleteSelectedSerial() {
+		return jbDeleteSelectedSerial;
 	}
-	
-	void addPaperListener(ActionListener AddPaperListener){
-		jbAddPaper.addActionListener(AddPaperListener);
+
+	public JButton getJbDeleteAllSerial() {
+		return jbDeleteAllSerial;
 	}
-	
-	void deletePaperListener(ActionListener DeletePaperListener){
-		jbDeleteSelectedPaper.addActionListener(DeletePaperListener);
+
+	public JButton getJbAddPaper() {
+		return jbAddPaper;
 	}
-	
-	void deleteAllPaperListener(ActionListener DeleteAllPaperListener){
-		jbDeleteAllPaper.addActionListener(DeleteAllPaperListener);
+
+	public JButton getJbDeleteSelectedPaper() {
+		return jbDeleteSelectedPaper;
 	}
-	
+
+	public JButton getJbDeleteAllPaper() {
+		return jbDeleteAllPaper;
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent arg0) {
+		// TODO Auto-generated method stub
+	}
 	
 }
