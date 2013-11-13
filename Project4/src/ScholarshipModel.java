@@ -163,7 +163,7 @@ public class ScholarshipModel extends Scholarship{
 		ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream);
 		ScholarshipModel scholarship = (ScholarshipModel) objectInputStream.readObject();
 		objectInputStream.close();
-		
+		//TODO fox this
 		processEvent(new ActionEvent(this, ActionEvent.ACTION_PERFORMED, "scholar"));
 		processEvent(new ActionEvent(this, ActionEvent.ACTION_PERFORMED, "serial"));
 		processEvent(new ActionEvent(this, ActionEvent.ACTION_PERFORMED, "paper"));
