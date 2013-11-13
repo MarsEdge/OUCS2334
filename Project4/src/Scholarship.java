@@ -118,7 +118,7 @@ public class Scholarship implements Serializable{
 	 * Method to delete all publications
 	 */
 	public void deleteAllPapers() {
-		// TODO Auto-generated method stub
+		this.pubMap.clear();
 		
 	}
 	

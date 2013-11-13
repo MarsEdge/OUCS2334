@@ -21,8 +21,9 @@ public class Name {
 		if(nameWhole.contains(" ") == true)
 		{
 			String[] split = nameWhole.split("\\ ");
-			setNameLast(split[0]);
-			setNameFirst(split[split.length-1]);
+			setNameFirst(split[0]);
+			setNameLast(split[split.length-1]);
+			
 		}
 		else
 			setNameFirst(nameWhole);

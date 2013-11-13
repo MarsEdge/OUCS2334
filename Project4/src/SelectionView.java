@@ -284,7 +284,17 @@ public class SelectionView extends JFrame implements ActionListener {
 	}
 	
 	private void populatePaperList() {
-		// TODO Auto-generated method stub
+		Object[] PaperObjectArray = model.getPubMap().toArray();
+		
+		// To cast down the array of objects (which are really AcademicPapers)
+		// to an array of AcademicPapers
+		Publication[] serialArray = Arrays.copyOf( PaperObjectArray, 
+				PaperObjectArray.length, Publication[].class);
+		
+		
+		jlPapers.setListData(serialArray);
+		pack();
+		setVisible(true);
 		
 	}
 

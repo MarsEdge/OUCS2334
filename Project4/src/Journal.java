@@ -14,6 +14,11 @@ public class Journal extends Serial {
 	public Journal(String editor, String reviewer) {
 		addVolume(new Volume(editor, reviewer));
 	}
+	
+	@Override
+	public String toString() {
+		return volumes.get(0).getIssues().get(0).getEditors().get(0);
+	}
 
 	public Name getPubName() {
 		return pubName;

@@ -62,6 +62,7 @@ public class ScholarPubController {
 	 */
 	private class DeleteAllScholarsListener implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
+			model.deleteAllScholars();
 		}
 	}
 	
@@ -115,6 +116,7 @@ public class ScholarPubController {
 	 */
 	private class DeleteAllSerialsListener implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
+			model.deleteAllSerials();
 		}
 	}
 	
@@ -123,7 +125,34 @@ public class ScholarPubController {
 	 */
 	private class AddPaperListener implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
+			Frame frame = new Frame();
+			String[] obj = {"Journal", "Conference"};
 			
+			Scholar[] auth = new Scholar[model.getScholarList().size() + 1];
+			int i = 0;
+			for(Scholar sch : model.getScholarList()){
+				auth[i]=sch;
+				i++;
+			}
+			
+			Serial[] serial = new Serial[model.getSerialMap().size() + 1];
+			i = 0;
+			for(Serial sch : model.getSerialMap()){
+				serial[i]=sch;
+				i++;
+			}
+			
+			String author = JOptionPane.showInputDialog(frame, "Add a Paper:\n"+ "Who is the author?","Add Paper", JOptionPane.QUESTION_MESSAGE,null, auth, null).toString();
+			
+			ArrayList<String> authorsList = new ArrayList<String>();
+			
+			authorsList.add(author);
+			
+			String title = JOptionPane.showInputDialog(frame, "Add a Paper:\n"+ "What is the Title?","Add Paper", JOptionPane.QUESTION_MESSAGE,null, null,null).toString();
+			
+			String serialTitle = JOptionPane.showInputDialog(frame, "Add a Serial:\n"+ "What is the Serial Title?","Add Serial", JOptionPane.QUESTION_MESSAGE,null, serial, null).toString();
+			
+			model.addPaper(new Publication(authorsList, title, serialTitle, "", "", "", ""));
 		}
 	}
 	
@@ -140,6 +169,7 @@ public class ScholarPubController {
 	 */
 	private class DeleteAllPapersListener implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
+			model.deleteAllPapers();
 		}
 	}
 	
