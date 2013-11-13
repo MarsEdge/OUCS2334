@@ -25,6 +25,19 @@ public class Scholar implements Comparable<Scholar>{
 		name.setName(nameWhole);
 	}
 	
+	/**
+	 * constructor with fields
+	 * 
+	 * @param nameWhole name of author
+	 * @param aff author affiliation
+	 * @param res research area
+	 */
+	public Scholar(String nameWhole, String aff, String res) {
+		name.setName(nameWhole);
+		addAffiliation(aff);
+		addResearchArea(res);
+	}
+	
 	public String toString() {
 		return name.getNameFull();
 	}

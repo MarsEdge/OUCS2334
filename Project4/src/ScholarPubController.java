@@ -20,15 +20,15 @@ public class ScholarPubController {
 		this.model = model;
 		this.view = view;
 		
-		this.view.addScholarListener(AddScholarListener);
-		this.view.deleteScholarListener(DeleteScholarListener);
-		this.view.deleteAllScholarListener(DeleteAllScholarListener);
-		this.view.addSerialListener(AddSerialListener);
-		this.view.deleteSerialListener(DeleteSerialListener);
-		this.view.deleteAllSerialListener(DeleteAllSerialListener);
-		this.view.addPaperListener(AddPaperListener);
-		this.view.deletePaperListener(DeletePaperListener);
-		this.view.deleteAllPaperListener(DeleteAllPaperListener);
+		this.view.addScholarListener(new AddScholarListener());
+		this.view.deleteScholarListener(new DeleteScholarListener());
+		this.view.deleteAllScholarListener(new DeleteAllScholarsListener());
+		this.view.addSerialListener(new AddSerialListener());
+		this.view.deleteSerialListener(new DeleteSerialListener());
+		this.view.deleteAllSerialListener(new DeleteAllSerialsListener());
+		this.view.addPaperListener(new AddPaperListener());
+		this.view.deletePaperListener(new DeletePaperListener());
+		this.view.deleteAllPaperListener(new DeleteAllPapersListener());
 				
 	}
 	
