@@ -87,7 +87,6 @@ public class ScholarPubController {
 				model.addSerial(new Journal(editor, reviewer));
 			}
 			else model.addSerial(new Conference(editor, reviewer));
-				
 			
 		}
 	}
@@ -113,6 +112,7 @@ public class ScholarPubController {
 	 */
 	private class AddPaperListener implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
+			
 		}
 	}
 	
