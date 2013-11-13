@@ -28,6 +28,7 @@ public class SelectionView extends JFrame implements ActionListener {
 	
 	//Creates all needed JMenuItems
 	private JMenuItem jmiLoad = new JMenuItem("Load Scholarship");
+
 	private JMenuItem jmiSave = new JMenuItem("Save Scholarship");
 	private JMenuItem jmiExit = new JMenuItem("Exit");
 	private JMenuItem jmiTP = new JMenuItem("Type of Publicataion");
@@ -164,41 +165,6 @@ public class SelectionView extends JFrame implements ActionListener {
 	}
 	
 	/**
-	 * Loads scholarship from binary file
-	 * @param filename
-	 */
-	private void loadFile(String filename){
-		//TODO 
-		ScholarshipModel  model = new ScholarshipModel();
-		
-		try {
-			model.loadScholarship(filename);
-		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
-	}
-	
-	/**
-	 * Saves the scholarship to binary file
-	 */
-	private void saveFile(){
-		
-	}
-	
-	/**
-	 * Saves the scholarship using a specified binary file
-	 * @param filename
-	 */
-	private void saveFile(String filename){
-		
-	}
-	
-	/**
 	 * Opens a graph given the type of graph and scholar
 	 * @param typeOfGraph type of graph to open
 	 * @param scholar scholar who's graph to open
@@ -267,6 +233,14 @@ public class SelectionView extends JFrame implements ActionListener {
 
 	public JScrollPane getJspPapers() {
 		return jspPapers;
+	}
+
+	public JMenuItem getJmiLoad() {
+		return jmiLoad;
+	}
+
+	public JMenuItem getJmiSave() {
+		return jmiSave;
 	}
 
 	private void populateScholarList() {

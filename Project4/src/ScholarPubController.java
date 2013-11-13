@@ -30,7 +30,8 @@ public class ScholarPubController {
 		this.view.getJbAddPaper().addActionListener(new AddPaperListener());
 		this.view.getJbDeleteSelectedPaper().addActionListener(new DeletePaperListener());
 		this.view.getJbDeleteAllPaper().addActionListener(new DeleteAllPapersListener());
-				
+		this.view.getJmiLoad().addActionListener(new LoadListener());
+		this.view.getJmiSave().addActionListener(new SaveListener());
 	}
 	
 	/**
@@ -173,6 +174,38 @@ public class ScholarPubController {
 		}
 	}
 	
+	/**
+	 * Loads scholarship from binary file
+	 * @param filename
+	 */
+	private class LoadListener implements ActionListener {
+		public void actionPerformed(ActionEvent e) {			
+			try {
+				model.loadScholarship();
+			} catch (ClassNotFoundException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			} catch (IOException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+		}
+	}
+	
+	/**
+	 * Saves the scholarship using a specified binary file
+	 * @param filename
+	 */
+	private class SaveListener implements ActionListener {
+		public void actionPerformed(ActionEvent e) {			
+			try {
+				model.saveScholarship(model);
+			} catch (IOException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+		}
+	}
 	
 	
 }

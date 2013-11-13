@@ -1,7 +1,13 @@
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Scholar implements Comparable<Scholar>{
+public class Scholar implements Comparable<Scholar>, Serializable{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 663442369742543927L;
+
 	private Name name = new Name();
 	
 	/** publications published by this scholar */

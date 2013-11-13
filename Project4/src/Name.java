@@ -1,5 +1,12 @@
-public class Name {
+import java.io.Serializable;
+
+public class Name implements Serializable {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1276149200536540635L;
+
 	/**
 	 * first name
 	 */

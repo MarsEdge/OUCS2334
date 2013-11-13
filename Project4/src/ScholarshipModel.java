@@ -142,11 +142,11 @@ public class ScholarshipModel extends Scholarship{
 	/**
 	 * Saves a scholarship
 	 * @param filename	file being saved to
-	 * @param scholarship	scholarhip object being saved
+	 * @param scholarship	scholarship object being saved
 	 * @throws IOException
 	 */
-	public void saveScholarship (String filename, ScholarshipModel scholarship) throws IOException {
-		FileOutputStream fileOutputStream = new FileOutputStream(filename);
+	public void saveScholarship (ScholarshipModel scholarship) throws IOException {
+		FileOutputStream fileOutputStream = new FileOutputStream("out.bin");
 		ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream);
 		objectOutputStream.writeObject(scholarship);
 		objectOutputStream.close();
@@ -158,15 +158,15 @@ public class ScholarshipModel extends Scholarship{
 	 * @throws IOException
 	 * @throws ClassNotFoundException
 	 */
-	public void loadScholarship(String filename) throws IOException, ClassNotFoundException {
-		FileInputStream fileInputStream = new FileInputStream(filename);
+	public void loadScholarship() throws IOException, ClassNotFoundException {
+		FileInputStream fileInputStream = new FileInputStream("out.bin");
 		ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream);
 		ScholarshipModel scholarship = (ScholarshipModel) objectInputStream.readObject();
 		objectInputStream.close();
-		//this.setAcademicPaperMap(scholarship.getScholarList());
-		//fix this
 		
-		processEvent(new ActionEvent(this, ActionEvent.ACTION_PERFORMED, "read academic paper list"));
+		processEvent(new ActionEvent(this, ActionEvent.ACTION_PERFORMED, "scholar"));
+		processEvent(new ActionEvent(this, ActionEvent.ACTION_PERFORMED, "serial"));
+		processEvent(new ActionEvent(this, ActionEvent.ACTION_PERFORMED, "paper"));
 	}
 	
 	/**
