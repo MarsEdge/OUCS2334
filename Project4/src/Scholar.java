@@ -2,19 +2,19 @@ import java.util.ArrayList;
 
 public class Scholar implements Comparable<Scholar>{
 	
-	private Name name;
+	private Name name = new Name();
 	
 	/** publications published by this scholar */
 	private ArrayList<Publication> publishedPapers = new ArrayList<Publication>();
 	
 	/** institutional affiliation(s) */
-	private ArrayList<String> affiliations;
+	private ArrayList<String> affiliations = new ArrayList<String>();
 	
 	/** areas of research */
-	private ArrayList<String> researchAreas;
+	private ArrayList<String> researchAreas  = new ArrayList<String>();
 	
 	/** conferences organized by this scholar */
-	private ArrayList<Conference> conferencesOrganized;
+	private ArrayList<Conference> conferencesOrganized  = new ArrayList<Conference>();
 	
 	/**
 	 * default constructor
