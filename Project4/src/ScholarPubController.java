@@ -53,6 +53,7 @@ public class ScholarPubController {
 	 */
 	private class DeleteScholarListener implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
+			//TODO stub
 		}
 	}
 	
@@ -70,24 +71,33 @@ public class ScholarPubController {
 	private class AddSerialListener implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
 			Frame frame = new Frame();
-			Object[] obj = {"Journal", "Conference"};
+			String[] obj = {"Journal", "Conference"};
 			String type = (String)JOptionPane.showInputDialog(frame, "Add a Serial:\n"+ "What kind of serial?","Add Serial", JOptionPane.QUESTION_MESSAGE,null, obj,"Journal");
 			
-			Object[] auth = new Object[model.getScholarList().size() + 1];
+			Scholar[] auth = new Scholar[model.getScholarList().size() + 1];
 			int i = 0;
 			for(Scholar sch : model.getScholarList()){
 				auth[i]=sch;
 				i++;
 			}
 			
-			String editor = (String)JOptionPane.showInputDialog(frame, "Add a Serial:\n"+ "Who is the editor?","Add Serial", JOptionPane.QUESTION_MESSAGE,null, auth, null);
-			String reviewer = (String)JOptionPane.showInputDialog(frame, "Add a Serial:\n"+ "Who is the reviewer","Add Serial", JOptionPane.QUESTION_MESSAGE,null, auth,null);
+			if(type.equals("Conference"))
+			{
 			
+				String chairs = JOptionPane.showInputDialog(frame, "Add a Serial:\n"+ "Who is the editor?","Add Serial", JOptionPane.QUESTION_MESSAGE,null, auth, null).toString();
+				String committee = JOptionPane.showInputDialog(frame, "Add a Serial:\n"+ "Who is the reviewer","Add Serial", JOptionPane.QUESTION_MESSAGE,null, null,null).toString();
+				
+				model.addSerial(new Conference(chairs, committee));
+				
 			// editor / program chair or reviewer / program committee
-			if(type=="Journal"){
+			}
+			else{
+				String editor = JOptionPane.showInputDialog(frame, "Add a Serial:\n"+ "Who is the editor?","Add Serial", JOptionPane.QUESTION_MESSAGE,null, auth, null).toString();
+				String reviewer = JOptionPane.showInputDialog(frame, "Add a Serial:\n"+ "Who is the reviewer","Add Serial", JOptionPane.QUESTION_MESSAGE,null, auth,null).toString();
+				
 				model.addSerial(new Journal(editor, reviewer));
 			}
-			else model.addSerial(new Conference(editor, reviewer));
+			//else 
 			
 		}
 	}

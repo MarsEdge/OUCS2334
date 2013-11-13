@@ -33,23 +33,13 @@ public class ScholarshipModel extends Scholarship{
 	}
 	
 	/**
-	 * Method to add a scholarship.
-	 * Uses the overridden method of the same name from the superclass
-	 * Then generates a new ActionEvent and notifies listeners, if any, of this change.
-	 */
-	public void addScholarship(Scholarship scholarship) {
-		super.addScholarship(scholarship);
-		processEvent(new ActionEvent(this, ActionEvent.ACTION_PERFORMED, "add scholarship"));
-	}
-	
-	/**
 	 * Method to add a scholar
 	 * Uses the overridden method of the same name from the superclass
 	 * Then generates a new ActionEvent and notifies listeners, if any, of this change.
 	 */
 	public void addScholar(Scholar scholar) {
 		super.addScholar(scholar);
-		processEvent(new ActionEvent(this, ActionEvent.ACTION_PERFORMED, "add scholar"));
+		processEvent(new ActionEvent(this, ActionEvent.ACTION_PERFORMED, "scholar"));
 	}
 	
 	/**
@@ -59,7 +49,7 @@ public class ScholarshipModel extends Scholarship{
 	 */
 	public void deleteSelectedScholar(Scholar scholar) {
 		super.deleteSelectedScholar(scholar);
-		processEvent(new ActionEvent(this, ActionEvent.ACTION_PERFORMED, "deletes selected scholar(s)"));
+		processEvent(new ActionEvent(this, ActionEvent.ACTION_PERFORMED, "scholar"));
 	}
 	
 	/**
@@ -69,7 +59,7 @@ public class ScholarshipModel extends Scholarship{
 	 */
 	public void deleteAllScholars() {
 		super.deleteAllScholars();
-		processEvent(new ActionEvent(this, ActionEvent.ACTION_PERFORMED, "deletes all scholars"));
+		processEvent(new ActionEvent(this, ActionEvent.ACTION_PERFORMED, "scholar"));
 	}
 	
 	/**
@@ -79,7 +69,7 @@ public class ScholarshipModel extends Scholarship{
 	 */
 	public void addSerial(Serial serial) {
 		super.addSerial(serial);
-		processEvent(new ActionEvent(this, ActionEvent.ACTION_PERFORMED, "add serial"));
+		processEvent(new ActionEvent(this, ActionEvent.ACTION_PERFORMED, "serial"));
 	}
 	
 	/**
@@ -89,7 +79,7 @@ public class ScholarshipModel extends Scholarship{
 	 */
 	public void deleteSelectedSerial(Serial serial) {
 		super.deleteSelectedSerial(serial);
-		processEvent(new ActionEvent(this, ActionEvent.ACTION_PERFORMED, "deletes selected serial(s)"));
+		processEvent(new ActionEvent(this, ActionEvent.ACTION_PERFORMED, "serial"));
 	}
 	
 	/**
@@ -99,7 +89,7 @@ public class ScholarshipModel extends Scholarship{
 	 */
 	public void deleteAllSerials() {
 		super.deleteAllSerials();
-		processEvent(new ActionEvent(this, ActionEvent.ACTION_PERFORMED, "deletes all serials"));
+		processEvent(new ActionEvent(this, ActionEvent.ACTION_PERFORMED, "serial"));
 	}
 	
 	/**
@@ -109,7 +99,7 @@ public class ScholarshipModel extends Scholarship{
 	 */
 	public void addPaper(Publication pub) {
 		super.addPaper(pub);
-		processEvent(new ActionEvent(this, ActionEvent.ACTION_PERFORMED, "add paper"));
+		processEvent(new ActionEvent(this, ActionEvent.ACTION_PERFORMED, "paper"));
 	}
 	
 	/**
@@ -119,7 +109,7 @@ public class ScholarshipModel extends Scholarship{
 	 */
 	public void deleteSelectedPaper(Publication pub) {
 		super.deleteSelectedPaper(pub);
-		processEvent(new ActionEvent(this, ActionEvent.ACTION_PERFORMED, "deletes selected paper(s)"));
+		processEvent(new ActionEvent(this, ActionEvent.ACTION_PERFORMED, "paper"));
 	}
 	
 	/**
@@ -129,7 +119,7 @@ public class ScholarshipModel extends Scholarship{
 	 */
 	public void deleteAllPapers() {
 		super.deleteAllPapers();
-		processEvent(new ActionEvent(this, ActionEvent.ACTION_PERFORMED, "deletes all papers"));
+		processEvent(new ActionEvent(this, ActionEvent.ACTION_PERFORMED, "paper"));
 	}
 	
 	/**

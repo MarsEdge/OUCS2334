@@ -48,15 +48,6 @@ public class Scholarship implements Serializable{
 	}
 
 	/**
-	 * Method to add an entire scholarship
-	 * @param scholarship    the scholarship bieng loaded
-	 */
-	public void addScholarship(Scholarship scholarship) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	/**
 	 * Method to add a scholar
 	 * @param scholar    the scholar object being added
 	 */
@@ -77,7 +68,7 @@ public class Scholarship implements Serializable{
 	 * Method to delete all scholars
 	 */
 	public void deleteAllScholars() {
-		// TODO Auto-generated method stub
+		scholarList.clear();
 		
 	}
 
@@ -86,7 +77,6 @@ public class Scholarship implements Serializable{
 	 * @param serial	serial object being added
 	 */
 	public void addSerial(Serial serial) {
-		// TODO Auto-generated method stub
 		
 	}
 	

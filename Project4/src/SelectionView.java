@@ -3,8 +3,10 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.IOException;
+import java.util.Arrays;
 import java.util.HashMap;
 
+import javax.swing.DefaultListModel;
 import javax.swing.JButton;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
@@ -54,12 +56,13 @@ public class SelectionView extends JFrame implements ActionListener {
 	private JButton jbDeleteAllPaper = new JButton("Delete All Papers");
 	
 	//Creates all JLists 
-	private JList<String> jlScholars = new JList<String>();
-	private JList<String> jlSerials = new JList<String>();
-	private JList<String> jlPapers = new JList<String>();
+	private JList<Scholar> jlScholars = new JList<Scholar>();
+	private JList<Serial> jlSerials = new JList<Serial>();
+	private JList<Publication> jlPapers = new JList<Publication>();
 
 	//Creates all JScrollPanes
 	private JScrollPane jspScholars = new JScrollPane(jlScholars);
+
 	private JScrollPane jspSerials = new JScrollPane(jlSerials);
 	private JScrollPane jspPapers = new JScrollPane(jlPapers);
 	
@@ -253,10 +256,63 @@ public class SelectionView extends JFrame implements ActionListener {
 	public JButton getJbDeleteAllPaper() {
 		return jbDeleteAllPaper;
 	}
+	
+	public JScrollPane getJspScholars() {
+		return jspScholars;
+	}
 
-	@Override
-	public void actionPerformed(ActionEvent arg0) {
-		// TODO Auto-generated method stub
+	public JScrollPane getJspSerials() {
+		return jspSerials;
+	}
+
+	public JScrollPane getJspPapers() {
+		return jspPapers;
+	}
+
+	private void populateScholarList() {
+		Object[] scholarObjectArray = model.getScholarList().toArray();
+		
+		// To cast down the array of objects (which are really AcademicPapers)
+		// to an array of AcademicPapers
+		Scholar[] scholarArray = Arrays.copyOf( scholarObjectArray, 
+				scholarObjectArray.length, Scholar[].class);
+		
+		
+		jlScholars.setListData(scholarArray);
+		pack();
+		setVisible(true);
 	}
 	
+	private void populatePaperList() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	private void populateSerialList() {
+		Object[] SerialObjectArray = model.getSerialMap().values().toArray();
+		
+		// To cast down the array of objects (which are really AcademicPapers)
+		// to an array of AcademicPapers
+		Serial[] serialArray = Arrays.copyOf( SerialObjectArray, 
+				SerialObjectArray.length, Serial[].class);
+		
+		
+		jlSerials.setListData(serialArray);
+		pack();
+		setVisible(true);
+		
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent actionEvent) {
+		if (actionEvent.getActionCommand().equals("scholar")) {
+			populateScholarList();
+		}
+		else if (actionEvent.getActionCommand().equals("serial")) {
+			populateSerialList();
+		}
+		else if (actionEvent.getActionCommand().equals("paper")) {
+			populatePaperList();
+		}
+	}
 }
