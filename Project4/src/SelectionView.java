@@ -215,6 +215,7 @@ public class SelectionView extends JFrame implements ActionListener {
 		if (this.model != null) {
 			// Register the view as listener for the model
 			model.addActionListener(this);
+		}
 	}
 	
 	public JButton getJbAddScholar() {
