@@ -61,8 +61,7 @@ public class Scholarship implements Serializable{
 	 * @param scholar    the scholar object being added
 	 */
 	public void addScholar(Scholar scholar) {
-		// TODO Auto-generated method stub
-		
+		scholarList.add(scholar);
 	}
 	
 	/**
@@ -70,7 +69,7 @@ public class Scholarship implements Serializable{
 	 * @param scholar    the scholar object being deleted
 	 */
 	public void deleteSelectedScholar(Scholar scholar) {
-		// TODO Auto-generated method stub
+		scholarList.remove(scholar);
 		
 	}
 	
