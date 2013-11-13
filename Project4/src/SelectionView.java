@@ -54,9 +54,9 @@ public class SelectionView extends JFrame implements ActionListener {
 	private JButton jbDeleteAllPaper = new JButton("Delete All Papers");
 	
 	//Creates all JLists 
-	private JList jlScholars = new JList();
-	private JList jlSerials = new JList();
-	private JList jlPapers = new JList();
+	private JList<String> jlScholars = new JList<String>();
+	private JList<String> jlSerials = new JList<String>();
+	private JList<String> jlPapers = new JList<String>();
 
 	//Creates all JScrollPanes
 	private JScrollPane jspScholars = new JScrollPane(jlScholars);
