@@ -38,6 +38,7 @@ public class Scholar implements Comparable<Scholar>{
 		addResearchArea(res);
 	}
 	
+	@Override
 	public String toString() {
 		return name.getNameFull();
 	}
