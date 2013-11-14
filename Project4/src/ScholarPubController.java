@@ -84,7 +84,7 @@ public class ScholarPubController {
 		public void actionPerformed(ActionEvent e) {
 			Frame frame = new Frame();
 			String[] obj = {"Conference", "Journal"};
-			String type = (String)JOptionPane.showInputDialog(frame, "Add a Serial:\n"+ "What kind of serial?","Add Serial", JOptionPane.QUESTION_MESSAGE,null, obj,"Journal");
+			String type = (String)JOptionPane.showInputDialog(frame, "Add a Serial:\n"+ "What kind of serial?","Add Serial", JOptionPane.QUESTION_MESSAGE,null, obj,"Conference");
 			
 			Scholar[] auth = new Scholar[model.getScholarList().size() + 1];
 			int i = 0;
@@ -99,24 +99,14 @@ public class ScholarPubController {
 				ArrayList<Scholar> committeeTemp = new ArrayList<Scholar>();
 				
 				String chairs = JOptionPane.showInputDialog(frame, "Add a Serial:\n"+ "Who is a program chair?","Add Serial", JOptionPane.QUESTION_MESSAGE,null, auth,"Journal").toString();			
-				for(Scholar sch: auth){
-					if(sch.getName().getNameFull()==chairs){
-						chairTemp.add(sch);
-					}
-					else chairTemp.add(new Scholar(chairs, "", ""));
-				}
+				chairTemp.add(new Scholar(chairs, "", ""));
 				
 				
 				for(int loop = 0; loop==0;){
 					int moreChairsYN = JOptionPane.showConfirmDialog(null, "Would you like to add another chair?", "Add a Link?", JOptionPane.YES_NO_OPTION);
 			        if (moreChairsYN == JOptionPane.YES_OPTION) {
 			        	String nextChair = JOptionPane.showInputDialog(frame, "Add a Serial:\n"+ "Who else is a program chair?","Add Serial", JOptionPane.QUESTION_MESSAGE,null, auth,"Journal").toString();			
-						for(Scholar sch: auth){
-							if(sch.getName().getNameFull()==nextChair){
-								chairTemp.add(sch);
-							}
-							else chairTemp.add(new Scholar(nextChair, "", ""));
-						}
+			        	chairTemp.add(new Scholar(nextChair, "", ""));
 			        	
 			        }
 			        else {
@@ -126,24 +116,14 @@ public class ScholarPubController {
 				}
 				
 				String committee = JOptionPane.showInputDialog(frame, "Add a Serial:\n"+ "Who is a committee member?","Add Serial", JOptionPane.QUESTION_MESSAGE,null, auth,"Journal").toString();			
-				for(Scholar sch: auth){
-					if(sch.getName().getNameFull()==committee){
-						chairTemp.add(sch);
-					}
-					else committeeTemp.add(new Scholar(committee, "", ""));
-				}
+				committeeTemp.add(new Scholar(committee, "", ""));
 				
 				
 				for(int loop = 0; loop==0;){
 					int moreChairsYN = JOptionPane.showConfirmDialog(null, "Would you like to add another committee member?", "Add a Link?", JOptionPane.YES_NO_OPTION);
 			        if (moreChairsYN == JOptionPane.YES_OPTION) {
 			        	String nextComm = JOptionPane.showInputDialog(frame, "Add a Serial:\n"+ "Who else is a committee member?","Add Serial", JOptionPane.QUESTION_MESSAGE,null, auth,"Journal").toString();			
-						for(Scholar sch: auth){
-							if(sch.getName().getNameFull()==nextComm){
-								committeeTemp.add(sch);
-							}
-							else committeeTemp.add(new Scholar(nextComm, "", ""));
-						}
+			        	committeeTemp.add(new Scholar(nextComm, "", ""));
 			        	
 			        }
 			        else {
