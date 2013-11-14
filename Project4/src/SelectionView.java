@@ -3,6 +3,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 
@@ -65,7 +66,6 @@ public class SelectionView extends JFrame implements ActionListener {
 
 	//Creates all JScrollPanes
 	private JScrollPane jspScholars = new JScrollPane(jlScholars);
-
 	private JScrollPane jspSerials = new JScrollPane(jlSerials);
 	private JScrollPane jspPapers = new JScrollPane(jlPapers);
 	
@@ -180,7 +180,7 @@ public class SelectionView extends JFrame implements ActionListener {
 	 * @param typeOfGraph type of graph to open
 	 * @param scholar scholar who's graph to open
 	 */
-	private void openGraph(String typeOfGraph, String scholar, HashMap<String, Scholar> scholars){
+	void openGraph(String typeOfGraph, String scholar, ArrayList<Scholar> scholars){
 		Graph display = new Graph(typeOfGraph, scholar, scholars);
 	}
 	
@@ -308,7 +308,32 @@ public class SelectionView extends JFrame implements ActionListener {
 	public JMenuItem getJmiExit() {
 		return jmiExit;
 	}
-
+	
+	public JMenuItem getJmiTP() {
+		return jmiTP;
+	}
+	
+	public JMenuItem getJmiPY() {
+		return jmiPY;
+	}
+	public JMenuItem getJmiCPY() {
+		return jmiCPY;
+	}
+	public JMenuItem getJmiJAY() {
+		return jmiJAY;
+	}
+	public JMenuItem getJmiCA() {
+		return jmiCA;
+	}
+	
+	public ListModel getLMScholars() {
+		return lmScholars;
+	}
+	
+	public JList getJlScholars() {
+		return jlScholars;
+	}
+	
 	private void populateScholarList() {
 		Object[] scholarObjectArray = model.getScholarList().toArray();
 		

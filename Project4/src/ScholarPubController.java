@@ -1,13 +1,11 @@
 import java.awt.Frame;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.HashMap;
 
-import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
+
 
 
 
@@ -324,7 +322,38 @@ public class ScholarPubController {
 	 */
 	private class ExitListener implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
-			System.exit(-1);;
+			System.exit(-1);
+		}
+	}
+	
+	private class TPListener implements ActionListener {
+		public void actionPerformed(ActionEvent e) {
+			
+			view.openGraph("TP", (String) view.getLMScholars().getElementAt(view.getJlScholars().getSelectedIndex())  , model.getScholarList());
+		}
+	}
+	
+	private class PYListener implements ActionListener {
+		public void actionPerformed(ActionEvent e) {
+			
+		}
+	}
+	
+	private class CPYtListener implements ActionListener {
+		public void actionPerformed(ActionEvent e) {
+			
+		}
+	}
+	
+	private class JAYListener implements ActionListener {
+		public void actionPerformed(ActionEvent e) {
+		
+		}
+	}
+	
+	private class CAtListener implements ActionListener {
+		public void actionPerformed(ActionEvent e) {
+			
 		}
 	}
 }

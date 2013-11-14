@@ -60,7 +60,7 @@ public class Graph extends JFrame{
 	/**
 	 * Map of all authors
 	 */
-	private HashMap<String, Scholar> scholars;
+	private ArrayList<Scholar> scholars;
 	
 	/**
 	 * Default Graph shown at start of program
@@ -86,7 +86,7 @@ public class Graph extends JFrame{
 	 * Constructor for a Graph given the type of graph asked for by the user
 	 * @param type        type of graph to create
 	 */
-	public Graph(String type, String authorName, HashMap<String, Scholar> scholars){
+	public Graph(String type, String authorName, ArrayList<Scholar> scholars){
 		setScholars(scholars);
 		setAuthor(authorName);
 		setTypeOfGraph(type);
@@ -333,14 +333,14 @@ public class Graph extends JFrame{
 	}
 	
 	public void setAuthor(String scholarName){
-		scholar = scholars.get(scholarName);
+		// TODO scholar = ;
 	}
 
-	public HashMap<String, Scholar> getScholars() {
+	public ArrayList<Scholar> getScholars() {
 		return scholars;
 	}
 
-	public void setScholars(HashMap<String, Scholar> scholars) {
+	public void setScholars(ArrayList<Scholar> scholars) {
 		this.scholars = scholars;
 	}
 }
