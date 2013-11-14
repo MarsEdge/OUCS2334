@@ -29,7 +29,6 @@ public class SelectionView extends JFrame implements ActionListener {
 	
 	//Creates all needed JMenuItems
 	private JMenuItem jmiLoad = new JMenuItem("Load Scholarship");
-
 	private JMenuItem jmiSave = new JMenuItem("Save Scholarship");
 	private JMenuItem jmiExit = new JMenuItem("Exit");
 	private JMenuItem jmiTP = new JMenuItem("Type of Publicataion");
@@ -245,6 +244,11 @@ public class SelectionView extends JFrame implements ActionListener {
 		
 	}
 	
+	public String loadFile(){
+		int fcLoad = jFileChooser.showOpenDialog(jmiLoad);
+		return jFileChooser.getSelectedFile().getName();
+	}
+	
 	public JButton getJbAddScholar() {
 		return jbAddScholar;
 	}
@@ -299,6 +303,10 @@ public class SelectionView extends JFrame implements ActionListener {
 
 	public JMenuItem getJmiSave() {
 		return jmiSave;
+	}
+	
+	public JMenuItem getJmiExit() {
+		return jmiExit;
 	}
 
 	private void populateScholarList() {

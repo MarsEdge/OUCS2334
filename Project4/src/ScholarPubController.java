@@ -1,9 +1,11 @@
 import java.awt.Frame;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 
+import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 
 
@@ -32,6 +34,7 @@ public class ScholarPubController {
 		this.view.getJbDeleteAllPaper().addActionListener(new DeleteAllPapersListener());
 		this.view.getJmiLoad().addActionListener(new LoadListener());
 		this.view.getJmiSave().addActionListener(new SaveListener());
+		this.view.getJmiExit().addActionListener(new ExitListener());
 	}
 	
 	/**
@@ -188,7 +191,6 @@ public class ScholarPubController {
 	private class DeleteAllPapersListener implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
 			model.deleteAllPapers();
-			
 			view.updateList(model);
 		}
 	}
@@ -200,7 +202,7 @@ public class ScholarPubController {
 	private class LoadListener implements ActionListener {
 		public void actionPerformed(ActionEvent e) {			
 			try {
-				model.loadScholarship();
+				model.loadScholarship(view.loadFile());
 			} catch (ClassNotFoundException e1) {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
@@ -208,6 +210,7 @@ public class ScholarPubController {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
 			}
+			view.updateList(model);
 		}
 	}
 	
@@ -216,15 +219,24 @@ public class ScholarPubController {
 	 * @param filename
 	 */
 	private class SaveListener implements ActionListener {
-		public void actionPerformed(ActionEvent e) {			
+		public void actionPerformed(ActionEvent e) {
 			try {
 				model.saveScholarship(model);
 			} catch (IOException e1) {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
 			}
+			view.updateList(model);
 		}
 	}
 	
-	
+	/**
+	 * Exits the program
+	 * @param filename
+	 */
+	private class ExitListener implements ActionListener {
+		public void actionPerformed(ActionEvent e) {
+			System.exit(-1);;
+		}
+	}
 }

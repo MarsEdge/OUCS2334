@@ -158,8 +158,8 @@ public class ScholarshipModel extends Scholarship{
 	 * @throws IOException
 	 * @throws ClassNotFoundException
 	 */
-	public void loadScholarship() throws IOException, ClassNotFoundException {
-		FileInputStream fileInputStream = new FileInputStream("out.bin");
+	public void loadScholarship(String filename) throws IOException, ClassNotFoundException {
+		FileInputStream fileInputStream = new FileInputStream(filename);
 		ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream);
 		ScholarshipModel scholarship = (ScholarshipModel) objectInputStream.readObject();
 		objectInputStream.close();
