@@ -4,6 +4,7 @@ import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
@@ -82,7 +83,7 @@ public class ScholarPubController {
 	private class AddSerialListener implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
 			Frame frame = new Frame();
-			String[] obj = {"Journal", "Conference"};
+			String[] obj = {"Conference", "Journal"};
 			String type = (String)JOptionPane.showInputDialog(frame, "Add a Serial:\n"+ "What kind of serial?","Add Serial", JOptionPane.QUESTION_MESSAGE,null, obj,"Journal");
 			
 			Scholar[] auth = new Scholar[model.getScholarList().size() + 1];
@@ -94,13 +95,68 @@ public class ScholarPubController {
 			
 			if(type.equals("Conference"))
 			{
-			
-				String chairs = JOptionPane.showInputDialog(frame, "Add a Serial:\n"+ "Who is the editor?","Add Serial", JOptionPane.QUESTION_MESSAGE,null, auth, null).toString();
-				String committee = JOptionPane.showInputDialog(frame, "Add a Serial:\n"+ "Who is the reviewer","Add Serial", JOptionPane.QUESTION_MESSAGE,null, null,null).toString();
+				ArrayList<Scholar> chairTemp = new ArrayList<Scholar>();
+				ArrayList<Scholar> committeeTemp = new ArrayList<Scholar>();
 				
-				model.addSerial(new Conference(chairs, committee));
+				String chairs = (String)JOptionPane.showInputDialog(frame, "Add a Serial:\n"+ "Who is a program chair?","Add Serial", JOptionPane.QUESTION_MESSAGE,null, auth,"Journal");			
+				for(Scholar sch: auth){
+					if(sch.getName().getNameFull()==chairs){
+						chairTemp.add(sch);
+					}
+				}
 				
-			// editor / program chair or reviewer / program committee
+				
+				for(int loop = 0; loop==0;){
+					int moreChairsYN = JOptionPane.showConfirmDialog(null, "Would you like to add another chair?", "Add a Link?", JOptionPane.YES_NO_OPTION);
+			        if (moreChairsYN == JOptionPane.YES_OPTION) {
+			        	String nextChair = (String)JOptionPane.showInputDialog(frame, "Add a Serial:\n"+ "Who else is a program chair?","Add Serial", JOptionPane.QUESTION_MESSAGE,null, auth,"Journal");			
+						for(Scholar sch: auth){
+							if(sch.getName().getNameFull()==nextChair){
+								chairTemp.add(sch);
+							}
+						}
+			        	
+			        }
+			        else {
+			        	loop = 1;
+			        }	
+				
+				}
+				
+				String committee = (String)JOptionPane.showInputDialog(frame, "Add a Serial:\n"+ "Who is a committee member?","Add Serial", JOptionPane.QUESTION_MESSAGE,null, auth,"Journal");			
+				for(Scholar sch: auth){
+					if(sch.getName().getNameFull()==committee){
+						chairTemp.add(sch);
+					}
+				}
+				
+				
+				for(int loop = 0; loop==0;){
+					int moreChairsYN = JOptionPane.showConfirmDialog(null, "Would you like to add another committee member?", "Add a Link?", JOptionPane.YES_NO_OPTION);
+			        if (moreChairsYN == JOptionPane.YES_OPTION) {
+			        	String nextComm = (String)JOptionPane.showInputDialog(frame, "Add a Serial:\n"+ "Who else is a committee member?","Add Serial", JOptionPane.QUESTION_MESSAGE,null, auth,"Journal");			
+						for(Scholar sch: auth){
+							if(sch.getName().getNameFull()==nextComm){
+								committeeTemp.add(sch);
+							}
+						}
+			        	
+			        }
+			        else {
+			        	loop = 1;
+			        }	
+				
+				}
+				
+				String month = JOptionPane.showInputDialog(frame, "Add a Serial:\n"+ "What month is the conference?","Add Serial", JOptionPane.QUESTION_MESSAGE,null, auth, null).toString();
+				String year = JOptionPane.showInputDialog(frame, "Add a Serial:\n"+ "What year is the conference?","Add Serial", JOptionPane.QUESTION_MESSAGE,null, auth, null).toString();
+				String country = JOptionPane.showInputDialog(frame, "Add a Serial:\n"+ "What country is the conference in?","Add Serial", JOptionPane.QUESTION_MESSAGE,null, auth, null).toString();
+				String state = JOptionPane.showInputDialog(frame, "Add a Serial:\n"+ "What state is the conference in?","Add Serial", JOptionPane.QUESTION_MESSAGE,null, auth, null).toString();
+				String city = JOptionPane.showInputDialog(frame, "Add a Serial:\n"+ "What city is the conference in?","Add Serial", JOptionPane.QUESTION_MESSAGE,null, null,null).toString();
+
+				
+				model.addSerial(new Conference(new Date(month, year), new Location(city, state, country), chairTemp, committeeTemp ));
+
 			}
 			else{
 				String editor = JOptionPane.showInputDialog(frame, "Add a Serial:\n"+ "Who is the editor?","Add Serial", JOptionPane.QUESTION_MESSAGE,null, auth, null).toString();
@@ -109,7 +165,6 @@ public class ScholarPubController {
 				model.addSerial(new Journal(editor, reviewer));
 				
 			}
-			//else 
 			
 			view.updateList(model);
 		}
