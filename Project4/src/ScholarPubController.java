@@ -159,17 +159,65 @@ public class ScholarPubController {
 				i++;
 			}
 			
+			
 			String author = JOptionPane.showInputDialog(frame, "Add a Paper:\n"+ "Who is the author?","Add Paper", JOptionPane.QUESTION_MESSAGE,null, auth, null).toString();
-			
 			ArrayList<String> authorsList = new ArrayList<String>();
-			
 			authorsList.add(author);
+			
+			Object[] options = {"None", "1", "2", "3", "4", "5", "6", "7", "8", "9"};
+			int numAuthors = JOptionPane.showOptionDialog(null,
+					"How many more Authors are there?", 
+					"Add more Authors?",
+					JOptionPane.YES_NO_CANCEL_OPTION,
+				    JOptionPane.QUESTION_MESSAGE,
+				    null,
+				    options,
+				    options[1]);
+			
+			switch(numAuthors) {
+				case(0):	break;
+				case(9): 	String a9 = JOptionPane.showInputDialog(frame, "Add a Paper:\n"+ "Who is the next author?","Add Paper", JOptionPane.QUESTION_MESSAGE,null, auth, null).toString();
+							authorsList.add(a9);
+				case(8): 	String a8 = JOptionPane.showInputDialog(frame, "Add a Paper:\n"+ "Who is the next author?","Add Paper", JOptionPane.QUESTION_MESSAGE,null, auth, null).toString();
+							authorsList.add(a8);
+				case(7): 	String a7 = JOptionPane.showInputDialog(frame, "Add a Paper:\n"+ "Who is the next author?","Add Paper", JOptionPane.QUESTION_MESSAGE,null, auth, null).toString();
+							authorsList.add(a7);
+				case(6): 	String a6 = JOptionPane.showInputDialog(frame, "Add a Paper:\n"+ "Who is the next author?","Add Paper", JOptionPane.QUESTION_MESSAGE,null, auth, null).toString();
+							authorsList.add(a6);
+				case(5): 	String a5 = JOptionPane.showInputDialog(frame, "Add a Paper:\n"+ "Who is the next author?","Add Paper", JOptionPane.QUESTION_MESSAGE,null, auth, null).toString();
+							authorsList.add(a5);
+				case(4): 	String a4 = JOptionPane.showInputDialog(frame, "Add a Paper:\n"+ "Who is the next author?","Add Paper", JOptionPane.QUESTION_MESSAGE,null, auth, null).toString();
+							authorsList.add(a4);
+				case(3): 	String a3 = JOptionPane.showInputDialog(frame, "Add a Paper:\n"+ "Who is the next author?","Add Paper", JOptionPane.QUESTION_MESSAGE,null, auth, null).toString();
+							authorsList.add(a3);
+				case(2): 	String a2 = JOptionPane.showInputDialog(frame, "Add a Paper:\n"+ "Who is the next author?","Add Paper", JOptionPane.QUESTION_MESSAGE,null, auth, null).toString();
+							authorsList.add(a2);
+				case(1): 	String a1 = JOptionPane.showInputDialog(frame, "Add a Paper:\n"+ "Who is the next author?","Add Paper", JOptionPane.QUESTION_MESSAGE,null, auth, null).toString();
+							authorsList.add(a1); break;
+
+			}
 			
 			String title = JOptionPane.showInputDialog(frame, "Add a Paper:\n"+ "What is the Title?","Add Paper", JOptionPane.QUESTION_MESSAGE,null, null,null).toString();
 			
 			String serialTitle = JOptionPane.showInputDialog(frame, "Add a Serial:\n"+ "What is the Serial Title?","Add Serial", JOptionPane.QUESTION_MESSAGE,null, serial, null).toString();
 			
-			model.addPaper(new Publication(authorsList, title, serialTitle, "", "", "", ""));
+			String pgStart = JOptionPane.showInputDialog(frame, "Add a Paper:\n"+ "What is starting page number?","Add Paper", JOptionPane.QUESTION_MESSAGE,null, null,null).toString();
+			
+			String pgEnd = JOptionPane.showInputDialog(frame, "Add a Paper:\n"+ "What is the last page number?","Add Paper", JOptionPane.QUESTION_MESSAGE,null, null,null).toString();
+			
+			String month = JOptionPane.showInputDialog(frame, "Add a Paper:\n"+ "What month was the paper written?","Add Paper", JOptionPane.QUESTION_MESSAGE,null, null,null).toString();
+			
+			String year = JOptionPane.showInputDialog(frame, "Add a Paper:\n"+ "What year was the paper written?","Add Paper", JOptionPane.QUESTION_MESSAGE,null, null,null).toString();
+			
+
+			int linkYN = JOptionPane.showConfirmDialog(null, "Would you like to add a link?", "Add a Link?", JOptionPane.YES_NO_OPTION);
+	        if (linkYN == JOptionPane.YES_OPTION) {
+	        	String link = JOptionPane.showInputDialog(frame, "Add a Paper:\n"+ "What is the link?","Add link", JOptionPane.QUESTION_MESSAGE,null, null,null).toString();
+	        	model.addPaper(new Publication(authorsList, title, serialTitle, pgStart, pgEnd, month, year, link));
+	        }
+	        else {
+	        	model.addPaper(new Publication(authorsList, title, serialTitle, pgStart, pgEnd, month, year));
+	        }		
 			view.updateList(model);
 		}
 	}
@@ -204,10 +252,10 @@ public class ScholarPubController {
 			try {
 				model.loadScholarship(view.loadFile());
 			} catch (ClassNotFoundException e1) {
-				// TODO Auto-generated catch block
+				// Auto-generated catch block
 				e1.printStackTrace();
 			} catch (IOException e1) {
-				// TODO Auto-generated catch block
+				// Auto-generated catch block
 				e1.printStackTrace();
 			}
 			view.updateList(model);
@@ -223,7 +271,7 @@ public class ScholarPubController {
 			try {
 				model.saveScholarship(model);
 			} catch (IOException e1) {
-				// TODO Auto-generated catch block
+				// Auto-generated catch block
 				e1.printStackTrace();
 			}
 			view.updateList(model);
