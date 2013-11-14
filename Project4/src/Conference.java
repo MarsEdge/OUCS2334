@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class Conference extends Serial {
 	
@@ -10,6 +11,11 @@ public class Conference extends Serial {
 
 	public Conference(String chairs, String members) {
 		addMeeting(new Meeting(chairs, members));
+	}
+	
+	public Conference(Date date, Location location, ArrayList<Scholar> chairs, ArrayList<Scholar> committeeMembers){
+		
+		addMeeting(new Meeting(date, location, chairs, committeeMembers));
 	}
 	
 	@Override

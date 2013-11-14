@@ -35,6 +35,19 @@ public class Meeting {
 	 * @param committeeMembers meeting committee members
 	 * @param publications meeting publications
 	 */
+	public Meeting(Date date, Location location, ArrayList<Scholar> chairs, ArrayList<Scholar> committeeMembers) {
+		//TODO implement
+	
+	}
+	/**
+	 * constructor with all fields
+	 * 
+	 * @param date meeting date
+	 * @param location meeting location
+	 * @param chairs meeting committee chairs
+	 * @param committeeMembers meeting committee members
+	 * @param publications meeting publications
+	 */
 	public Meeting(Date date, Location location, HashMap<String, Scholar> chairs, 
 			HashMap<String, Scholar> committeeMembers, 
 			HashMap<String, Publication> publications) {
