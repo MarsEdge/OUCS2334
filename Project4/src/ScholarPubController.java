@@ -132,14 +132,15 @@ public class ScholarPubController {
 				
 				}
 				
-				String month = JOptionPane.showInputDialog(frame, "Add a Serial:\n"+ "What month is the conference?","Add Serial", JOptionPane.QUESTION_MESSAGE,null, auth, null).toString();
-				String year = JOptionPane.showInputDialog(frame, "Add a Serial:\n"+ "What year is the conference?","Add Serial", JOptionPane.QUESTION_MESSAGE,null, auth, null).toString();
-				String country = JOptionPane.showInputDialog(frame, "Add a Serial:\n"+ "What country is the conference in?","Add Serial", JOptionPane.QUESTION_MESSAGE,null, auth, null).toString();
-				String state = JOptionPane.showInputDialog(frame, "Add a Serial:\n"+ "What state is the conference in?","Add Serial", JOptionPane.QUESTION_MESSAGE,null, auth, null).toString();
+				String month = JOptionPane.showInputDialog(frame, "Add a Serial:\n"+ "What month is the conference?","Add Serial", JOptionPane.QUESTION_MESSAGE,null, null, null).toString();
+				String year = JOptionPane.showInputDialog(frame, "Add a Serial:\n"+ "What year is the conference?","Add Serial", JOptionPane.QUESTION_MESSAGE,null, null, null).toString();
+				String country = JOptionPane.showInputDialog(frame, "Add a Serial:\n"+ "What country is the conference in?","Add Serial", JOptionPane.QUESTION_MESSAGE,null, null, null).toString();
+				String state = JOptionPane.showInputDialog(frame, "Add a Serial:\n"+ "What state is the conference in?","Add Serial", JOptionPane.QUESTION_MESSAGE,null, null, null).toString();
 				String city = JOptionPane.showInputDialog(frame, "Add a Serial:\n"+ "What city is the conference in?","Add Serial", JOptionPane.QUESTION_MESSAGE,null, null,null).toString();
 
 				
-				model.addSerial(new Conference(new Date(month, year), new Location(city, state, country), chairTemp, committeeTemp ));
+				model.addSerial(new Journal(chairs, committee));
+				//model.addSerial(new Conference(new Date(month, year), new Location(city, state, country), chairTemp, committeeTemp));
 
 			}
 			else{
