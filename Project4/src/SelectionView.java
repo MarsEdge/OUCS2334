@@ -45,9 +45,6 @@ public class SelectionView extends JFrame implements ActionListener {
 	
 	//Creates all JButtons
 	private JButton jbAddScholar = new JButton("Add Scholar");
-	
-	
-
 	private JButton jbDeleteSelectedScholar = new JButton("Delete Selected Scholar(s)");
 	private JButton jbDeleteAllScholar = new JButton("Delete All Scholars");
 	private JButton jbAddSerial = new JButton("Add Serial");
@@ -61,7 +58,6 @@ public class SelectionView extends JFrame implements ActionListener {
 	private ListModel<Scholar> lmScholars = new DefaultListModel<Scholar>();
 	private ListModel<Serial> lmSerials = new DefaultListModel<Serial>();
 	private ListModel<Publication> lmPapers = new DefaultListModel<Publication>();
-	
 	
 	//Creates all JLists 
 	private JList<Scholar> jlScholars = new JList<Scholar>(lmScholars);
@@ -145,6 +141,15 @@ public class SelectionView extends JFrame implements ActionListener {
 		jplPaper.add(jspPapers);
 		jplPaper.add(paperButtonPanel);
 		
+		//Initial button conditions
+		jbDeleteSelectedScholar.setEnabled(false);
+		jbDeleteAllScholar.setEnabled(false);
+		jbAddSerial.setEnabled(false);
+		jbDeleteSelectedSerial.setEnabled(false);
+		jbDeleteAllSerial.setEnabled(false);
+		jbAddPaper.setEnabled(false);
+		jbDeleteSelectedPaper.setEnabled(false);
+		jbDeleteAllPaper.setEnabled(false);
 		
 		jmFile.add(jmiLoad);
 		jmFile.add(jmiSave);
@@ -210,8 +215,33 @@ public class SelectionView extends JFrame implements ActionListener {
 			((DefaultListModel<Publication>) lmPapers).addElement(pub);
 
 		}
-			
 		
+		//Used to disable/enable buttons
+			jbDeleteSelectedScholar.setEnabled(false);
+			jbDeleteAllScholar.setEnabled(false);
+			jbAddSerial.setEnabled(false);
+			jbDeleteSelectedSerial.setEnabled(false);
+			jbDeleteAllSerial.setEnabled(false);
+			jbAddPaper.setEnabled(false);
+			jbDeleteSelectedPaper.setEnabled(false);
+			jbDeleteAllPaper.setEnabled(false);
+			
+		if(model.getScholarList().isEmpty()==false){
+			jbDeleteSelectedScholar.setEnabled(true);
+			jbDeleteAllScholar.setEnabled(true);
+			jbAddSerial.setEnabled(true);
+			
+			if(model.getSerialMap().isEmpty()==false){
+				jbDeleteSelectedSerial.setEnabled(true);
+				jbDeleteAllSerial.setEnabled(true);
+				jbAddPaper.setEnabled(true);
+				
+				if(model.getPubMap().isEmpty()==false){
+					jbDeleteSelectedPaper.setEnabled(true);
+					jbDeleteAllPaper.setEnabled(true);
+				}
+			}	
+		}
 		
 	}
 	
