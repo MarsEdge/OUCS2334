@@ -17,6 +17,7 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
+import javax.swing.ListModel;
 
 
 public class SelectionView extends JFrame implements ActionListener {
@@ -56,10 +57,16 @@ public class SelectionView extends JFrame implements ActionListener {
 	private JButton jbDeleteSelectedPaper = new JButton("Delete Selected Paper(s)");
 	private JButton jbDeleteAllPaper = new JButton("Delete All Papers");
 	
+	//Creates List Models
+	private ListModel<Scholar> lmScholars = new DefaultListModel<Scholar>();
+	private ListModel<Serial> lmSerials = new DefaultListModel<Serial>();
+	private ListModel<Publication> lmPapers = new DefaultListModel<Publication>();
+	
+	
 	//Creates all JLists 
-	private JList<Scholar> jlScholars = new JList<Scholar>();
-	private JList<Serial> jlSerials = new JList<Serial>();
-	private JList<Publication> jlPapers = new JList<Publication>();
+	private JList<Scholar> jlScholars = new JList<Scholar>(lmScholars);
+	private JList<Serial> jlSerials = new JList<Serial>(lmSerials);
+	private JList<Publication> jlPapers = new JList<Publication>(lmPapers);
 
 	//Creates all JScrollPanes
 	private JScrollPane jspScholars = new JScrollPane(jlScholars);
@@ -187,6 +194,27 @@ public class SelectionView extends JFrame implements ActionListener {
 		}
 	}
 	
+	public void updateList(ScholarshipModel model){
+		
+		for(Scholar sch : model.getScholarList()){
+			((DefaultListModel<Scholar>) lmScholars).addElement(sch);
+
+		}
+		
+		for(Serial ser : model.getSerialMap()){
+			((DefaultListModel<Serial>) lmSerials).addElement(ser);
+
+		}
+		
+		for(Publication pub : model.getPubMap()){
+			((DefaultListModel<Publication>) lmPapers).addElement(pub);
+
+		}
+			
+		
+		
+	}
+	
 	public JButton getJbAddScholar() {
 		return jbAddScholar;
 	}
@@ -299,4 +327,6 @@ public class SelectionView extends JFrame implements ActionListener {
 			populatePaperList();
 		}
 	}
+	
+	
 }

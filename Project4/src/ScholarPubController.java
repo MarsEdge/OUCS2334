@@ -46,6 +46,7 @@ public class ScholarPubController {
 			String research = (String)JOptionPane.showInputDialog(frame, "Add a Scholar:\n"+ "Enter " + name + "'s research areas","Add Scholar", JOptionPane.QUESTION_MESSAGE,null, obj,"Artificial Intelligence");
 			
 			model.addScholar(new Scholar(name, aff, research));
+			view.updateList(model);
 		}
 	}
 	
@@ -55,6 +56,10 @@ public class ScholarPubController {
 	private class DeleteScholarListener implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
 			//TODO stub
+			
+			
+			
+			view.updateList(model);
 		}
 	}
 	
@@ -64,6 +69,7 @@ public class ScholarPubController {
 	private class DeleteAllScholarsListener implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
 			model.deleteAllScholars();
+			view.updateList(model);
 		}
 	}
 	
@@ -98,9 +104,11 @@ public class ScholarPubController {
 				String reviewer = JOptionPane.showInputDialog(frame, "Add a Serial:\n"+ "Who is the reviewer","Add Serial", JOptionPane.QUESTION_MESSAGE,null, auth,null).toString();
 				
 				model.addSerial(new Journal(editor, reviewer));
+				
 			}
 			//else 
 			
+			view.updateList(model);
 		}
 	}
 	
@@ -109,6 +117,10 @@ public class ScholarPubController {
 	 */
 	private class DeleteSerialListener implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
+			//TODO
+			
+			
+			view.updateList(model);
 		}
 	}
 	
@@ -118,6 +130,7 @@ public class ScholarPubController {
 	private class DeleteAllSerialsListener implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
 			model.deleteAllSerials();
+			view.updateList(model);
 		}
 	}
 	
@@ -154,6 +167,7 @@ public class ScholarPubController {
 			String serialTitle = JOptionPane.showInputDialog(frame, "Add a Serial:\n"+ "What is the Serial Title?","Add Serial", JOptionPane.QUESTION_MESSAGE,null, serial, null).toString();
 			
 			model.addPaper(new Publication(authorsList, title, serialTitle, "", "", "", ""));
+			view.updateList(model);
 		}
 	}
 	
@@ -162,6 +176,9 @@ public class ScholarPubController {
 	 */
 	private class DeletePaperListener implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
+			//TODO
+			
+			view.updateList(model);
 		}
 	}
 	
@@ -171,6 +188,8 @@ public class ScholarPubController {
 	private class DeleteAllPapersListener implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
 			model.deleteAllPapers();
+			
+			view.updateList(model);
 		}
 	}
 	
