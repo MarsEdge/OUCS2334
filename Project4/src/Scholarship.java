@@ -27,8 +27,12 @@ public class Scholarship implements Serializable{
 	 * Getter for values of the List of Scholars
 	 * @return a copy of scholarList
 	 */
-	public ArrayList<Scholar> getScholarList() {
-		return new ArrayList<Scholar>(scholarList);
+	public HashMap<String, Scholar> getScholarList() {
+		HashMap<String, Scholar> out = new HashMap<String, Scholar>();
+		for (Scholar scholar : scholarList) {
+			out.put(scholar.getName().getNameFull(), scholar);
+		}
+		return out;
 	}
 	
 	/**

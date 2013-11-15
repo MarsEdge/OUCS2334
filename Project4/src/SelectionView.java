@@ -180,7 +180,7 @@ public class SelectionView extends JFrame implements ActionListener {
 	 * @param typeOfGraph type of graph to open
 	 * @param scholar scholar who's graph to open
 	 */
-	void openGraph(String typeOfGraph, String scholar, ArrayList<Scholar> scholars){
+	void openGraph(String typeOfGraph, String scholar, HashMap<String, Scholar> scholars){
 		Graph display = new Graph(typeOfGraph, scholar, scholars);
 	}
 	
@@ -200,7 +200,7 @@ public class SelectionView extends JFrame implements ActionListener {
 	
 	public void updateList(ScholarshipModel model){
 		
-		for(Scholar sch : model.getScholarList()){
+		for(Scholar sch : model.getScholarList().values()){
 			((DefaultListModel<Scholar>) lmScholars).addElement(sch);
 
 		}
@@ -335,7 +335,7 @@ public class SelectionView extends JFrame implements ActionListener {
 	}
 	
 	private void populateScholarList() {
-		Object[] scholarObjectArray = model.getScholarList().toArray();
+		Object[] scholarObjectArray = model.getScholarList().values().toArray();
 		
 		// To cast down the array of objects (which are really AcademicPapers)
 		// to an array of AcademicPapers

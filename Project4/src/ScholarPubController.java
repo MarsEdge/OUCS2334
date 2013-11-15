@@ -86,7 +86,7 @@ public class ScholarPubController {
 			
 			Scholar[] auth = new Scholar[model.getScholarList().size() + 1];
 			int i = 0;
-			for(Scholar sch : model.getScholarList()){
+			for(Scholar sch : model.getScholarList().values()){
 				auth[i]=sch;
 				i++;
 			}
@@ -185,7 +185,7 @@ public class ScholarPubController {
 			
 			Scholar[] auth = new Scholar[model.getScholarList().size() + 1];
 			int i = 0;
-			for(Scholar sch : model.getScholarList()){
+			for(Scholar sch : model.getScholarList().values()){
 				auth[i]=sch;
 				i++;
 			}
