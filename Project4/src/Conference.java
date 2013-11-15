@@ -3,6 +3,11 @@ import java.util.HashMap;
 
 public class Conference extends Serial {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 4104159390397649548L;
+
 	/** Conference sponsor */
 	private Name sponsor = new Name();
 	

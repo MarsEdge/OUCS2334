@@ -1,8 +1,14 @@
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class Issue {
+public class Issue implements Serializable {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 4232288633696377904L;
+
 	/** publication date */
 	private Date pubDate;
 	

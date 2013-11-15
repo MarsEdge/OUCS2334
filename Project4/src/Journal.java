@@ -1,7 +1,13 @@
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Journal extends Serial {
+public class Journal extends Serial implements Serializable {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -6134509644200622069L;
+
 	/** publisher name */
 	private Name pubName = new Name();
 	

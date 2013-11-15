@@ -1,5 +1,12 @@
-public class Date {
+import java.io.Serializable;
+
+public class Date implements Serializable{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -6972389628498130264L;
+
 	private String month;
 	
 	private String year;

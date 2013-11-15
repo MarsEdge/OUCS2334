@@ -2,7 +2,6 @@ import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -55,9 +54,9 @@ public class SelectionView extends JFrame implements ActionListener {
 	private JButton jbDeleteAllPaper = new JButton("Delete All Papers");
 	
 	//Creates List Models
-	private ListModel<Scholar> lmScholars = new DefaultListModel<Scholar>();
-	private ListModel<Serial> lmSerials = new DefaultListModel<Serial>();
-	private ListModel<Publication> lmPapers = new DefaultListModel<Publication>();
+	private DefaultListModel<Scholar> lmScholars = new DefaultListModel<Scholar>();
+	private DefaultListModel<Serial> lmSerials = new DefaultListModel<Serial>();
+	private DefaultListModel<Publication> lmPapers = new DefaultListModel<Publication>();
 	
 	//Creates all JLists 
 	private JList<Scholar> jlScholars = new JList<Scholar>(lmScholars);
@@ -79,6 +78,8 @@ public class SelectionView extends JFrame implements ActionListener {
 	private JFileChooser jFileChooser = new JFileChooser(new File("."));
 	
 	private ScholarshipModel model;
+	
+	private ArrayList<Graph> graphs = new ArrayList<Graph>(); 
 
 	/**
 	 *  Will fill the frame with content and hold the addActionListeners
@@ -181,7 +182,7 @@ public class SelectionView extends JFrame implements ActionListener {
 	 * @param scholar scholar who's graph to open
 	 */
 	void openGraph(String typeOfGraph, String scholar, HashMap<String, Scholar> scholars){
-		Graph display = new Graph(typeOfGraph, scholar, scholars);
+		graphs.add(new Graph(typeOfGraph, scholar, scholars));
 	}
 	
 
@@ -200,16 +201,19 @@ public class SelectionView extends JFrame implements ActionListener {
 	
 	public void updateList(ScholarshipModel model){
 		
+		lmScholars.removeAllElements();
 		for(Scholar sch : model.getScholarList().values()){
 			((DefaultListModel<Scholar>) lmScholars).addElement(sch);
 
 		}
 		
+		lmSerials.removeAllElements();
 		for(Serial ser : model.getSerialMap()){
 			((DefaultListModel<Serial>) lmSerials).addElement(ser);
 
 		}
 		
+		lmPapers.removeAllElements();
 		for(Publication pub : model.getPubMap()){
 			((DefaultListModel<Publication>) lmPapers).addElement(pub);
 
@@ -342,7 +346,7 @@ public class SelectionView extends JFrame implements ActionListener {
 		Scholar[] scholarArray = Arrays.copyOf( scholarObjectArray, 
 				scholarObjectArray.length, Scholar[].class);
 		
-		
+		jlScholars.removeAll();
 		jlScholars.setListData(scholarArray);
 		pack();
 		setVisible(true);
@@ -357,6 +361,7 @@ public class SelectionView extends JFrame implements ActionListener {
 				PaperObjectArray.length, Publication[].class);
 		
 		
+		jlPapers.removeAll();
 		jlPapers.setListData(serialArray);
 		pack();
 		setVisible(true);
@@ -372,6 +377,7 @@ public class SelectionView extends JFrame implements ActionListener {
 				SerialObjectArray.length, Serial[].class);
 		
 		
+		jlSerials.removeAll();
 		jlSerials.setListData(serialArray);
 		pack();
 		setVisible(true);

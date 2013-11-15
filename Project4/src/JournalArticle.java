@@ -3,6 +3,11 @@ import java.util.ArrayList;
 public class JournalArticle extends Publication {
 	
 	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 7048446231372657257L;
+
+	/**
 	 * volume the Journal Article was in
 	 */
 	private String volume;

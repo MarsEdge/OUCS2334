@@ -1,7 +1,9 @@
 import java.awt.Frame;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.ObjectInputStream;
 import java.util.ArrayList;
 
 import javax.swing.JOptionPane;
@@ -34,6 +36,7 @@ public class ScholarPubController {
 		this.view.getJmiLoad().addActionListener(new LoadListener());
 		this.view.getJmiSave().addActionListener(new SaveListener());
 		this.view.getJmiExit().addActionListener(new ExitListener());
+		this.view.getJmiTP().addActionListener(new TPListener());
 	}
 	
 	/**
@@ -109,7 +112,7 @@ public class ScholarPubController {
 			        }
 			        else {
 			        	loop = 1;
-			        }	
+			        }
 				
 				}
 				
@@ -129,13 +132,6 @@ public class ScholarPubController {
 			        }	
 				
 				}
-				
-				String month = JOptionPane.showInputDialog(frame, "Add a Serial:\n"+ "What month is the conference?","Add Serial", JOptionPane.QUESTION_MESSAGE,null, null, null).toString();
-				String year = JOptionPane.showInputDialog(frame, "Add a Serial:\n"+ "What year is the conference?","Add Serial", JOptionPane.QUESTION_MESSAGE,null, null, null).toString();
-				String country = JOptionPane.showInputDialog(frame, "Add a Serial:\n"+ "What country is the conference in?","Add Serial", JOptionPane.QUESTION_MESSAGE,null, null, null).toString();
-				String state = JOptionPane.showInputDialog(frame, "Add a Serial:\n"+ "What state is the conference in?","Add Serial", JOptionPane.QUESTION_MESSAGE,null, null, null).toString();
-				String city = JOptionPane.showInputDialog(frame, "Add a Serial:\n"+ "What city is the conference in?","Add Serial", JOptionPane.QUESTION_MESSAGE,null, null,null).toString();
-
 				
 				model.addSerial(new Journal(chairs, committee));
 				//model.addSerial(new Conference(new Date(month, year), new Location(city, state, country), chairTemp, committeeTemp));
@@ -288,7 +284,7 @@ public class ScholarPubController {
 	private class LoadListener implements ActionListener {
 		public void actionPerformed(ActionEvent e) {			
 			try {
-				model.loadScholarship(view.loadFile());
+				loadScholarship(view.loadFile());
 			} catch (ClassNotFoundException e1) {
 				// Auto-generated catch block
 				e1.printStackTrace();
@@ -298,6 +294,20 @@ public class ScholarPubController {
 			}
 			view.updateList(model);
 		}
+	}
+	
+	/**
+	 * Loads a scholarship
+	 * @param filename		file being loaded
+	 * @throws IOException
+	 * @throws ClassNotFoundException
+	 */
+	public void loadScholarship(String filename) throws IOException, ClassNotFoundException {
+		FileInputStream fileInputStream = new FileInputStream(filename);
+		ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream);
+		model = (ScholarshipModel) objectInputStream.readObject();
+		objectInputStream.close();
+		model.notifyAllListeners();
 	}
 	
 	/**
@@ -329,7 +339,7 @@ public class ScholarPubController {
 	private class TPListener implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
 			
-			view.openGraph("TP", (String) view.getLMScholars().getElementAt(view.getJlScholars().getSelectedIndex())  , model.getScholarList());
+			view.openGraph("TP", model.getPubMap().get(0).getScholars().get(0) , model.getScholarList());
 		}
 	}
 	

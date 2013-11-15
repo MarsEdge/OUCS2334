@@ -127,7 +127,7 @@ public class Graph extends JFrame{
 		this.typeOfGraph = typeOfGraph;
 		ArrayList<Publication> pub = getScholar().getPublishedPapers();
 		
-		if(typeOfGraph=="TP"){
+		if(typeOfGraph.equals("TP")){
 			setXLabel("Number of Publications");
 			setYLabel("Type of Publication");
 			setTitle("Number of Each Type of Publication by " + getScholar().getName().getNameFull());

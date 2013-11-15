@@ -21,8 +21,7 @@ public class ScholarshipModel extends Scholarship{
 	/**
 	 * List to keep track of who is registered to listen for events from the ScholarshipModel.
 	 */
-	private ArrayList<ActionListener> actionListenerList;
-	
+	private transient ArrayList<ActionListener> actionListenerList;
 
 	/**
 	 * No argument constructor creates an empty scholarship using the no argument
@@ -152,18 +151,7 @@ public class ScholarshipModel extends Scholarship{
 		objectOutputStream.close();
 	}
 	
-	/**
-	 * Loads a scholarship
-	 * @param filename		file being loaded
-	 * @throws IOException
-	 * @throws ClassNotFoundException
-	 */
-	public void loadScholarship(String filename) throws IOException, ClassNotFoundException {
-		FileInputStream fileInputStream = new FileInputStream(filename);
-		ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream);
-		ScholarshipModel scholarship = (ScholarshipModel) objectInputStream.readObject();
-		objectInputStream.close();
-		//TODO fox this
+	public void notifyAllListeners() {
 		processEvent(new ActionEvent(this, ActionEvent.ACTION_PERFORMED, "scholar"));
 		processEvent(new ActionEvent(this, ActionEvent.ACTION_PERFORMED, "serial"));
 		processEvent(new ActionEvent(this, ActionEvent.ACTION_PERFORMED, "paper"));
