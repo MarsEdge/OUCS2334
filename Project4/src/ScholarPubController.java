@@ -1,13 +1,11 @@
 import java.awt.Frame;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.HashMap;
 
-import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
+
 
 
 
@@ -132,14 +130,15 @@ public class ScholarPubController {
 				
 				}
 				
-				String month = JOptionPane.showInputDialog(frame, "Add a Serial:\n"+ "What month is the conference?","Add Serial", JOptionPane.QUESTION_MESSAGE,null, auth, null).toString();
-				String year = JOptionPane.showInputDialog(frame, "Add a Serial:\n"+ "What year is the conference?","Add Serial", JOptionPane.QUESTION_MESSAGE,null, auth, null).toString();
-				String country = JOptionPane.showInputDialog(frame, "Add a Serial:\n"+ "What country is the conference in?","Add Serial", JOptionPane.QUESTION_MESSAGE,null, auth, null).toString();
-				String state = JOptionPane.showInputDialog(frame, "Add a Serial:\n"+ "What state is the conference in?","Add Serial", JOptionPane.QUESTION_MESSAGE,null, auth, null).toString();
+				String month = JOptionPane.showInputDialog(frame, "Add a Serial:\n"+ "What month is the conference?","Add Serial", JOptionPane.QUESTION_MESSAGE,null, null, null).toString();
+				String year = JOptionPane.showInputDialog(frame, "Add a Serial:\n"+ "What year is the conference?","Add Serial", JOptionPane.QUESTION_MESSAGE,null, null, null).toString();
+				String country = JOptionPane.showInputDialog(frame, "Add a Serial:\n"+ "What country is the conference in?","Add Serial", JOptionPane.QUESTION_MESSAGE,null, null, null).toString();
+				String state = JOptionPane.showInputDialog(frame, "Add a Serial:\n"+ "What state is the conference in?","Add Serial", JOptionPane.QUESTION_MESSAGE,null, null, null).toString();
 				String city = JOptionPane.showInputDialog(frame, "Add a Serial:\n"+ "What city is the conference in?","Add Serial", JOptionPane.QUESTION_MESSAGE,null, null,null).toString();
 
 				
-				model.addSerial(new Conference(new Date(month, year), new Location(city, state, country), chairTemp, committeeTemp ));
+				model.addSerial(new Journal(chairs, committee));
+				//model.addSerial(new Conference(new Date(month, year), new Location(city, state, country), chairTemp, committeeTemp));
 
 			}
 			else{
@@ -323,7 +322,38 @@ public class ScholarPubController {
 	 */
 	private class ExitListener implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
-			System.exit(-1);;
+			System.exit(-1);
+		}
+	}
+	
+	private class TPListener implements ActionListener {
+		public void actionPerformed(ActionEvent e) {
+			
+			view.openGraph("TP", (String) view.getLMScholars().getElementAt(view.getJlScholars().getSelectedIndex())  , model.getScholarList());
+		}
+	}
+	
+	private class PYListener implements ActionListener {
+		public void actionPerformed(ActionEvent e) {
+			
+		}
+	}
+	
+	private class CPYtListener implements ActionListener {
+		public void actionPerformed(ActionEvent e) {
+			
+		}
+	}
+	
+	private class JAYListener implements ActionListener {
+		public void actionPerformed(ActionEvent e) {
+		
+		}
+	}
+	
+	private class CAtListener implements ActionListener {
+		public void actionPerformed(ActionEvent e) {
+			
 		}
 	}
 }
