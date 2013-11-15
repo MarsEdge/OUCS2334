@@ -1,8 +1,14 @@
+import java.io.Serializable;
 import java.util.ArrayList;
 
 
-public class Publication implements Comparable<Publication> {
+public class Publication implements Comparable<Publication>, Serializable {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -2806114628098307877L;
+
 	/**
 	 * scholars(s)
 	 */
