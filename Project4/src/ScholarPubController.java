@@ -177,7 +177,6 @@ public class ScholarPubController {
 	private class AddPaperListener implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
 			Frame frame = new Frame();
-			String[] obj = {"Journal", "Conference"};
 			
 			Scholar[] auth = new Scholar[model.getScholarList().size() + 1];
 			int i = 0;
