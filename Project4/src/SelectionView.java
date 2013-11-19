@@ -330,11 +330,11 @@ public class SelectionView extends JFrame implements ActionListener {
 		return jmiCA;
 	}
 	
-	public ListModel getLMScholars() {
+	public ListModel<Scholar> getLMScholars() {
 		return lmScholars;
 	}
 	
-	public JList getJlScholars() {
+	public JList<Scholar> getJlScholars() {
 		return jlScholars;
 	}
 	
