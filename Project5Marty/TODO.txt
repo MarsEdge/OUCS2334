@@ -38,3 +38,4 @@ menu items
 exception handling
 	add exception handlers
 		file not found
+		null pointers
