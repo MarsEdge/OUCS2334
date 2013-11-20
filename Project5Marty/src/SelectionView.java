@@ -31,16 +31,25 @@ public class SelectionView extends JFrame implements ActionListener {
 	private JMenuItem jmiLoad = new JMenuItem("Load Scholarship");
 	private JMenuItem jmiSave = new JMenuItem("Save Scholarship");
 	private JMenuItem jmiExit = new JMenuItem("Exit");
+	
 	private JMenuItem jmiTP = new JMenuItem("Type of Publicataion");
 	private JMenuItem jmiPY = new JMenuItem("Publications Per Year");
 	private JMenuItem jmiCPY = new JMenuItem("Conference Papers Per Year");
 	private JMenuItem jmiJAY = new JMenuItem("Journal Articles Per Year");
 	private JMenuItem jmiCA = new JMenuItem("Coauthors Per Publication");
+	private JMenuItem jmiSNeG = new JMenuItem("Scholar Neighborhood Graph");
+	private JMenuItem jmiPubNeG = new JMenuItem("Publication Neighborhood Graph");
+	
+	private JMenuItem jmiSNe = new JMenuItem("Scholar Neighborhood");
+	private JMenuItem jmiPubNe = new JMenuItem("Publication Neighborhood");
+	private JMenuItem jmiSDist = new JMenuItem("Scholar Distance Check View");
+	private JMenuItem jmiPubDist = new JMenuItem("Publication Distance Check View");
 	
 	//Creates all JMenus and JMenuBar
 	private JMenuBar jmBar = new JMenuBar();
 	private JMenu jmFile = new JMenu("File");
 	private JMenu jmPlot = new JMenu("Plot");
+	private JMenu jmData = new JMenu("Data");
 	
 	//Creates all JButtons
 	private JButton jbAddScholar = new JButton("Add Scholar");
@@ -160,9 +169,17 @@ public class SelectionView extends JFrame implements ActionListener {
 		jmPlot.add(jmiCPY);
 		jmPlot.add(jmiJAY);
 		jmPlot.add(jmiCA);
+		jmPlot.add(jmiSNeG);
+		jmPlot.add(jmiPubNeG);
+		
+		jmData.add(jmiSNe);
+		jmData.add(jmiPubNe);
+		jmData.add(jmiSDist);
+		jmData.add(jmiPubDist);
 		
 		jmBar.add(jmFile);
 		jmBar.add(jmPlot);
+		jmBar.add(jmData);
 
 		// Set up the content pane and add all the panels to it.
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

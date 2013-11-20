@@ -311,7 +311,6 @@ public class ScholarPubController {
 	
 	/**
 	 * Exits the program
-	 * @param filename
 	 */
 	private class ExitListener implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
@@ -328,25 +327,61 @@ public class ScholarPubController {
 	
 	private class PYListener implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
-			
+			//TODO
 		}
 	}
 	
 	private class CPYtListener implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
-			
+			//TODO
 		}
 	}
 	
 	private class JAYListener implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
-		
+			//TODO
 		}
 	}
 	
 	private class CAtListener implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
-			
+			//TODO
+		}
+	}
+	
+	private class scholarNeighborhoodGraphListener implements ActionListener {
+		public void actionPerformed(ActionEvent e) {
+			//TODO
+		}
+	}
+	
+	private class pubNeighborhoodGraphListener implements ActionListener {
+		public void actionPerformed(ActionEvent e) {
+			//TODO
+		}
+	}
+	
+	private class scholarNeighborhoodListener implements ActionListener {
+		public void actionPerformed(ActionEvent e) {
+			//TODO
+		}
+	}
+	
+	private class pubNeighborhoodListener implements ActionListener {
+		public void actionPerformed(ActionEvent e) {
+			//TODO
+		}
+	}
+	
+	private class scholarDistListener implements ActionListener {
+		public void actionPerformed(ActionEvent e) {
+			//TODO
+		}
+	}
+	
+	private class pubDistListener implements ActionListener {
+		public void actionPerformed(ActionEvent e) {
+			//TODO
 		}
 	}
 }

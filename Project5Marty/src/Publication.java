@@ -1,4 +1,5 @@
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.HashMap;
 
 
@@ -198,6 +199,11 @@ public class Publication implements Comparable<Publication>, Serializable {
 	
 	public String toString() {
 		return getTitlePaper();
+	}
+	
+	HashMap< Integer, ArrayList<Scholar> > getNeighbors(int depth, int wantedDepth, ArrayList<Scholar> prevScholars, HashMap< Integer, ArrayList<Scholar> > out) {
+		//TODO implement
+		return null;
 	}
 	
 	public HashMap<String, Scholar> getScholars() {
