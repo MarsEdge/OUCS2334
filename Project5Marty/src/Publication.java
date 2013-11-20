@@ -162,7 +162,7 @@ public class Publication implements Comparable<Publication>, Serializable {
 	 * @return true of valid, false if not
 	 */
 	public static boolean isValid(HashMap<String, Scholar> prop) {
-		if(prop != null && !prop.isEmpty() && prop.get(0) != null)
+		if(prop != null && !prop.isEmpty())
 			return true;
 		return false;
 	}
