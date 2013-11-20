@@ -55,7 +55,6 @@ public class Scholar implements Comparable<Scholar>, Serializable{
 		return this.name.getNameFull().compareTo(arg0.name.getNameFull());
 	}
 	
-	//TODO fix this
 	public HashMap< Integer, ArrayList<Scholar> > getNeighbors(int depth, int wantedDepth, ArrayList<Scholar> prevScholars, HashMap< Integer, ArrayList<Scholar> > out) {
 		
 		ArrayList<Scholar> nextScholars = new ArrayList<Scholar>();
