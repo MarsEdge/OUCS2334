@@ -1,5 +1,6 @@
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class Scholar implements Comparable<Scholar>, Serializable{
 	
@@ -52,6 +53,52 @@ public class Scholar implements Comparable<Scholar>, Serializable{
 	@Override
 	public int compareTo(Scholar arg0) {
 		return this.name.getNameFull().compareTo(arg0.name.getNameFull());
+	}
+	
+	//TODO fix this
+	public HashMap< Integer, ArrayList<Scholar> > getNeighbors(int depth, int wantedDepth, ArrayList<Scholar> prevScholars, HashMap< Integer, ArrayList<Scholar> > out) {
+		
+		ArrayList<Scholar> nextScholars = new ArrayList<Scholar>();
+		
+		if(prevScholars == null)
+		{
+			prevScholars = new ArrayList<Scholar>();
+			
+			for(Scholar currentScholar : this.getPublishedPapers().get(0).getScholars().values())
+			{
+				prevScholars.add(currentScholar);
+			}
+		}
+		
+		for(Scholar currentPrevScholar : prevScholars)
+		{
+			for(Publication currentPub : currentPrevScholar.publishedPapers)
+			{
+				for(Scholar currentScholar : currentPub.getScholars().values())
+				{
+					if(!out.containsKey(depth))
+					{
+						out.put(depth, new ArrayList<Scholar>());
+					}
+					if(!out.get(depth).contains(currentScholar) && (depth > 1 ? !out.get(depth).contains(currentScholar): true ) )
+					{
+						out.get(depth).add(currentScholar);
+						
+						nextScholars.add(currentScholar);
+					}
+				}
+			}
+		}
+		
+		
+		if(depth>=wantedDepth)
+		{
+			return out;
+		}
+		else
+		{
+			return getNeighbors(depth+1, wantedDepth, nextScholars, out);
+		}
 	}
 	
 	public Name getName() {
