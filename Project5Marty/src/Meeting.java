@@ -33,7 +33,6 @@ public class Meeting {
 	 * @param location meeting location
 	 * @param chairs meeting committee chairs
 	 * @param committeeMembers meeting committee members
-	 * @param publications meeting publications
 	 */
 	public Meeting(Date date, Location location, ArrayList<Scholar> chairs, ArrayList<Scholar> committeeMembers) {
 		//TODO implement

@@ -138,7 +138,6 @@ public class ScholarshipModel extends Scholarship{
 	
 	/**
 	 * Saves a scholarship
-	 * @param filename	file being saved to
 	 * @param scholarship	scholarship object being saved
 	 * @throws IOException
 	 */
