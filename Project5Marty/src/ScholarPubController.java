@@ -385,9 +385,15 @@ public class ScholarPubController {
 				i++;
 			}
 			
-			String schName = JOptionPane.showInputDialog(frame, "Add a Paper:\n"+ "Who is the author?","Add Paper", JOptionPane.QUESTION_MESSAGE,null, model.getScholarList().values().toArray(), null).toString();
-			
-			if(schName == null)
+			String schName = "";
+			try{
+				schName = JOptionPane.showInputDialog(frame, "Add a Paper:\n"+ "Who is the author?","Add Paper", JOptionPane.QUESTION_MESSAGE,null, model.getScholarList().values().toArray(), null).toString();
+			}
+			finally
+			{
+				
+			}
+			if(schName == null || schName.equals(""))
 				return;
 			
 			Object[] depthOptions = {"0", "1", "2", "3", "4", "5", "6", "7", "8", "9"};
@@ -430,10 +436,16 @@ public class ScholarPubController {
 				pub[i]=sch;
 				i++;
 			}
+			String PubName = "";
+			try{
+				PubName = JOptionPane.showInputDialog(frame, "Add a Paper:\n"+ "Who is the author?","Add Paper", JOptionPane.QUESTION_MESSAGE,null, model.getPubMap().toArray(), null).toString();
+			}
+			finally
+			{
+				
+			}
 			
-			String PubName = JOptionPane.showInputDialog(frame, "Add a Paper:\n"+ "Who is the author?","Add Paper", JOptionPane.QUESTION_MESSAGE,null, model.getPubMap().toArray(), null).toString();
-			
-			if(PubName == null)
+			if(PubName == null || PubName.equals(""))
 				return;
 			
 			Object[] depthOptions = {"0", "1", "2", "3", "4", "5", "6", "7", "8", "9"};
@@ -475,7 +487,68 @@ public class ScholarPubController {
 	
 	private class scholarDistListener implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
-			//TODO
+			Frame frame = new Frame();
+			
+			Scholar[] pub = new Scholar[model.getScholarList().size() + 1];
+			int i = 0;
+			for(Scholar sch : model.getScholarList().values()){
+				pub[i]=sch;
+				i++;
+			}
+			
+			String schName1 = JOptionPane.showInputDialog(frame, "Add a Paper:\n"+ "Who is the first author?","Add author", JOptionPane.QUESTION_MESSAGE,null, model.getScholarList().values().toArray(), null).toString();
+			
+			String schName2 = JOptionPane.showInputDialog(frame, "Add a Paper:\n"+ "Who is the second author?","Add author", JOptionPane.QUESTION_MESSAGE,null, model.getScholarList().values().toArray(), null).toString();
+			
+			if(schName1 == null || schName2 == null)
+				return;
+			
+			Scholar foundSch1 = null;
+			
+			Scholar foundSch2 = null;
+			
+			for(Scholar currentSch : model.getScholarList().values())
+			{
+				if(currentSch.toString().equals(schName1))
+				{
+					foundSch1 = currentSch;
+				}
+			}
+			
+			for(Scholar currentSch : model.getScholarList().values())
+			{
+				if(currentSch.toString().equals(schName2))
+				{
+					foundSch2 = currentSch;
+				}
+			}
+			
+			if(foundSch1 != null && foundSch2 != null)
+			{
+				HashMap< Integer, ArrayList<Scholar> > out = null;
+				
+				int depth=0;
+				
+				boolean finished = false;
+				
+				for(int index = 0; index<=9; index++)
+				{
+					out = foundSch1.getNeighbors(0, index, null, new HashMap< Integer, ArrayList<Scholar> >() );
+					
+					for(ArrayList<Scholar> scholars : out.values())
+					{
+						for(Scholar scholar : scholars)
+						{
+							if(scholar.toString().equals(schName2))
+								depth = index;
+								finished=true;
+						}
+					}
+					if(finished)
+						break;
+				}
+				int linkYN = JOptionPane.showConfirmDialog(null, "distance = " + depth, "distance = " + depth, JOptionPane.YES_NO_OPTION);
+			}
 		}
 	}
 	
