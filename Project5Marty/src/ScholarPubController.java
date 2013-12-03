@@ -381,6 +381,9 @@ public class ScholarPubController {
 			
 			String schName = JOptionPane.showInputDialog(frame, "Add a Paper:\n"+ "Who is the author?","Add Paper", JOptionPane.QUESTION_MESSAGE,null, model.getScholarList().values().toArray(), null).toString();
 			
+			if(schName == null)
+				return;
+			
 			Object[] depthOptions = {"0", "1", "2", "3", "4", "5", "6", "7", "8", "9"};
 			int numdepth = JOptionPane.showOptionDialog(null,
 					"How many more Authors are there?", 
@@ -423,6 +426,9 @@ public class ScholarPubController {
 			}
 			
 			String PubName = JOptionPane.showInputDialog(frame, "Add a Paper:\n"+ "Who is the author?","Add Paper", JOptionPane.QUESTION_MESSAGE,null, model.getPubMap().toArray(), null).toString();
+			
+			if(PubName == null)
+				return;
 			
 			Object[] depthOptions = {"0", "1", "2", "3", "4", "5", "6", "7", "8", "9"};
 			int numdepth = JOptionPane.showOptionDialog(null,
