@@ -355,6 +355,30 @@ public class SelectionView extends JFrame implements ActionListener {
 		return jlScholars;
 	}
 	
+	public JMenuItem getJmiSNeG() {
+		return jmiSNeG;
+	}
+
+	public JMenuItem getJmiPubNeG() {
+		return jmiPubNeG;
+	}
+
+	public JMenuItem getJmiSNe() {
+		return jmiSNe;
+	}
+
+	public JMenuItem getJmiPubNe() {
+		return jmiPubNe;
+	}
+
+	public JMenuItem getJmiSDist() {
+		return jmiSDist;
+	}
+
+	public JMenuItem getJmiPubDist() {
+		return jmiPubDist;
+	}
+
 	private void populateScholarList() {
 		Object[] scholarObjectArray = model.getScholarList().values().toArray();
 		
