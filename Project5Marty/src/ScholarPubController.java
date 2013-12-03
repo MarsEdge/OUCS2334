@@ -42,6 +42,12 @@ public class ScholarPubController {
 		
 		this.view.getJmiSNe().addActionListener(new scholarNeighborhoodListener());
 		this.view.getJmiPubNe().addActionListener(new pubNeighborhoodListener());
+		
+		this.view.getJmiSDist().addActionListener(new scholarDistListener());
+		this.view.getJmiPubDist().addActionListener(new pubDistListener());
+		
+		this.view.getJmiSNeG().addActionListener(new scholarNeighborhoodGraphListener());
+		this.view.getJmiPubNeG().addActionListener(new pubNeighborhoodGraphListener());
 	}
 	
 	/**
