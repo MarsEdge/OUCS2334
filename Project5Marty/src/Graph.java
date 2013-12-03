@@ -106,13 +106,7 @@ public class Graph extends JFrame{
 	    f.add(xLabel, BorderLayout.WEST);
 	    f.add(yLabel, BorderLayout.SOUTH);
 	    f.getContentPane().add(new ChartPanel(this.valuesBar, this.namesBar, this.title), BorderLayout.CENTER);
-
-	    WindowListener wndCloser = new WindowAdapter() {
-	      public void windowClosing(WindowEvent e) {
-	        System.exit(0);
-	      }
-	    };
-	    f.addWindowListener(wndCloser);
+	    
 	    f.setVisible(true);
 	}
 
