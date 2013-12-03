@@ -79,7 +79,7 @@ public class Scholar implements Comparable<Scholar>, Serializable{
 					{
 						out.put(depth, new ArrayList<Scholar>());
 					}
-					if(!out.get(depth).contains(currentScholar) && (depth > 1 ? !out.get(depth).contains(currentScholar): true ) )
+					if(!out.get(depth).contains(currentScholar) && (depth > 1 ? !out.get(depth-1).contains(currentScholar): true ) )
 					{
 						out.get(depth).add(currentScholar);
 						
