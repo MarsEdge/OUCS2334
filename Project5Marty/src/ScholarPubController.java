@@ -37,7 +37,11 @@ public class ScholarPubController {
 		this.view.getJmiLoad().addActionListener(new LoadListener());
 		this.view.getJmiSave().addActionListener(new SaveListener());
 		this.view.getJmiExit().addActionListener(new ExitListener());
+		
 		this.view.getJmiTP().addActionListener(new TPListener());
+		
+		this.view.getJmiSNe().addActionListener(new scholarNeighborhoodListener());
+		this.view.getJmiPubNe().addActionListener(new pubNeighborhoodListener());
 	}
 	
 	/**
@@ -321,7 +325,10 @@ public class ScholarPubController {
 	private class TPListener implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
 			
-			view.openGraph("TP", model.getPubMap().get(0).getScholarsString(), model.getScholarList());
+			if(model.getPubMap() != null && model.getPubMap().size() > 0)
+			{
+				view.openGraph("TP", model.getPubMap().get(0).getScholarsString(), model.getScholarList());
+			}
 		}
 	}
 	
@@ -363,13 +370,94 @@ public class ScholarPubController {
 	
 	private class scholarNeighborhoodListener implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
-			//TODO
+			Frame frame = new Frame();
+			
+			Scholar[] pub = new Scholar[model.getScholarList().size() + 1];
+			int i = 0;
+			for(Scholar sch : model.getScholarList().values()){
+				pub[i]=sch;
+				i++;
+			}
+			
+			String schName = JOptionPane.showInputDialog(frame, "Add a Paper:\n"+ "Who is the author?","Add Paper", JOptionPane.QUESTION_MESSAGE,null, model.getScholarList().values().toArray(), null).toString();
+			
+			Object[] depthOptions = {"0", "1", "2", "3", "4", "5", "6", "7", "8", "9"};
+			int numdepth = JOptionPane.showOptionDialog(null,
+					"How many more Authors are there?", 
+					"Depth?",
+					JOptionPane.YES_NO_CANCEL_OPTION,
+				    JOptionPane.QUESTION_MESSAGE,
+				    null,
+				    depthOptions,
+				    depthOptions[1]);
+			
+			Scholar foundSch = null;
+			
+			for(Scholar currentSch : model.getScholarList().values())
+			{
+				if(currentSch.toString().equals(schName))
+				{
+					foundSch = currentSch;
+				}
+			}
+			if(foundSch != null)
+			{
+				HashMap< Integer, ArrayList<Scholar> > out = foundSch.getNeighbors(0, numdepth, null, new HashMap< Integer, ArrayList<Scholar> >() );
+				
+				int size = out.get(out.size()-1).size();
+				
+				int linkYN = JOptionPane.showConfirmDialog(null, "Size = " + size, "Size = " + size, JOptionPane.YES_NO_OPTION);
+			}
 		}
 	}
 	
 	private class pubNeighborhoodListener implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
-			//TODO
+			Frame frame = new Frame();
+			
+			Publication[] pub = new Publication[model.getPubMap().size() + 1];
+			int i = 0;
+			for(Publication sch : model.getPubMap()){
+				pub[i]=sch;
+				i++;
+			}
+			
+			String PubName = JOptionPane.showInputDialog(frame, "Add a Paper:\n"+ "Who is the author?","Add Paper", JOptionPane.QUESTION_MESSAGE,null, model.getPubMap().toArray(), null).toString();
+			
+			Object[] depthOptions = {"0", "1", "2", "3", "4", "5", "6", "7", "8", "9"};
+			int numdepth = JOptionPane.showOptionDialog(null,
+					"How many more Authors are there?", 
+					"Depth?",
+					JOptionPane.YES_NO_CANCEL_OPTION,
+				    JOptionPane.QUESTION_MESSAGE,
+				    null,
+				    depthOptions,
+				    depthOptions[1]);
+			
+			Publication foundPub = null;
+			
+			ArrayList<Scholar> foundPubScholars = new ArrayList<Scholar>(); 
+			
+			for(Publication currentPub : model.getPubMap())
+			{
+				if(currentPub.toString().equals(PubName))
+				{
+					foundPub = currentPub;
+					
+					for(Scholar currentScholar :foundPub.getScholars().values())
+					{
+						foundPubScholars.add(currentScholar);
+					}
+				}
+			}
+			if(foundPub != null)
+			{
+				HashMap< Integer, ArrayList<Scholar> > out = foundPub.getNeighbors(0, numdepth, foundPubScholars, new HashMap< Integer, ArrayList<Scholar> >() );
+				
+				int size = out.get(out.size()-1).size();
+				
+				int linkYN = JOptionPane.showConfirmDialog(null, "Size = " + size, "Size = " + size, JOptionPane.YES_NO_OPTION);
+			}
 		}
 	}
 	
