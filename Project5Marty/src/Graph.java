@@ -139,6 +139,7 @@ public class Graph extends JFrame{
 		    names[1] = "Journal Article";
 		    setValuesBar(values);
 		    setNamesBar(names);
+		    displayGraph();
 		}
 		else if(typeOfGraph=="PY"){
 			setXLabel("Number of Publications");
@@ -166,6 +167,7 @@ public class Graph extends JFrame{
 		    
 		    setValuesBar(values);
 		    setNamesBar(names);
+		    displayGraph();
 		}
 		else if(typeOfGraph=="CPY"){
 			setXLabel("Number of Conference Papers");
@@ -192,6 +194,7 @@ public class Graph extends JFrame{
 		    
 		    setValuesBar(values);
 		    setNamesBar(names);
+		    displayGraph();
 		}
 		else if(typeOfGraph=="JAY"){
 			setXLabel("Number of Journal Articles");
@@ -218,7 +221,7 @@ public class Graph extends JFrame{
 		    
 		    setValuesBar(values);
 		    setNamesBar(names);
-		    
+		    displayGraph();
 		}
 		else if(typeOfGraph=="NC"){
 			setXLabel("Number of Times");
@@ -256,7 +259,7 @@ public class Graph extends JFrame{
 		    
 	        setValuesBar(values);
 	        setNamesBar(names);
-				
+	        displayGraph();
 			
 			
 			/*HashMap<String, Integer> coAuthors = Stats.NumCoAuthors(pub);
