@@ -5,7 +5,7 @@ recursion
 new display views
 	all must
 		stay open until closed
-		dynamicaly update based on model
+		dynamically update based on model
 	Scholarly neighborhood list view
 		list of scholars near given author
 menu items
@@ -17,23 +17,23 @@ menu items
 		"Publication Neighborhood" = menu item name
 			selects a paper
 			selects a width to search through (using scholars of publication's other papers... etc...)
-			recursivly finds papers with common scholar
+			recursively finds papers with common scholar
 		"Scholar Distance Check View" = menu item name
 			selects scholar from list
 			selects other scholar from separate list
-			recursivly finds number of hops between scholars
+			recursively finds number of hops between scholars
 			displays smallest number
 		"Publication Distance Check" = menu item name
 			selects Publication from list
 			selects other Publication from separate list
-			recursivly finds number of hops between Publication
+			recursively finds number of hops between Publication
 			displays smallest number
 	menu labeled "plot"
 		"Scholar Neighborhood Graph" = menu item name
-			dislays graph of number of scholar neighbors of given max distance
+			displays graph of number of scholar neighbors of given max distance
 			title = "Scholar Neighborhood"
 		"Publication Neighborhood Graph" = menu item name
-			dislays graph of number of Publication neighbors of given max distance
+			displays graph of number of Publication neighbors of given max distance
 			title = "Publication Neighborhood"
 exception handling
 	add exception handlers
