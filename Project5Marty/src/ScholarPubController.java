@@ -107,7 +107,7 @@ public class ScholarPubController {
 				i++;
 			}
 			
-			if(type.equals("Conference"))
+			if(type != null && type.equals("Conference"))
 			{
 				ArrayList<Scholar> chairTemp = new ArrayList<Scholar>();
 				ArrayList<Scholar> committeeTemp = new ArrayList<Scholar>();
@@ -151,10 +151,21 @@ public class ScholarPubController {
 
 			}
 			else{
-				String editor = JOptionPane.showInputDialog(frame, "Add a Serial:\n"+ "Who is the editor?","Add Serial", JOptionPane.QUESTION_MESSAGE,null, auth, null).toString();
-				String reviewer = JOptionPane.showInputDialog(frame, "Add a Serial:\n"+ "Who is the reviewer","Add Serial", JOptionPane.QUESTION_MESSAGE,null, auth,null).toString();
+				String editor = "";
+				String reviewer = "";
+				try{
+					editor = JOptionPane.showInputDialog(frame, "Add a Serial:\n"+ "Who is the editor?","Add Serial", JOptionPane.QUESTION_MESSAGE,null, auth, null).toString();
+					reviewer = JOptionPane.showInputDialog(frame, "Add a Serial:\n"+ "Who is the reviewer","Add Serial", JOptionPane.QUESTION_MESSAGE,null, auth,null).toString();
+				}
+				finally
+				{
+					
+				}
 				
-				model.addSerial(new Journal(editor, reviewer));
+				if(editor != null && reviewer != null && !editor.equals("") && !reviewer.equals(""))
+					model.addSerial(new Journal(editor, reviewer));
+				else
+					return;
 				
 			}
 			
@@ -376,13 +387,93 @@ public class ScholarPubController {
 	
 	private class scholarNeighborhoodGraphListener implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
-			//TODO
+			Frame frame = new Frame();
+			
+			Scholar[] pub = new Scholar[model.getScholarList().size() + 1];
+			int i = 0;
+			for(Scholar sch : model.getScholarList().values()){
+				pub[i]=sch;
+				i++;
+			}
+			
+			String schName = "";
+			try{
+				schName = JOptionPane.showInputDialog(frame, "Add a Paper:\n"+ "Who is the author?","Add Paper", JOptionPane.QUESTION_MESSAGE,null, model.getScholarList().values().toArray(), null).toString();
+			}
+			finally
+			{
+				
+			}
+			if(schName == null || schName.equals(""))
+				return;
+			
+			Scholar foundSch = null;
+			
+			for(Scholar currentSch : model.getScholarList().values())
+			{
+				if(currentSch.toString().equals(schName))
+				{
+					foundSch = currentSch;
+				}
+			}
+			if(foundSch != null)
+			{
+				HashMap< Integer, ArrayList<Scholar> > out = foundSch.getNeighbors(0, 4, null, new HashMap< Integer, ArrayList<Scholar> >() );
+			
+			
+				view.openGraph("", schName, model.getScholarList());
+				
+				view.getGraphs().get(view.getGraphs().size()-1).setRecursionGraph(out);
+			}
 		}
 	}
 	
 	private class pubNeighborhoodGraphListener implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
-			//TODO
+			Frame frame = new Frame();
+			
+			Publication[] pub = new Publication[model.getPubMap().size() + 1];
+			int i = 0;
+			for(Publication sch : model.getPubMap()){
+				pub[i]=sch;
+				i++;
+			}
+			String PubName = "";
+			try{
+				PubName = JOptionPane.showInputDialog(frame, "Add a Paper:\n"+ "Who is the author?","Add Paper", JOptionPane.QUESTION_MESSAGE,null, model.getPubMap().toArray(), null).toString();
+			}
+			finally
+			{
+				
+			}
+			
+			if(PubName == null || PubName.equals(""))
+				return;
+			
+			Publication foundPub = null;
+			
+			ArrayList<Scholar> foundPubScholars = new ArrayList<Scholar>(); 
+			
+			for(Publication currentPub : model.getPubMap())
+			{
+				if(currentPub.toString().equals(PubName))
+				{
+					foundPub = currentPub;
+					
+					for(Scholar currentScholar :foundPub.getScholars().values())
+					{
+						foundPubScholars.add(currentScholar);
+					}
+				}
+			}
+			if(foundPub != null)
+			{
+				HashMap< Integer, ArrayList<Scholar> > out = foundPub.getNeighbors(0, 4, null, new HashMap< Integer, ArrayList<Scholar> >() );
+				
+				view.openGraph("", model.getScholarList().keySet().toArray()[0].toString(), model.getScholarList());
+				
+				view.getGraphs().get(view.getGraphs().size()-1).setRecursionGraph(out);
+			}
 		}
 	}
 	

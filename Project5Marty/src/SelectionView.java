@@ -379,6 +379,10 @@ public class SelectionView extends JFrame implements ActionListener {
 		return jmiPubDist;
 	}
 
+	public ArrayList<Graph> getGraphs() {
+		return graphs;
+	}
+
 	private void populateScholarList() {
 		Object[] scholarObjectArray = model.getScholarList().values().toArray();
 		

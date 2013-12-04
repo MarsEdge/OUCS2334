@@ -1,6 +1,7 @@
 import java.awt.BorderLayout;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.HashMap;
 
 import javax.swing.JFrame;
@@ -276,6 +277,38 @@ public class Graph extends JFrame{
 		}
 		
 	}
+	
+	public void setRecursionGraph(HashMap< Integer, ArrayList<Scholar> > data) {
+		setXLabel("depth");
+		setYLabel("people");
+		setTitle("Neighborhood");
+		
+		double[] values = new double[data.values().size()];
+		String[] names = new String[data.size()];
+		
+		ArrayList<ArrayList<Scholar> > scholarsAll = new ArrayList<ArrayList<Scholar> >(data.values());
+		
+		int indexOuter = 0;
+		for(ArrayList<Scholar> scholarsMid : scholarsAll)
+		{
+			names[indexOuter] = String.valueOf(scholarsMid.size());
+			
+			for(Scholar scholarMini : scholarsMid)
+			{
+				values[indexOuter]++;
+			}
+			indexOuter++;
+		}
+		
+		Arrays.sort(names);
+		Arrays.sort(values);
+		
+		
+		setValuesBar(values);
+        setNamesBar(names);
+        displayGraph();
+	}
+
 
 	public String getXLabel() {
 		return xLabel;
