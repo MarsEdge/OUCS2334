@@ -61,6 +61,8 @@ public class ScholarPubController {
 			String aff = (String)JOptionPane.showInputDialog(frame, "Add a Scholar:\n"+ "Enter " + name + "'s affiliation","Add Scholar", JOptionPane.QUESTION_MESSAGE,null, obj,"University of Oklahoma");
 			String research = (String)JOptionPane.showInputDialog(frame, "Add a Scholar:\n"+ "Enter " + name + "'s research areas","Add Scholar", JOptionPane.QUESTION_MESSAGE,null, obj,"Artificial Intelligence");
 			
+			if(name == null || aff == null || research== null)
+				return;
 			model.addScholar(new Scholar(name, aff, research));
 			view.updateList(model);
 		}
@@ -573,7 +575,90 @@ public class ScholarPubController {
 	
 	private class pubDistListener implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
-			//TODO
+			Frame frame = new Frame();
+			
+			Publication[] pub = new Publication[model.getPubMap().size() + 1];
+			int i = 0;
+			for(Publication sch : model.getPubMap()){
+				pub[i]=sch;
+				i++;
+			}
+			String PubName1 = "";
+			try{
+				PubName1 = JOptionPane.showInputDialog(frame, "Add a Paper:\n"+ "what is the first publication?","Add publication", JOptionPane.QUESTION_MESSAGE,null, model.getPubMap().toArray(), null).toString();
+			}
+			finally
+			{
+				
+			}
+			
+			String PubName2 = "";
+			try{
+				PubName2 = JOptionPane.showInputDialog(frame, "Add a Paper:\n"+ "what is the second publication?","Add publication", JOptionPane.QUESTION_MESSAGE,null, model.getPubMap().toArray(), null).toString();
+			}
+			finally
+			{
+				
+			}
+			
+			if(PubName2 == null || PubName2.equals(""))
+				return;
+			
+			Publication foundPub1 = null;
+			
+			Publication foundPub2 = null;
+			
+			for(Publication currentPub : model.getPubMap())
+			{
+				if(currentPub.toString().equals(PubName1))
+				{
+					foundPub1 = currentPub;
+				}
+			}
+			
+			for(Publication currentPub : model.getPubMap())
+			{
+				if(currentPub.toString().equals(PubName2))
+				{
+					foundPub2 = currentPub;
+				}
+			}
+			
+			if(foundPub1 != null && foundPub2 != null)
+			{
+				HashMap< Integer, ArrayList<Scholar> > out = null;
+				
+				int depth=-1;
+				
+				boolean finished = false;
+				
+				for(int index = 0; index<=9; index++)
+				{
+					out = foundPub1.getNeighbors(0, index, null, new HashMap< Integer, ArrayList<Scholar> >() );
+					
+					for(ArrayList<Scholar> scholars : out.values())
+					{
+						for(Scholar scholar : scholars)
+						{
+							if(scholar.getPublishedPapers().toString().contains(PubName2))
+							{
+								depth = index;
+								finished=true;
+							}
+						}
+					}
+					if(finished)
+						break;
+				}
+				if(depth != -1)
+				{
+					int linkYN = JOptionPane.showConfirmDialog(null, "distance = " + depth, "distance = " + depth, JOptionPane.YES_NO_OPTION);
+				}
+				else
+				{
+					int linkYN = JOptionPane.showConfirmDialog(null, "Not possible" + depth, "Not possible" + depth, JOptionPane.YES_NO_OPTION);
+				}
+			}
 		}
 	}
 }
