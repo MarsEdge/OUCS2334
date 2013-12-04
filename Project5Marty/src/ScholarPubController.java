@@ -203,8 +203,18 @@ public class ScholarPubController {
 				i++;
 			}
 			
+			String authorName = null;
+			try{
+				authorName = JOptionPane.showInputDialog(frame, "Add a Paper:\n"+ "Who is the author?","Add Paper", JOptionPane.QUESTION_MESSAGE,null, model.getScholarList().values().toArray(), null).toString();
+			}
+			finally
+			{
+				
+			}
 			
-			String authorName = JOptionPane.showInputDialog(frame, "Add a Paper:\n"+ "Who is the author?","Add Paper", JOptionPane.QUESTION_MESSAGE,null, model.getScholarList().values().toArray(), null).toString();
+			if(authorName == null)
+				return;
+			
 			HashMap<String, Scholar> authorsMap = new HashMap<String, Scholar>();
 			authorsMap.put(authorName, model.getScholarList().get(authorName));
 			
@@ -527,7 +537,7 @@ public class ScholarPubController {
 			{
 				HashMap< Integer, ArrayList<Scholar> > out = null;
 				
-				int depth=0;
+				int depth=-1;
 				
 				boolean finished = false;
 				
@@ -540,14 +550,23 @@ public class ScholarPubController {
 						for(Scholar scholar : scholars)
 						{
 							if(scholar.toString().equals(schName2))
+							{
 								depth = index;
 								finished=true;
+							}
 						}
 					}
 					if(finished)
 						break;
 				}
-				int linkYN = JOptionPane.showConfirmDialog(null, "distance = " + depth, "distance = " + depth, JOptionPane.YES_NO_OPTION);
+				if(depth != -1)
+				{
+					int linkYN = JOptionPane.showConfirmDialog(null, "distance = " + depth, "distance = " + depth, JOptionPane.YES_NO_OPTION);
+				}
+				else
+				{
+					int linkYN = JOptionPane.showConfirmDialog(null, "Not possible" + depth, "Not possible" + depth, JOptionPane.YES_NO_OPTION);
+				}
 			}
 		}
 	}
